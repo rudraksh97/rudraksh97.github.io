@@ -63,8 +63,8 @@ DevOps: Docker, AWS, Git, CI/CD
 ### 📫 How to reach me
 
 - Email: your.email@example.com
-- LinkedIn: [linkedin.com/in/rudraksh](https://linkedin.com/in/rudraksh)
-- Twitter: [@rudraksh](https://twitter.com/rudraksh)
+- LinkedIn: [linkedin.com/in/rudraksh](https://www.linkedin.com/in/rudraksh-agarwal-68520941/)
+- Twitter: [@rudraksh](https://twitter.com/rudrakshsanjay)
 
 ### ⚡ Fun fact
 I love solving complex problems and turning coffee into code!
