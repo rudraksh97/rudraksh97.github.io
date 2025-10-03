@@ -1,653 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rudraksh - Developer Portfolio</title>
-    <style>
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1e40af;
-            --dark: #111827;
-            --light: #f9fafb;
-            --gray: #6b7280;
-            --light-gray: #e5e7eb;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        }
-        
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-        }
-        
-        a {
-            color: var(--primary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        a:hover {
-            color: var(--primary-dark);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        header {
-            padding: 1.5rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-            background-color: rgba(249, 250, 251, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--light-gray);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--dark);
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-        
-        .nav-links a {
-            color: var(--dark);
-            font-weight: 500;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        .mobile-menu {
-            display: none;
-            cursor: pointer;
-        }
-        
-        section {
-            padding: 5rem 0;
-        }
-        
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 4rem;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-        }
-        
-        .subtitle {
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.875rem;
-        }
-        
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-        }
-        
-        h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-        }
-        
-        h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .lead {
-            font-size: 1.25rem;
-            color: var(--gray);
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 0.375rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .btn:hover {
-            background-color: var(--primary-dark);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            margin-left: 1rem;
-        }
-        
-        .btn-outline:hover {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        
-        .about-image {
-            border-radius: 0.5rem;
-            overflow: hidden;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        .skills {
-            background-color: #f3f4f6;
-        }
-        
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .skill-card {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            transition: all 0.3s ease;
-        }
-        
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        
-        .skill-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .project-card {
-            background-color: white;
-            border-radius: 0.5rem;
-            overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            transition: all 0.3s ease;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        
-        .project-image {
-            width: 100%;
-            height: 200px;
-            background-color: #e5e7eb;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .project-content {
-            padding: 1.5rem;
-        }
-        
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .project-tag {
-            background-color: #e5e7eb;
-            color: var(--gray);
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-        
-        .contact {
-            background-color: #f3f4f6;
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .contact-icon {
-            width: 40px;
-            height: 40px;
-            background-color: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-        }
-        
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-        
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-        
-        .form-group label {
-            font-weight: 500;
-        }
-        
-        .form-control {
-            padding: 0.75rem;
-            border: 1px solid var(--light-gray);
-            border-radius: 0.375rem;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 2rem 0;
-        }
-        
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            transition: all 0.3s ease;
-        }
-        
-        .social-link:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-        }
-        
-        /* Media Queries */
-        @media (max-width: 992px) {
-            h1 {
-                font-size: 2.75rem;
-            }
-            
-            .about-grid, .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .about-image {
-                order: -1;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.25rem;
-            }
-            
-            h2 {
-                font-size: 2rem;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .mobile-menu {
-                display: block;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rudraksh - Developer Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <style>
+    /* Keep your existing CSS */
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">Rudraksh</a>
-                <div class="nav-links">
-                    <a href="#about">About</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#contact">Contact</a>
-                </div>
-                <div class="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">Rudraksh</a>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
         </div>
-    </header>
+        <div class="mobile-menu">
+          <i class="fas fa-bars"></i>
+        </div>
+      </nav>
+    </div>
+  </header>
 
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <p class="subtitle">Software Developer</p>
-                <h1>Hi, I'm Rudraksh</h1>
-                <p class="lead">I build exceptional digital experiences with clean code and modern technologies.</p>
-                <div>
-                    <a href="#projects" class="btn">View Projects</a>
-                    <a href="#contact" class="btn btn-outline">Contact Me</a>
-                </div>
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <p class="subtitle">Software Engineer</p>
+        <h1>Hi, I'm Rudraksh</h1>
+        <p class="lead">Software Engineer with 3+ years of experience designing scalable backend systems, microservices, and data pipelines. Currently pursuing MSCS at SUNY Buffalo (Dec 2025).</p>
+        <div>
+          <a href="#projects" class="btn">View Projects</a>
+          <a href="#contact" class="btn btn-outline">Contact Me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <p class="subtitle">About Me</p>
+          <h2>Engineer | Backend | Distributed Systems</h2>
+          <p>I am a Software Engineer with over 3 years of industry experience building scalable real-time systems, distributed data pipelines, and microservices. Skilled in Python, FastAPI, Node.js, and cloud technologies (AWS, Docker, Kubernetes), I enjoy designing efficient solutions balancing performance, scalability, and maintainability.</p>
+          <p>Currently pursuing my MS in Computer Science at the University at Buffalo, I am passionate about backend architecture, system design, and distributed computing. I love bringing ideas to life with clean, production-ready code.</p>
+        </div>
+        <div class="about-image">
+          <img src="/api/placeholder/400/320" alt="Rudraksh - Developer">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="skills">
+    <div class="container">
+      <p class="subtitle">What I Do</p>
+      <h2>My Skills & Expertise</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-code"></i></div>
+          <h3>Backend Development</h3>
+          <p>Python, FastAPI, Node.js, TypeScript, Java, C++</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-cloud"></i></div>
+          <h3>Cloud & DevOps</h3>
+          <p>AWS, Docker, Kubernetes, Terraform, Linux</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-database"></i></div>
+          <h3>Databases & Messaging</h3>
+          <p>MSSQL, Redis, RabbitMQ, MQTT, Celery</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Observability & Other</h3>
+          <p>Prometheus, Grafana, JMeter, System Design, Distributed Systems, ML (PyTorch)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <p class="subtitle">My Work</p>
+      <h2>Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-image">
+            <img src="/api/placeholder/400/320" alt="Chat Application">
+          </div>
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="project-tag">C++</span>
+              <span class="project-tag">Sockets</span>
             </div>
-        </div>
-    </section>
-
-    <section id="about">
-        <div class="container">
-            <div class="about-grid">
-                <div>
-                    <p class="subtitle">About Me</p>
-                    <h2>Passionate Developer & Problem Solver</h2>
-                    <p>Hi there! I'm a software developer specializing in building high-quality web applications with modern technologies. With a strong foundation in computer science and a love for elegant solutions, I approach each project with creativity and attention to detail.</p>
-                    <p>My journey in tech started with a curiosity about how things work, which evolved into a passion for creating user-centered experiences through code. Whether it's front-end development, back-end systems, or full-stack applications, I enjoy the challenge of bringing ideas to life.</p>
-                    <p>When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community.</p>
-                </div>
-                <div class="about-image">
-                    <img src="/api/placeholder/400/320" alt="Rudraksh - Developer">
-                </div>
+            <h3>Terminal Chat Application</h3>
+            <p>Built a TCP-based chat application in C++ using socket programming. Supports multiple clients and real-time messaging.</p>
+            <div style="margin-top: 1rem;">
+              <a href="https://github.com/rudraksh97/terminal-chat-application" target="_blank">View on GitHub <i class="fas fa-arrow-right"></i></a>
             </div>
+          </div>
         </div>
-    </section>
 
-    <section id="skills" class="skills">
-        <div class="container">
-            <p class="subtitle">What I Do</p>
-            <h2>My Skills & Expertise</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-icon"><i class="fas fa-code"></i></div>
-                    <h3>Front-End Development</h3>
-                    <p>Building responsive and interactive user interfaces with modern frameworks and libraries.</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon"><i class="fas fa-database"></i></div>
-                    <h3>Back-End Development</h3>
-                    <p>Creating robust server-side applications with efficient databases and APIs.</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon"><i class="fas fa-mobile-alt"></i></div>
-                    <h3>Responsive Design</h3>
-                    <p>Developing applications that work seamlessly across all devices and screen sizes.</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon"><i class="fas fa-cogs"></i></div>
-                    <h3>DevOps & Deployment</h3>
-                    <p>Setting up CI/CD pipelines and managing cloud infrastructure for applications.</p>
-                </div>
+        <div class="project-card">
+          <div class="project-image">
+            <img src="/api/placeholder/400/320" alt="16 Bit Processor">
+          </div>
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="project-tag">Verilog</span>
+              <span class="project-tag">FPGA</span>
             </div>
-        </div>
-    </section>
-
-    <section id="projects">
-        <div class="container">
-            <p class="subtitle">My Work</p>
-            <h2>Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="/api/placeholder/400/320" alt="Project 1">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="project-tag">React</span>
-                            <span class="project-tag">Node.js</span>
-                            <span class="project-tag">MongoDB</span>
-                        </div>
-                        <h3>Project Name 1</h3>
-                        <p>A full-stack application that helps users manage their tasks efficiently with a clean interface and powerful features.</p>
-                        <div style="margin-top: 1rem;">
-                            <a href="https://github.com/rudraksh97" target="_blank">View on GitHub <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="/api/placeholder/400/320" alt="Project 2">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="project-tag">JavaScript</span>
-                            <span class="project-tag">APIs</span>
-                            <span class="project-tag">CSS3</span>
-                        </div>
-                        <h3>Project Name 2</h3>
-                        <p>An interactive web application that visualizes data in real-time, providing users with insightful analytics.</p>
-                        <div style="margin-top: 1rem;">
-                            <a href="https://github.com/rudraksh97" target="_blank">View on GitHub <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="/api/placeholder/400/320" alt="Project 3">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="project-tag">Python</span>
-                            <span class="project-tag">Data Science</span>
-                            <span class="project-tag">ML</span>
-                        </div>
-                        <h3>Project Name 3</h3>
-                        <p>A machine learning project that predicts trends based on historical data using advanced algorithms.</p>
-                        <div style="margin-top: 1rem;">
-                            <a href="https://github.com/rudraksh97" target="_blank">View on GitHub <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
+            <h3>16-Bit Processor</h3>
+            <p>Designed a custom 16-bit processor in Verilog and tested it on Vivado and an FPGA board.</p>
+            <div style="margin-top: 1rem;">
+              <a href="https://github.com/rudraksh97/16BitProcessor" target="_blank">View on GitHub <i class="fas fa-arrow-right"></i></a>
             </div>
+          </div>
         </div>
-    </section>
 
-    <section id="contact" class="contact">
-        <div class="container">
-            <p class="subtitle">Get In Touch</p>
-            <h2>Contact Me</h2>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h3>Email</h3>
-                            <p><a href="mailto:rudrakshiitd@outlook.com">rudrakshiitd@outlook.com</a></p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-github"></i>
-                        </div>
-                        <div>
-                            <h3>GitHub</h3>
-                            <p><a href="https://github.com/rudraksh97" target="_blank">github.com/rudraksh97</a></p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-linkedin"></i>
-                        </div>
-                        <div>
-                            <h3>LinkedIn</h3>
-                            <p><a href="https://www.linkedin.com/in/rudraksh-agarwal-68520941/" target="_blank">https://www.linkedin.com/in/rudraksh-agarwal-68520941/</a></p>
-                        </div>
-                    </div>
-                </div>
-                <form class="contact-form">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" class="form-control" placeholder="Your Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" class="form-control" placeholder="Your Email">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" class="form-control" placeholder="Your Message"></textarea>
-                    </div>
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
+        <div class="project-card">
+          <div class="project-image">
+            <img src="/api/placeholder/400/320" alt="Other Projects">
+          </div>
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Distributed Systems</span>
             </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2025 Rudraksh. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="https://github.com/rudraksh97" target="_blank" class="social-link">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/rudraksh-agarwal-68520941/" target="_blank" class="social-link">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://twitter.com/rudrakshsanjay" target="_blank" class="social-link">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </div>
+            <h3>Other Projects</h3>
+            <p>Explore more of my projects including data pipelines, ML models, and system design experiments.</p>
+            <div style="margin-top: 1rem;">
+              <a href="https://github.com/rudraksh97" target="_blank">View on GitHub <i class="fas fa-arrow-right"></i></a>
             </div>
+          </div>
         </div>
-    </footer>
 
-    <script>
-        // Simple JS for smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // Mobile menu toggle
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
-        
-        mobileMenu.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        });
-        
-        // Form submission (placeholder for now)
-        const contactForm = document.querySelector('.contact-form');
-        
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('This form submission is just a demo. In a real implementation, it would send your message.');
-        });
-    </script>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <p class="subtitle">Get In Touch</p>
+      <h2>Contact Me</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <h3>Phone</h3>
+              <p><a href="tel:+17164957549">+1 (716) 495-7549</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <h3>Email</h3>
+              <p><a href="mailto:rudraksh.agarwal97@gmail.com">rudraksh.agarwal97@gmail.com</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fab fa-github"></i></div>
+            <div>
+              <h3>GitHub</h3>
+              <p><a href="https://github.com/rudraksh97" target="_blank">github.com/rudraksh97</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+            <div>
+              <h3>LinkedIn</h3>
+              <p><a href="https://www.linkedin.com/in/rudraksh97/" target="_blank">linkedin.com/in/rudraksh97</a></p>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" class="form-control" placeholder="Your Name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" placeholder="Your Email">
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" class="form-control" placeholder="Your Message"></textarea>
+          </div>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <p>&copy; 2025 Rudraksh. All rights reserved.</p>
+        <div class="social-links">
+          <a href="https://github.com/rudraksh97" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/rudraksh97/" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://twitter.com/rudrakshsanjay" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
