@@ -3,208 +3,96 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rudraksh Agarwal - Software Engineer</title>
-  <meta name="description" content="Software Engineer with 3+ years of experience designing scalable backend systems, microservices, and data pipelines.">
+  <title>Rudraksh Agarwal - Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            background: 'oklch(1 0 0)',
-            foreground: 'oklch(0.145 0 0)',
-            primary: 'oklch(0.205 0 0)',
-            'primary-foreground': 'oklch(0.985 0 0)',
-            muted: 'oklch(0.97 0 0)',
-            'muted-foreground': 'oklch(0.556 0 0)',
-            border: 'oklch(0.922 0 0)',
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; }
-    .section-content { display: none; }
-    .section-content.active { display: block; }
-    input:focus, textarea:focus { outline: 2px solid rgba(0, 0, 0, 0.2); outline-offset: 2px; }
-  </style>
 </head>
-<body class="antialiased bg-[oklch(0.97_0_0)]">
-  <div class="min-h-screen flex">
-    <!-- Sidebar -->
-    <aside class="w-80 bg-white border-r border-[oklch(0.922_0_0)] flex flex-col">
-      <!-- Header -->
-      <div class="p-6 border-b border-[oklch(0.922_0_0)]">
-        <div class="flex items-center gap-4">
-          <div class="w-16 h-16 rounded-full bg-gradient-to-br from-[oklch(0.205_0_0)] to-[oklch(0.4_0_0)] flex items-center justify-center text-white text-2xl font-bold">
-            RA
-          </div>
-          <div>
-            <h1 class="text-xl font-semibold">Rudraksh Agarwal</h1>
-            <p class="text-sm text-[oklch(0.556_0_0)]">Software Engineer</p>
-          </div>
-        </div>
+<body class="bg-gray-50 flex min-h-screen">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-white border-r border-gray-200 flex flex-col">
+    <div class="p-6 border-b border-gray-200">
+      <h1 class="text-xl font-bold">Rudraksh Agarwal</h1>
+      <p class="text-gray-500 text-sm">Software Engineer</p>
+    </div>
+    <nav class="flex-1 p-4 space-y-2">
+      <button onclick="showSection('about')" class="w-full text-left px-4 py-2 rounded hover:bg-gray-100">About</button>
+      <button onclick="showSection('experience')" class="w-full text-left px-4 py-2 rounded hover:bg-gray-100">Experience</button>
+      <button onclick="showSection('education')" class="w-full text-left px-4 py-2 rounded hover:bg-gray-100">Education</button>
+      <button onclick="showSection('skills')" class="w-full text-left px-4 py-2 rounded hover:bg-gray-100">Skills</button>
+      <button onclick="showSection('projects')" class="w-full text-left px-4 py-2 rounded hover:bg-gray-100">Projects</button>
+      <button onclick="showSection('blogs')" class="w-full text-left px-4 py-2 rounded hover:bg-gray-100">Reading List</button>
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <main class="flex-1 p-8 overflow-y-auto">
+    <!-- Sections -->
+    <div id="about" class="section">
+      <h2 class="text-2xl font-bold mb-4">About</h2>
+      <p>Software Engineer with 3+ years of experience designing scalable backend systems, microservices, and data pipelines.</p>
+    </div>
+
+    <div id="experience" class="section hidden">
+      <h2 class="text-2xl font-bold mb-4">Experience</h2>
+      <p>Worked as a Software Developer in the technology division of a hotel chain in Bangalore.</p>
+    </div>
+
+    <div id="education" class="section hidden">
+      <h2 class="text-2xl font-bold mb-4">Education</h2>
+      <p>Master's in Computer Software Engineering at Arizona State University.</p>
+    </div>
+
+    <div id="skills" class="section hidden">
+      <h2 class="text-2xl font-bold mb-4">Skills</h2>
+      <ul class="list-disc list-inside space-y-1">
+        <li>Python, Java, C++</li>
+        <li>Django, Flask, FastAPI</li>
+        <li>Microservices & Distributed Systems</li>
+        <li>Celery, Kafka, RabbitMQ</li>
+        <li>Docker, Kubernetes, AWS</li>
+      </ul>
+    </div>
+
+    <div id="projects" class="section hidden">
+      <h2 class="text-2xl font-bold mb-4">Projects</h2>
+      <p>Details of projects go here.</p>
+    </div>
+
+    <div id="blogs" class="section hidden">
+      <h2 class="text-2xl font-bold mb-4">Reading List</h2>
+      <div id="blogs-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        Loading...
       </div>
-
-      <!-- Menu Items -->
-      <nav class="flex-1 p-4">
-        <div class="space-y-1">
-          <button onclick="showSection('about')" class="nav-btn w-full flex items-center justify-between px-4 py-3 rounded-xl transition-all text-left" data-section="about">
-            <div class="flex items-center gap-3">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-              </svg>
-              <span class="font-medium">About</span>
-            </div>
-            <svg class="w-4 h-4 text-[oklch(0.556_0_0)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
-          </button>
-          
-          <button onclick="showSection('experience')" class="nav-btn w-full flex items-center justify-between px-4 py-3 rounded-xl transition-all text-left" data-section="experience">
-            <div class="flex items-center gap-3">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-              </svg>
-              <span class="font-medium">Experience</span>
-            </div>
-            <svg class="w-4 h-4 text-[oklch(0.556_0_0)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
-          </button>
-
-          <button onclick="showSection('education')" class="nav-btn w-full flex items-center justify-between px-4 py-3 rounded-xl transition-all text-left" data-section="education">
-            <div class="flex items-center gap-3">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
-              </svg>
-              <span class="font-medium">Education</span>
-            </div>
-            <svg class="w-4 h-4 text-[oklch(0.556_0_0)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
-          </button>
-
-          <button onclick="showSection('skills')" class="nav-btn w-full flex items-center justify-between px-4 py-3 rounded-xl transition-all text-left" data-section="skills">
-            <div class="flex items-center gap-3">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
-              </svg>
-              <span class="font-medium">Skills</span>
-            </div>
-            <svg class="w-4 h-4 text-[oklch(0.556_0_0)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
-          </button>
-
-          <button onclick="showSection('projects')" class="nav-btn w-full flex items-center justify-between px-4 py-3 rounded-xl transition-all text-left" data-section="projects">
-            <div class="flex items-center gap-3">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
-              </svg>
-              <span class="font-medium">Projects</span>
-            </div>
-            <svg class="w-4 h-4 text-[oklch(0.556_0_0)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
-          </button>
-
-          <button onclick="showSection('blogs')" class="nav-btn w-full flex items-center justify-between px-4 py-3 rounded-xl transition-all text-left" data-section="blogs">
-            <div class="flex items-center gap-3">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21H5a2 2 0 01-2-2V7a2 2 0 012-2h4l2-2h4l2 2h4a2 2 0 012 2v12a2 2 0 01-2 2z"/>
-              </svg>
-              <span class="font-medium">Reading List</span>
-            </div>
-            <svg class="w-4 h-4 text-[oklch(0.556_0_0)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
-          </button>
-
-        </div>
-      </nav>
-    </aside>
-
-    <!-- Main Content -->
-    <main class="flex-1 p-10 space-y-10 overflow-y-auto">
-      
-      <!-- About -->
-      <div id="about" class="section-content active">
-        <h2 class="text-3xl font-bold">About</h2>
-        <p class="text-[oklch(0.556_0_0)] mt-4">
-          Software Engineer with 3+ years of experience designing scalable backend systems, microservices, and data pipelines.
-        </p>
-      </div>
-
-      <!-- Experience -->
-      <div id="experience" class="section-content">
-        <h2 class="text-3xl font-bold">Experience</h2>
-        <p class="text-[oklch(0.556_0_0)] mt-4">
-          Worked as a Software Developer in the technology division of a hotel chain in Bangalore.
-        </p>
-      </div>
-
-      <!-- Education -->
-      <div id="education" class="section-content">
-        <h2 class="text-3xl font-bold">Education</h2>
-        <p class="text-[oklch(0.556_0_0)] mt-4">
-          Master's in Computer Software Engineering at Arizona State University.
-        </p>
-      </div>
-
-      <!-- Skills -->
-      <div id="skills" class="section-content">
-        <h2 class="text-3xl font-bold">Skills</h2>
-        <ul class="list-disc list-inside text-[oklch(0.556_0_0)] mt-4 space-y-2">
-          <li>Python, Java, C++</li>
-          <li>Django, Flask, FastAPI</li>
-          <li>Microservices & Distributed Systems</li>
-          <li>Celery, Kafka, RabbitMQ</li>
-          <li>Docker, Kubernetes, AWS</li>
-        </ul>
-      </div>
-
-      <!-- Projects -->
-      <div id="projects" class="section-content">
-        <h2 class="text-3xl font-bold">Projects</h2>
-        <p class="text-[oklch(0.556_0_0)] mt-4">Details of projects can go here.</p>
-      </div>
-
-      <!-- Blogs / Reading List -->
-      <div id="blogs" class="section-content">
-        <h2 class="text-3xl font-bold">Reading List</h2>
-        <div id="blogs-container" class="bg-white rounded-2xl p-6 border border-[oklch(0.922_0_0)] text-[oklch(0.556_0_0)] mt-4 space-y-2">
-          Loading...
-        </div>
-      </div>
-
-    </main>
-  </div>
+    </div>
+  </main>
 
   <script>
-    function showSection(sectionId) {
-      document.querySelectorAll('.section-content').forEach(sec => sec.classList.remove('active'));
-      document.getElementById(sectionId).classList.add('active');
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
     }
 
-    // Load blogs dynamically from blogs.txt
+    // Load blogs dynamically from blogs.json
     async function loadBlogs() {
       const container = document.getElementById('blogs-container');
       try {
-        const response = await fetch('blogs.txt');
-        const text = await response.text();
-        const lines = text.split('\n').filter(line => line.trim() !== '');
-        container.innerHTML = '<ul class="list-disc list-inside">' + 
-          lines.map(line => `<li>${line}</li>`).join('') + 
-          '</ul>';
+        const response = await fetch('blogs.json');
+        const blogs = await response.json();
+        container.innerHTML = blogs.map(blog => `
+          <div class="bg-white rounded-xl shadow p-4 hover:shadow-lg transition">
+            <h3 class="text-lg font-semibold mb-2">${blog.title}</h3>
+            <p class="text-gray-600 mb-4">${blog.description}</p>
+            <a href="${blog.link}" target="_blank" class="text-blue-500 hover:underline">Read More</a>
+          </div>
+        `).join('');
       } catch (err) {
+        console.error(err);
         container.textContent = 'Failed to load reading list.';
       }
     }
 
     loadBlogs();
   </script>
+
 </body>
 </html>
