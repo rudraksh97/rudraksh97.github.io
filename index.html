@@ -1,97 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rudraksh Agarwal - Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rudraksh Agarwal — Software Engineer</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 2rem;
+    }
+    .fade-in {
+      animation: fadeIn 1s ease-in-out forwards;
+      opacity: 0;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
-<body class="bg-gray-50 flex min-h-screen">
 
-  <!-- Sidebar -->
-  <aside class="w-64 bg-white border-r border-gray-200 flex flex-col">
-    <div class="p-6 border-b border-gray-200">
-      <h1 class="text-xl font-bold">Rudraksh Agarwal</h1>
-      <p class="text-gray-500 text-sm">Software Engineer</p>
-    </div>
-    <nav class="flex-1 p-4 space-y-2">
-      <button onclick="showSection('about')" class="w-full text-left px-4 py-2 rounded hover:bg-gray-100">About</button>
-      <button onclick="showSection('experience')" class="w-full text-left px-4 py-2 rounded hover:bg-gray-100">Experience</button>
-      <button onclick="showSection('education')" class="w-full text-left px-4 py-2 rounded hover:bg-gray-100">Education</button>
-      <button onclick="showSection('skills')" class="w-full text-left px-4 py-2 rounded hover:bg-gray-100">Skills</button>
-      <button onclick="showSection('projects')" class="w-full text-left px-4 py-2 rounded hover:bg-gray-100">Projects</button>
-      <button onclick="showSection('blogs')" class="w-full text-left px-4 py-2 rounded hover:bg-gray-100">Reading List</button>
+<body class="bg-white text-gray-900 font-sans">
+
+  <!-- Navbar -->
+  <header class="fixed top-0 left-0 w-full bg-white/70 backdrop-blur-md border-b border-gray-100 z-50">
+    <nav class="max-w-7xl mx-auto px-6 flex justify-between items-center h-16">
+      <div class="font-semibold text-lg">Rudraksh Agarwal</div>
+      <div class="hidden md:flex space-x-8 text-sm">
+        <a href="#about" class="hover:text-gray-700">About</a>
+        <a href="#skills" class="hover:text-gray-700">Skills</a>
+        <a href="#experience" class="hover:text-gray-700">Experience</a>
+        <a href="#projects" class="hover:text-gray-700">Projects</a>
+        <a href="#education" class="hover:text-gray-700">Education</a>
+      </div>
     </nav>
-  </aside>
+  </header>
 
-  <!-- Main content -->
-  <main class="flex-1 p-8 overflow-y-auto">
-    <!-- Sections -->
-    <div id="about" class="section">
-      <h2 class="text-2xl font-bold mb-4">About</h2>
-      <p>Software Engineer with 3+ years of experience designing scalable backend systems, microservices, and data pipelines.</p>
+  <!-- Hero -->
+  <section id="hero" class="section text-center fade-in">
+    <h1 class="text-5xl md:text-6xl font-semibold mb-6">Building technology that scales beautifully.</h1>
+    <p class="text-lg text-gray-600 max-w-2xl mx-auto">Software Engineer with 3+ years of experience in real-time backend systems, distributed architectures, and cloud-native design — passionate about crafting performant and maintainable systems.</p>
+    <div class="mt-10">
+      <a href="#about" class="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition">Discover More</a>
     </div>
+  </section>
 
-    <div id="experience" class="section hidden">
-      <h2 class="text-2xl font-bold mb-4">Experience</h2>
-      <p>Worked as a Software Developer in the technology division of a hotel chain in Bangalore.</p>
-    </div>
-
-    <div id="education" class="section hidden">
-      <h2 class="text-2xl font-bold mb-4">Education</h2>
-      <p>Master's in Computer Software Engineering at Arizona State University.</p>
-    </div>
-
-    <div id="skills" class="section hidden">
-      <h2 class="text-2xl font-bold mb-4">Skills</h2>
-      <ul class="list-disc list-inside space-y-1">
-        <li>Python, Java, C++</li>
-        <li>Django, Flask, FastAPI</li>
-        <li>Microservices & Distributed Systems</li>
-        <li>Celery, Kafka, RabbitMQ</li>
-        <li>Docker, Kubernetes, AWS</li>
-      </ul>
-    </div>
-
-    <div id="projects" class="section hidden">
-      <h2 class="text-2xl font-bold mb-4">Projects</h2>
-      <p>Details of projects go here.</p>
-    </div>
-
-    <div id="blogs" class="section hidden">
-      <h2 class="text-2xl font-bold mb-4">Reading List</h2>
-      <div id="blogs-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        Loading...
+  <!-- About -->
+  <section id="about" class="section bg-gray-50 fade-in">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-4xl font-semibold mb-6">About Me</h2>
+      <p class="text-gray-600 leading-relaxed">
+        I'm a Software Engineer with 3+ years of experience designing scalable, real-time backend systems, microservices, and data pipelines. Skilled in balancing performance, scalability, and maintainability through strong architectural decision-making. Currently pursuing my Master’s in Computer Science at SUNY Buffalo, graduating in December 2025.
+      </p>
+      <div class="mt-8 flex justify-center space-x-6 text-gray-600">
+        <a href="mailto:rudraksh.agarwal97@gmail.com" class="hover:text-black">Email</a>
+        <a href="https://www.linkedin.com/in/rudraksh97" target="_blank" class="hover:text-black">LinkedIn</a>
+        <a href="https://github.com/rudraksh97" target="_blank" class="hover:text-black">GitHub</a>
       </div>
     </div>
-  </main>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="section fade-in">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="text-4xl font-semibold mb-10">Skills</h2>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-10 text-gray-700">
+        <div>
+          <h3 class="font-semibold text-lg mb-2">Backend</h3>
+          <p>Python, FastAPI, Node.js, TypeScript, Java, C++</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-2">Cloud & DevOps</h3>
+          <p>AWS, Docker, Kubernetes, Terraform, Linux</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-2">Databases & Messaging</h3>
+          <p>MSSQL, Redis, RabbitMQ, MQTT, Celery</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-2">Observability</h3>
+          <p>Prometheus, Grafana, JMeter</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-2">Other</h3>
+          <p>System Design, Distributed Systems, ML (PyTorch)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="section bg-gray-50 fade-in">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="text-4xl font-semibold mb-10">Experience</h2>
+      <div class="space-y-8 text-left">
+        <div class="bg-white rounded-2xl shadow-sm p-6 hover:shadow-md transition">
+          <h3 class="text-xl font-semibold">Senior Software Engineer — Wipro Linecraft AI</h3>
+          <p class="text-gray-500 text-sm mb-3">Oct 2020 – Jul 2024 | Pune, India</p>
+          <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li>Led a team of 4 engineers to deliver scalable backend systems, owning architecture and release timelines.</li>
+            <li>Built a real-time event-driven loss detection system processing multi-logger streams every 500ms, improving monitoring efficiency and cutting supervisory time by 50%.</li>
+            <li>Re-architected core ETL pipelines using Luigi in Python — reducing pipeline duration by 6x.</li>
+            <li>Developed 50+ RESTful APIs in FastAPI supporting the full suite of manufacturing analytics features.</li>
+            <li>Implemented Prometheus + Grafana monitoring stack, cutting MTTD from hours to 5 seconds.</li>
+            <li>Containerized and migrated microservices to AWS Kubernetes, ensuring cloud scalability.</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-sm p-6 hover:shadow-md transition">
+          <h3 class="text-xl font-semibold">Global Remote Mentorship Intern — IBM</h3>
+          <p class="text-gray-500 text-sm mb-3">May 2020 – Sep 2020 | Remote</p>
+          <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li>Improved the technical Q&A system for the TechQA dataset using BERT and Attention-over-Attention models.</li>
+            <li>Trained PyTorch models using Masked Language Modeling and Sequential Question Generation, achieving SOTA F1 score of 57.7 on TechQA dev set.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="section fade-in">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="text-4xl font-semibold mb-10">Projects</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-gray-50 rounded-2xl shadow-sm p-6 hover:shadow-md transition">
+          <h3 class="text-xl font-semibold mb-2">Chat Application</h3>
+          <p class="text-gray-600 mb-3">Terminal-based TCP chat system in C++ built using Socket Programming.</p>
+          <a href="https://github.com/rudraksh97/terminal-chat-application" target="_blank" class="text-blue-600 hover:underline">View Project</a>
+        </div>
+        <div class="bg-gray-50 rounded-2xl shadow-sm p-6 hover:shadow-md transition">
+          <h3 class="text-xl font-semibold mb-2">16-Bit Processor</h3>
+          <p class="text-gray-600 mb-3">Custom processor designed in Verilog and tested on FPGA (Artix-7) using Vivado.</p>
+          <a href="https://github.com/rudraksh97/16BitProcessor" target="_blank" class="text-blue-600 hover:underline">View Project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="section bg-gray-50 fade-in">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl font-semibold mb-8">Education</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="text-xl font-medium">State University of New York at Buffalo</h3>
+          <p class="text-gray-500">M.S. in Computer Science (GPA: 3.82/4.0)</p>
+          <p class="text-gray-400 text-sm">Aug 2024 – Dec 2025 | Buffalo, NY, USA</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-medium">Indian Institute of Technology Delhi</h3>
+          <p class="text-gray-500">B.Tech in Engineering Physics (GPA: 3.10/4.0)</p>
+          <p class="text-gray-400 text-sm">Jul 2016 – Jul 2020 | New Delhi, India</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-10 text-gray-500 border-t border-gray-100">
+    <p>© 2025 Rudraksh Agarwal • <a href="mailto:rudraksh.agarwal97@gmail.com" class="hover:underline">Contact</a></p>
+  </footer>
 
   <script>
-    function showSection(id) {
-      document.querySelectorAll('.section').forEach(sec => sec.classList.add('hidden'));
-      document.getElementById(id).classList.remove('hidden');
-    }
-
-    // Load blogs dynamically from blogs.json
-    async function loadBlogs() {
-      const container = document.getElementById('blogs-container');
-      try {
-        const response = await fetch('blogs.json');
-        const blogs = await response.json();
-        container.innerHTML = blogs.map(blog => `
-          <div class="bg-white rounded-xl shadow p-4 hover:shadow-lg transition">
-            <h3 class="text-lg font-semibold mb-2">${blog.title}</h3>
-            <p class="text-gray-600 mb-4">${blog.description}</p>
-            <a href="${blog.link}" target="_blank" class="text-blue-500 hover:underline">Read More</a>
-          </div>
-        `).join('');
-      } catch (err) {
-        console.error(err);
-        container.textContent = 'Failed to load reading list.';
-      }
-    }
-
-    loadBlogs();
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('fade-in');
+      });
+    });
+    document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
   </script>
 
 </body>
