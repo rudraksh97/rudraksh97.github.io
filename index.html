@@ -144,7 +144,7 @@
 
       <div class="about-cols">
         <!-- About Column -->
-        <div class="glass-card reveal reveal-delay-1">
+        <div class="mosaic-item reveal reveal-delay-1">
           <p class="text-large" style="margin-bottom: var(--space-5);">
             I'm a <strong>Software Engineer</strong> at the intersection of
             <strong>distributed systems</strong>, <strong>AI</strong>, and <strong>product thinking</strong>.
@@ -188,7 +188,7 @@
         </div>
 
         <!-- Skills Column -->
-        <div class="skills-container reveal reveal-delay-2" style="padding: var(--space-6);">
+        <div class="mosaic-item reveal reveal-delay-2" style="padding: var(--space-6);">
           <div class="skills-section">
             <p class="skills-label">Backend & Languages</p>
             <div class="skills-tags">
@@ -399,64 +399,65 @@
         <p class="section-subtitle text-body">My professional journey</p>
       </div>
 
-      <div class="experience-layout">
-        <!-- Experience Column -->
-        <div class="flex-col gap-6">
-          <article class="experience-card reveal reveal-delay-1">
-            <p class="experience-date">Oct 2020 — Jul 2024</p>
-            <h3 class="experience-title">Senior Software Engineer</h3>
-            <p class="experience-company">Wipro Linecraft AI · Pune, India</p>
-            <ul class="experience-list">
-              <li>Led team of 4 engineers delivering scalable backend systems</li>
-              <li>Built real-time loss detection system processing streams every 500ms</li>
-              <li>Re-architected ETL pipelines — 6x performance improvement</li>
-              <li>Developed 50+ RESTful APIs powering analytics dashboards</li>
-              <li>Implemented Prometheus + Grafana stack, MTTD from hours to 5 seconds</li>
-              <li>Containerized services to AWS Kubernetes</li>
-              <li>Onboarded a cloud migration consultancy to facilitate successful AWS transition</li>
-              <li>Managed software deployment across client systems using shell scripts and daemonized processes</li>
-            </ul>
-          </article>
-
-          <article class="experience-card reveal reveal-delay-2">
-            <p class="experience-date">May 2020 — Sep 2020</p>
-            <h3 class="experience-title">Global Remote Mentorship Intern</h3>
-            <p class="experience-company">IBM · Remote</p>
-            <ul class="experience-list">
-              <li>Improved TechQA system using BERT and Attention models</li>
-              <li>Achieved state-of-the-art F1 score of 57.7 on TechQA dev set</li>
-            </ul>
-          </article>
-        </div>
-
-        <!-- Education Column -->
-        <div class="flex-col gap-6">
-          <article class="card compact-card reveal reveal-delay-3"
-            style="background: var(--color-bg-glass); border: 1px solid var(--color-border);">
-            <div class="flex justify-between items-start" style="margin-bottom: var(--space-4);">
-              <span class="hero-badge" style="margin: 0; font-size: 10px; padding: 4px 8px;">Master's</span>
-              <img src="assets/ub_logo.svg" alt="SUNY Buffalo" style="height: 32px; width: auto; opacity: 0.9;">
+      <div class="bento-mosaic">
+        <!-- Wipro Experience (Wide) -->
+        <article class="mosaic-item mosaic-wide reveal reveal-delay-1">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <p class="experience-date">Oct 2020 — Jul 2024</p>
+              <h3 class="mosaic-title">Senior Software Engineer</h3>
+              <p class="mosaic-subtitle">Wipro Linecraft AI · Pune, India</p>
             </div>
-            <p class="experience-date" style="margin-bottom: var(--space-2);">Aug 2024 — Dec 2025</p>
-            <h3 class="experience-title" style="font-size: var(--text-lg);">SUNY Buffalo</h3>
-            <p class="text-secondary" style="font-size: var(--text-sm); margin-bottom: var(--space-2);">M.S. in Computer
-              Science</p>
-            <p class="text-small">GPA: 3.82/4.0</p>
-          </article>
+            <!-- Optional: Could add company logo if available, for now hidden or simple icon -->
+          </div>
+          <ul class="experience-list mosaic-list">
+            <li>Led team of 4 engineers delivering scalable backend systems</li>
+            <li>Built real-time loss detection system processing streams every 500ms</li>
+            <li>Re-architected ETL pipelines — 6x performance improvement</li>
+            <li>Developed 50+ RESTful APIs powering analytics dashboards</li>
+            <li>Implemented Prometheus + Grafana stack, MTTD from hours to 5 seconds</li>
+            <li>Containerized services to AWS Kubernetes</li>
+            <li>Onboarded a cloud migration consultancy to facilitate successful AWS transition</li>
+            <li>Managed software deployment across client systems using shell scripts and daemonized processes</li>
+          </ul>
+        </article>
 
-          <article class="card compact-card reveal reveal-delay-4"
-            style="background: var(--color-bg-glass); border: 1px solid var(--color-border);">
-            <div class="flex justify-between items-start" style="margin-bottom: var(--space-4);">
-              <span class="hero-badge" style="margin: 0; font-size: 10px; padding: 4px 8px;">Bachelor's</span>
-              <img src="assets/iitd_logo.svg" alt="IIT Delhi" style="height: 32px; width: auto; opacity: 0.9;">
+        <!-- Masters Education (Box) -->
+        <article class="mosaic-item mosaic-box reveal reveal-delay-2">
+          <div class="mosaic-media">
+            <img src="assets/ub_logo.svg" alt="SUNY Buffalo">
+          </div>
+          <p class="experience-date">Aug 2024 — Dec 2025</p>
+          <h3 class="mosaic-title">SUNY Buffalo</h3>
+          <p class="mosaic-subtitle">M.S. Computer Science<br>GPA: 3.82/4.0</p>
+          <span class="hero-badge" style="align-self: flex-start; margin: 0;">Master's</span>
+        </article>
+
+        <!-- Bachelors Education (Box) -->
+        <article class="mosaic-item mosaic-box reveal reveal-delay-3">
+          <div class="mosaic-media">
+            <img src="assets/iitd_logo.svg" alt="IIT Delhi">
+          </div>
+          <p class="experience-date">Jul 2016 — Jul 2020</p>
+          <h3 class="mosaic-title">IIT Delhi</h3>
+          <p class="mosaic-subtitle">B.Tech Engineering Physics<br>GPA: 3.10/4.0</p>
+          <span class="hero-badge" style="align-self: flex-start; margin: 0;">Bachelor's</span>
+        </article>
+
+        <!-- IBM Experience (Wide) -->
+        <article class="mosaic-item mosaic-wide reveal reveal-delay-4">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <p class="experience-date">May 2020 — Sep 2020</p>
+              <h3 class="mosaic-title">Global Remote Mentorship Intern</h3>
+              <p class="mosaic-subtitle">IBM · Remote</p>
             </div>
-            <p class="experience-date" style="margin-bottom: var(--space-2);">Jul 2016 — Jul 2020</p>
-            <h3 class="experience-title" style="font-size: var(--text-lg);">IIT Delhi</h3>
-            <p class="text-secondary" style="font-size: var(--text-sm); margin-bottom: var(--space-2);">B.Tech in
-              Engineering Physics</p>
-            <p class="text-small">GPA: 3.10/4.0</p>
-          </article>
-        </div>
+          </div>
+          <ul class="experience-list mosaic-list">
+            <li>Improved TechQA system using BERT and Attention models</li>
+            <li>Achieved state-of-the-art F1 score of 57.7 on TechQA dev set</li>
+          </ul>
+        </article>
       </div>
     </div>
   </section>
