@@ -1,211 +1,568 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Rudraksh Agarwal — Software Engineer specializing in scalable backend systems, distributed architectures, and AI-powered products.">
+  <meta name="keywords"
+    content="Software Engineer, Backend Developer, Distributed Systems, AI, Machine Learning, Full Stack">
+  <meta name="author" content="Rudraksh Agarwal">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Rudraksh Agarwal — Software Engineer">
+  <meta property="og:description"
+    content="Building scalable systems and AI-powered products. 3+ years of experience in real-time backend systems and cloud-native design.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://techproductdev.com">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Rudraksh Agarwal — Software Engineer">
+  <meta name="twitter:description" content="Building scalable systems and AI-powered products.">
+
   <title>Rudraksh Agarwal — Software Engineer</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
 
-    .section {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 6rem 2rem;
-    }
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    .fade-in {
-      animation: fadeIn 1s ease-in-out forwards;
-      opacity: 0;
-    }
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
+  <!-- Favicon -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 </head>
 
-<body class="bg-black text-gray-200 font-sans">
+<body>
+  <!-- Navigation - Floating Pill -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">R.A</a>
 
-  <!-- Navbar -->
-  <header class="fixed top-0 left-0 w-full bg-black/70 backdrop-blur-md border-b border-gray-800 z-50">
-    <nav class="max-w-7xl mx-auto px-6 flex justify-between items-center h-16">
-      <div class="font-semibold text-lg text-white">Rudraksh Agarwal</div>
-      <div class="hidden md:flex space-x-8 text-sm">
-        <a href="#about" class="hover:text-white">About</a>
-        <a href="#skills" class="hover:text-white">Skills</a>
-        <a href="#experience" class="hover:text-white">Experience</a>
-        <a href="#projects" class="hover:text-white">Projects</a>
-        <a href="#education" class="hover:text-white">Education</a>
+      <ul class="nav-links">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="/Rudraksh_Agarwal_Resume.pdf" target="_blank" class="btn btn-ghost" title="Download Resume">
+          Resume
+        </a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.5">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.5" style="display: none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
-    </nav>
-  </header>
+    </div>
 
-  <!-- Hero -->
-  <section id="hero" class="section text-center fade-in bg-black">
-    <h1 class="text-5xl md:text-6xl font-semibold mb-6 text-white">Building technology that scales beautifully.</h1>
-    <p class="text-lg text-gray-400 max-w-2xl mx-auto">
-      Software Engineer with 3+ years of experience in real-time backend systems, distributed architectures, and
-      cloud-native design — passionate about crafting performant and maintainable systems.
-    </p>
-    <div class="mt-10">
-      <a href="#about" class="bg-white text-black px-6 py-3 rounded-full hover:bg-gray-200 transition">Discover More</a>
+    <!-- Mobile Menu -->
+    <div class="nav-mobile-menu" id="nav-mobile-menu">
+      <a href="#about" class="nav-mobile-link">About</a>
+      <a href="#projects" class="nav-mobile-link">Projects</a>
+      <a href="#experience" class="nav-mobile-link">Experience</a>
+      <a href="#contact" class="nav-mobile-link">Contact</a>
+      <a href="/Rudraksh_Agarwal_Resume.pdf" target="_blank" class="nav-mobile-link">Resume</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section - Asymmetric Layout -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-noise"></div>
+
+    <div class="container">
+      <div class="hero-content stagger-children visible">
+        <div class="hero-text">
+          <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            <span>Available for work</span>
+          </div>
+
+          <h1 class="heading-1 hero-title">
+            Rudraksh Agarwal
+          </h1>
+
+          <p class="hero-subtitle">
+            Software Engineer crafting scalable systems, distributed architectures, and AI-powered products.
+            3+ years building what matters.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary btn-lg">View Work</a>
+            <a href="#contact" class="btn btn-secondary btn-lg">Get in Touch</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-glass-card">
+            <div class="hero-card-content">
+              <p class="hero-card-label">Currently</p>
+              <p class="hero-card-value">M.S. Computer Science<br>SUNY Buffalo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <div class="hero-scroll-icon"></div>
+      <span>Scroll</span>
     </div>
   </section>
 
-  <!-- About -->
-  <section id="about" class="section bg-zinc-950 fade-in">
-    <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-4xl font-semibold mb-6 text-white">About Me</h2>
-      <p class="text-gray-400 leading-relaxed">
-        I'm a Software Engineer with 3+ years of experience designing scalable, real-time backend systems,
-        microservices, and data pipelines. Skilled in balancing performance, scalability, and maintainability through
-        strong architectural decision-making. Currently pursuing my Master’s in Computer Science at SUNY Buffalo,
-        graduating in December 2025.
-      </p>
-      <div class="mt-8 flex justify-center space-x-6 text-gray-400">
-        <a href="mailto:rudraksh.agarwal97@gmail.com" class="hover:text-white">Email</a>
-        <a href="https://www.linkedin.com/in/rudraksh97" target="_blank" class="hover:text-white">LinkedIn</a>
-        <a href="https://github.com/rudraksh97" target="_blank" class="hover:text-white">GitHub</a>
+  <!-- About Section -->
+  <section class="section" id="about">
+    <div class="container container-narrow">
+      <div class="section-header reveal">
+        <h2 class="heading-2 section-title">About</h2>
+      </div>
+
+      <div class="glass-card reveal reveal-delay-1">
+        <p class="text-large" style="margin-bottom: var(--space-5);">
+          I'm a <strong>Software Engineer</strong> at the intersection of
+          <strong>distributed systems</strong>, <strong>AI</strong>, and <strong>product thinking</strong>.
+        </p>
+
+        <p class="text-body" style="margin-bottom: var(--space-5);">
+          With 3+ years at Wipro Linecraft AI, I led teams building real-time manufacturing analytics
+          platforms, re-architected ETL pipelines for 6x performance gains, and deployed production-grade
+          microservices on Kubernetes. Clean code that solves real problems.
+        </p>
+
+        <p class="text-body" style="margin-bottom: var(--space-6);">
+          Currently finishing my Master's at SUNY Buffalo (GPA: 3.82). Previously Engineering Physics at IIT Delhi.
+        </p>
+
+        <div class="flex gap-4" style="flex-wrap: wrap;">
+          <a href="mailto:rudraksh.agarwal97@gmail.com" class="btn btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            Email
+          </a>
+          <a href="https://linkedin.com/in/rudraksh97" target="_blank" rel="noopener" class="btn btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+            LinkedIn
+          </a>
+          <a href="https://github.com/rudraksh97" target="_blank" rel="noopener" class="btn btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path
+                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+              </path>
+            </svg>
+            GitHub
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Skills -->
-  <section id="skills" class="section bg-black fade-in">
-    <div class="max-w-5xl mx-auto text-center">
-      <h2 class="text-4xl font-semibold mb-10 text-white">Skills</h2>
-      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-10 text-gray-300">
-        <div>
-          <h3 class="font-semibold text-lg mb-2 text-white">Backend</h3>
-          <p>Python, FastAPI, Node.js, TypeScript, Java, C++</p>
-        </div>
-        <div>
-          <h3 class="font-semibold text-lg mb-2 text-white">Cloud & DevOps</h3>
-          <p>AWS, Docker, Kubernetes, Terraform, Linux</p>
-        </div>
-        <div>
-          <h3 class="font-semibold text-lg mb-2 text-white">Databases & Messaging</h3>
-          <p>MSSQL, Redis, RabbitMQ, MQTT, Celery</p>
-        </div>
-        <div>
-          <h3 class="font-semibold text-lg mb-2 text-white">Observability</h3>
-          <p>Prometheus, Grafana, JMeter</p>
-        </div>
-        <div>
-          <h3 class="font-semibold text-lg mb-2 text-white">Other</h3>
-          <p>System Design, Distributed Systems, ML (PyTorch)</p>
-        </div>
+  <!-- Projects Section - Bento Grid -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="heading-2 section-title">Projects</h2>
+        <p class="section-subtitle text-body">Selected work I'm proud of</p>
+      </div>
+
+      <div class="bento-grid">
+        <!-- Featured Project -->
+        <article class="bento-item bento-featured reveal reveal-delay-1">
+          <div class="card-header">
+            <div>
+              <p class="card-meta">AI Tool</p>
+              <h3 class="card-title">Dataset Curator</h3>
+            </div>
+            <div class="card-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path
+                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                </path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+            </div>
+          </div>
+          <p class="card-description">
+            AI-powered tool for curating and managing machine learning datasets with intelligent labeling
+            and quality control features. Built for teams working with large-scale training data.
+          </p>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">AI/ML</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">LangGraph</span>
+            <span class="tag">PgVector</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">React</span>
+            <span class="tag">Next.js</span>
+          </div>
+          <div class="card-footer">
+            <a href="/datasetcurator" class="card-link">
+              View Project
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        </article>
+
+        <!-- New Project: Face Recognition Pipeline -->
+        <article class="bento-item bento-standard reveal reveal-delay-2">
+          <div class="card-header">
+            <div>
+              <p class="card-meta">Cloud AI</p>
+              <h3 class="card-title">Face Recognition Pipeline</h3>
+            </div>
+            <div class="card-icon">
+              <!-- Using a Generic Cloud/Eye icon representation or reuse one -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </div>
+          </div>
+          <p class="card-description">
+            Built a multi-stage face recognition pipeline using AWS SQS and Lambda for scalable processing.
+          </p>
+          <div class="tags">
+            <span class="tag">AWS SQS</span>
+            <span class="tag">Lambda</span>
+            <span class="tag">Python</span>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="card-link">
+              View Project
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="bento-item bento-standard reveal reveal-delay-2">
+          <div class="card-header">
+            <div>
+              <p class="card-meta">Networking</p>
+              <h3 class="card-title">Terminal Chat</h3>
+            </div>
+            <div class="card-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <polyline points="4 17 10 11 4 5"></polyline>
+                <line x1="12" y1="19" x2="20" y2="19"></line>
+              </svg>
+            </div>
+          </div>
+          <p class="card-description">
+            TCP chat system in C++ using Socket Programming for real-time multi-client communication.
+          </p>
+          <div class="tags">
+            <span class="tag">C++</span>
+            <span class="tag">Sockets</span>
+            <span class="tag">TCP/IP</span>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/rudraksh97/terminal-chat-application" target="_blank" rel="noopener"
+              class="card-link">
+              GitHub
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="bento-item bento-standard reveal reveal-delay-3">
+          <div class="card-header">
+            <div>
+              <p class="card-meta">Hardware</p>
+              <h3 class="card-title">16-Bit Processor</h3>
+            </div>
+            <div class="card-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                <rect x="9" y="9" width="6" height="6"></rect>
+                <line x1="9" y1="1" x2="9" y2="4"></line>
+                <line x1="15" y1="1" x2="15" y2="4"></line>
+                <line x1="9" y1="20" x2="9" y2="23"></line>
+                <line x1="15" y1="20" x2="15" y2="23"></line>
+              </svg>
+            </div>
+          </div>
+          <p class="card-description">
+            Custom processor design in Verilog, tested on FPGA (Artix-7) using Xilinx Vivado.
+          </p>
+          <div class="tags">
+            <span class="tag">Verilog</span>
+            <span class="tag">FPGA</span>
+            <span class="tag">Vivado</span>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/rudraksh97/16BitProcessor" target="_blank" rel="noopener" class="card-link">
+              GitHub
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- Experience -->
-  <section id="experience" class="section bg-zinc-950 fade-in">
-    <div class="max-w-5xl mx-auto text-center">
-      <h2 class="text-4xl font-semibold mb-10 text-white">Experience</h2>
-      <div class="space-y-8 text-left">
-        <div class="bg-zinc-900 rounded-2xl shadow-sm p-6 hover:bg-zinc-800 transition">
-          <h3 class="text-xl font-semibold text-white">Senior Software Engineer — Wipro Linecraft AI</h3>
-          <p class="text-gray-500 text-sm mb-3">Oct 2020 – Jul 2024 | Pune, India</p>
-          <ul class="list-disc list-inside text-gray-400 space-y-2">
-            <li>Led a team of 4 engineers to deliver scalable backend systems, owning architecture and release
-              timelines.</li>
-            <li>Built a real-time loss detection system processing streams every 500ms, improving monitoring by 50%.
-            </li>
-            <li>Re-architected ETL pipelines using Luigi in Python — reducing pipeline duration by 6x.</li>
-            <li>Developed 50+ RESTful APIs in FastAPI powering manufacturing analytics.</li>
-            <li>Implemented Prometheus + Grafana monitoring stack, cutting MTTD from hours to 5 seconds.</li>
-            <li>Containerized and migrated services to AWS Kubernetes for scalability.</li>
+  <!-- Experience Section -->
+  <section class="section" id="experience">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="heading-2 section-title">Experience</h2>
+        <p class="section-subtitle text-body">Where I've made an impact</p>
+      </div>
+
+      <div class="experience-grid">
+        <!-- Experience 1 -->
+        <article class="experience-card reveal reveal-delay-1">
+          <p class="experience-date">Oct 2020 — Jul 2024</p>
+          <h3 class="experience-title">Senior Software Engineer</h3>
+          <p class="experience-company">Wipro Linecraft AI · Pune, India</p>
+          <ul class="experience-list">
+            <li>Led team of 4 engineers delivering scalable backend systems</li>
+            <li>Built real-time loss detection system processing streams every 500ms</li>
+            <li>Re-architected ETL pipelines — 6x performance improvement</li>
+            <li>Developed 50+ RESTful APIs powering analytics dashboards</li>
+            <li>Implemented Prometheus + Grafana stack, MTTD from hours to 5 seconds</li>
+            <li>Containerized services to AWS Kubernetes</li>
+            <li>Onboarded a cloud migration consultancy to facilitate successful AWS transition</li>
+            <li>Managed software deployment across client systems using shell scripts and daemonized processes</li>
           </ul>
-        </div>
+        </article>
 
-        <div class="bg-zinc-900 rounded-2xl shadow-sm p-6 hover:bg-zinc-800 transition">
-          <h3 class="text-xl font-semibold text-white">Global Remote Mentorship Intern — IBM</h3>
-          <p class="text-gray-500 text-sm mb-3">May 2020 – Sep 2020 | Remote</p>
-          <ul class="list-disc list-inside text-gray-400 space-y-2">
-            <li>Improved the TechQA system using BERT and Attention-over-Attention models.</li>
-            <li>Trained PyTorch models achieving a state-of-the-art F1 score of 57.7 on TechQA dev set.</li>
+        <!-- Experience 2 -->
+        <article class="experience-card reveal reveal-delay-2">
+          <p class="experience-date">May 2020 — Sep 2020</p>
+          <h3 class="experience-title">Global Remote Mentorship Intern</h3>
+          <p class="experience-company">IBM · Remote</p>
+          <ul class="experience-list">
+            <li>Improved TechQA system using BERT and Attention models</li>
+            <li>Achieved state-of-the-art F1 score of 57.7 on TechQA dev set</li>
           </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="section" id="skills">
+    <div class="container container-narrow">
+      <div class="section-header reveal">
+        <h2 class="heading-2 section-title">Skills</h2>
+      </div>
+
+      <div class="skills-container reveal reveal-delay-1">
+        <div class="skills-section">
+          <p class="skills-label">Backend & Languages</p>
+          <div class="skills-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">FastAPI</span>
+            <span class="skill-tag">LangGraph</span>
+            <span class="skill-tag">PgVector</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">C++</span>
+          </div>
+        </div>
+
+        <div class="skills-section">
+          <p class="skills-label">Cloud & DevOps</p>
+          <div class="skills-tags">
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">Lambda</span>
+            <span class="skill-tag">ECR</span>
+            <span class="skill-tag">SQS</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Kubernetes</span>
+            <span class="skill-tag">Terraform</span>
+            <span class="skill-tag">Linux</span>
+          </div>
+        </div>
+
+        <div class="skills-section">
+          <p class="skills-label">Data & Messaging</p>
+          <div class="skills-tags">
+            <span class="skill-tag">MSSQL</span>
+            <span class="skill-tag">Redis</span>
+            <span class="skill-tag">RabbitMQ</span>
+            <span class="skill-tag">MQTT</span>
+            <span class="skill-tag">Celery</span>
+          </div>
+        </div>
+
+        <div class="skills-section">
+          <p class="skills-label">AI & Architecture</p>
+          <div class="skills-tags">
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">Machine Learning</span>
+            <span class="skill-tag">NLP</span>
+            <span class="skill-tag">System Design</span>
+            <span class="skill-tag">Distributed Systems</span>
+            <span class="skill-tag">Microservices</span>
+          </div>
+        </div>
+
+        <div class="skills-section">
+          <p class="skills-label">Observability</p>
+          <div class="skills-tags">
+            <span class="skill-tag">Prometheus</span>
+            <span class="skill-tag">Grafana</span>
+            <span class="skill-tag">JMeter</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Projects -->
-  <section id="projects" class="section bg-black fade-in">
-    <div class="max-w-5xl mx-auto text-center">
-      <h2 class="text-4xl font-semibold mb-10 text-white">Projects</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-zinc-900 rounded-2xl shadow-sm p-6 hover:bg-zinc-800 transition">
-          <h3 class="text-xl font-semibold text-white mb-2">Dataset Curator</h3>
-          <p class="text-gray-400 mb-3">AI-powered tool for curating and managing machine learning datasets with
-            intelligent labeling and quality control.</p>
-          <a href="/datasetcurator" class="text-blue-400 hover:underline">View Project</a>
-        </div>
-        <div class="bg-zinc-900 rounded-2xl shadow-sm p-6 hover:bg-zinc-800 transition">
-          <h3 class="text-xl font-semibold text-white mb-2">Chat Application</h3>
-          <p class="text-gray-400 mb-3">Terminal-based TCP chat system in C++ built using Socket Programming.</p>
-          <a href="https://github.com/rudraksh97/terminal-chat-application" target="_blank"
-            class="text-blue-400 hover:underline">View Project</a>
-        </div>
-        <div class="bg-zinc-900 rounded-2xl shadow-sm p-6 hover:bg-zinc-800 transition">
-          <h3 class="text-xl font-semibold text-white mb-2">16-Bit Processor</h3>
-          <p class="text-gray-400 mb-3">Custom processor in Verilog tested on FPGA (Artix-7) using Vivado.</p>
-          <a href="https://github.com/rudraksh97/16BitProcessor" target="_blank"
-            class="text-blue-400 hover:underline">View Project</a>
-        </div>
+  <!-- Education Section -->
+  <section class="section" id="education">
+    <div class="container container-narrow">
+      <div class="section-header reveal">
+        <h2 class="heading-2 section-title">Education</h2>
+      </div>
+
+      <div class="experience-grid" style="max-width: 800px; margin: 0 auto;">
+        <article class="experience-card reveal reveal-delay-1">
+          <p class="experience-date">Aug 2024 — Dec 2025</p>
+          <h3 class="experience-title">State University of New York at Buffalo</h3>
+          <p class="experience-company">M.S. in Computer Science · GPA: 3.82/4.0</p>
+          <p class="text-small" style="margin-top: var(--space-2);">Buffalo, NY, USA</p>
+        </article>
+
+        <article class="experience-card reveal reveal-delay-2">
+          <p class="experience-date">Jul 2016 — Jul 2020</p>
+          <h3 class="experience-title">Indian Institute of Technology Delhi</h3>
+          <p class="experience-company">B.Tech in Engineering Physics · GPA: 3.10/4.0</p>
+          <p class="text-small" style="margin-top: var(--space-2);">New Delhi, India</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- Education -->
-  <section id="education" class="section bg-zinc-950 fade-in">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-4xl font-semibold mb-8 text-white">Education</h2>
-      <div class="space-y-6">
-        <div>
-          <h3 class="text-xl font-medium text-white">State University of New York at Buffalo</h3>
-          <p class="text-gray-400">M.S. in Computer Science (GPA: 3.82/4.0)</p>
-          <p class="text-gray-500 text-sm">Aug 2024 – Dec 2025 | Buffalo, NY, USA</p>
-        </div>
-        <div>
-          <h3 class="text-xl font-medium text-white">Indian Institute of Technology Delhi</h3>
-          <p class="text-gray-400">B.Tech in Engineering Physics (GPA: 3.10/4.0)</p>
-          <p class="text-gray-500 text-sm">Jul 2016 – Jul 2020 | New Delhi, India</p>
+  <!-- Contact Section -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="contact-glass reveal">
+        <h2 class="heading-2 section-title">Let's Connect</h2>
+        <p class="text-large"
+          style="margin-bottom: var(--space-6); max-width: 500px; margin-left: auto; margin-right: auto;">
+          Open to discussing new opportunities, interesting projects, or just chatting about technology.
+        </p>
+
+        <a href="mailto:rudraksh.agarwal97@gmail.com" class="btn btn-primary btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          Send me an email
+        </a>
+
+        <div class="contact-links reveal reveal-delay-1">
+          <a href="https://linkedin.com/in/rudraksh97" target="_blank" rel="noopener" class="btn btn-icon"
+            title="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+          <a href="https://github.com/rudraksh97" target="_blank" rel="noopener" class="btn btn-icon" title="GitHub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path
+                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+              </path>
+            </svg>
+          </a>
+          <a href="/Rudraksh_Agarwal_Resume.pdf" target="_blank" class="btn btn-icon" title="Resume">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+          </a>
         </div>
       </div>
+
+      <!-- Contact Form -->
+      <form class="contact-form reveal reveal-delay-2" action="https://formspree.io/f/your-form-id" method="POST">
+        <div class="form-group">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" name="email" class="form-input" placeholder="your@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="message" class="form-label">Message</label>
+          <textarea id="message" name="message" class="form-textarea" placeholder="Your message..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Send Message</button>
+      </form>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="text-center py-10 text-gray-500 border-t border-gray-800">
-    <p>© 2025 Rudraksh Agarwal • <a href="mailto:rudraksh.agarwal97@gmail.com"
-        class="hover:underline text-gray-300">Contact</a></p>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-links">
+        <a href="#about" class="footer-link">About</a>
+        <a href="#projects" class="footer-link">Projects</a>
+        <a href="#experience" class="footer-link">Experience</a>
+        <a href="#contact" class="footer-link">Contact</a>
+      </div>
+      <p class="footer-copy">© 2025 Rudraksh Agarwal</p>
+    </div>
   </footer>
 
-  <script>
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('fade-in');
-      });
-    });
-    document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
-  </script>
-
+  <!-- JavaScript -->
+  <script src="main.js"></script>
 </body>
 
 </html>
