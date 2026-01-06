@@ -1634,7 +1634,8 @@ button {
 .compact-card .hero-card-value {
   font-size: var(--text-lg);
 }/* --------------------------------------------------------------------------
-   Bento Mosaic Layout (Premium Grid)
+/* --------------------------------------------------------------------------
+   Bento Mosaic Layout (Premium Grid) — POLISHED
    -------------------------------------------------------------------------- */
 .bento-mosaic {
     display: grid;
@@ -1643,7 +1644,11 @@ button {
     grid-auto-flow: dense;
 }
 
-.mosaic-item {
+/* Unified Premium Card Style - Replaces .card and .glass-card */
+.mosaic-item,
+.bento-item,
+.glass-card,
+.card {
     background: var(--color-bg-glass);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-xl);
@@ -1657,28 +1662,54 @@ button {
     flex-direction: column;
 }
 
-.mosaic-item:hover {
+/* Shine Effect for all cards */
+.mosaic-item::before,
+.bento-item::before,
+.glass-card::before,
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--gradient-shine);
+    opacity: 0.5;
+    transition: opacity var(--transition-base);
+}
+
+.mosaic-item:hover,
+.bento-item:hover,
+.glass-card:hover,
+.card:hover {
     background: var(--color-bg-glass-hover);
     border-color: var(--color-border-hover);
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg), var(--shadow-glow);
 }
 
+.mosaic-item:hover::before,
+.bento-item:hover::before,
+.glass-card:hover::before,
+.card:hover::before {
+    opacity: 1;
+}
+
 /* Specific Sizes */
 .mosaic-wide {
     grid-column: span 8;
-    /* Wipro, IBM */
+    padding: var(--space-8);
 }
 
 .mosaic-box {
     grid-column: span 4;
-    /* Education Cards */
+    padding: var(--space-8);
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-/* Logo handling for education */
+/* Media handling */
 .mosaic-media {
     margin-bottom: var(--space-6);
     height: 48px;
@@ -1689,46 +1720,118 @@ button {
 .mosaic-media img {
     max-height: 100%;
     width: auto;
-    opacity: 0.8;
-    transition: opacity var(--transition-fast);
-    filter: grayscale(1);
+    opacity: 0.7;
+    transition: all var(--transition-base);
+    filter: grayscale(100%);
 }
 
 .mosaic-item:hover .mosaic-media img {
     opacity: 1;
-    filter: grayscale(0);
+    filter: grayscale(0%);
+    transform: scale(1.05);
 }
 
 /* Typography refinements */
 .mosaic-title {
     font-size: var(--text-xl);
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: var(--space-2);
+    color: var(--color-text-primary);
+    letter-spacing: var(--tracking-tight);
 }
 
 .mosaic-subtitle {
     font-size: var(--text-sm);
     color: var(--color-text-secondary);
     margin-bottom: var(--space-4);
-    font-weight: 400;
-    letter-spacing: var(--tracking-normal);
+    font-weight: 500;
+    line-height: var(--leading-snug);
+}
+
+.mosaic-list {
+    margin-top: var(--space-4);
+    padding-left: var(--space-4);
 }
 
 .mosaic-list li {
     color: var(--color-text-tertiary);
-    /* Softer text for list */
+    margin-bottom: var(--space-2);
+    line-height: var(--leading-relaxed);
+    font-size: var(--text-sm);
 }
 
 .mosaic-item:hover .mosaic-list li {
     color: var(--color-text-secondary);
-    /* Brighten on hover */
+}
+
+/* Compact overrides for Education boxes */
+.mosaic-box .mosaic-title {
+    font-size: var(--text-lg);
 }
 
 @media (max-width: 900px) {
+    .bento-mosaic {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
 
     .mosaic-wide,
     .mosaic-box {
         grid-column: span 12;
         min-height: auto;
+        width: 100% !important;
+        /* Force full width on mobile */
+    }
+
+    .mosaic-item,
+    .bento-item {
+        padding: var(--space-6);
+        /* Slightly less padding on mobile */
+    }
+}/* Projects Bento Grid Definitions */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(280px, auto);
+    /* Taller rows for better content fit */
+    gap: var(--space-6);
+    width: 100%;
+}
+
+.bento-featured {
+    grid-column: span 2;
+    grid-row: span 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.bento-standard {
+    grid-column: span 1;
+    grid-row: span 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ensure contents of featured bento expand to fill */
+.bento-featured .card-description {
+    font-size: var(--text-base);
+    max-width: 90%;
+    margin-bottom: auto;
+    /* Push footer down */
+}
+
+/* Mobile responsive for bento projects */
+@media (max-width: 900px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+    }
+
+    .bento-featured,
+    .bento-standard {
+        grid-column: span 1;
+        grid-row: span 1;
+        min-height: 280px;
+        /* Ensure minimum height on mobile */
     }
 }
