@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rudraksh Agarwal — Software Engineer</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
+
     .section {
       min-height: 100vh;
       display: flex;
@@ -14,13 +18,22 @@
       justify-content: center;
       padding: 6rem 2rem;
     }
+
     .fade-in {
       animation: fadeIn 1s ease-in-out forwards;
       opacity: 0;
     }
+
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
@@ -45,7 +58,8 @@
   <section id="hero" class="section text-center fade-in bg-black">
     <h1 class="text-5xl md:text-6xl font-semibold mb-6 text-white">Building technology that scales beautifully.</h1>
     <p class="text-lg text-gray-400 max-w-2xl mx-auto">
-      Software Engineer with 3+ years of experience in real-time backend systems, distributed architectures, and cloud-native design — passionate about crafting performant and maintainable systems.
+      Software Engineer with 3+ years of experience in real-time backend systems, distributed architectures, and
+      cloud-native design — passionate about crafting performant and maintainable systems.
     </p>
     <div class="mt-10">
       <a href="#about" class="bg-white text-black px-6 py-3 rounded-full hover:bg-gray-200 transition">Discover More</a>
@@ -57,7 +71,10 @@
     <div class="max-w-3xl mx-auto text-center">
       <h2 class="text-4xl font-semibold mb-6 text-white">About Me</h2>
       <p class="text-gray-400 leading-relaxed">
-        I'm a Software Engineer with 3+ years of experience designing scalable, real-time backend systems, microservices, and data pipelines. Skilled in balancing performance, scalability, and maintainability through strong architectural decision-making. Currently pursuing my Master’s in Computer Science at SUNY Buffalo, graduating in December 2025.
+        I'm a Software Engineer with 3+ years of experience designing scalable, real-time backend systems,
+        microservices, and data pipelines. Skilled in balancing performance, scalability, and maintainability through
+        strong architectural decision-making. Currently pursuing my Master’s in Computer Science at SUNY Buffalo,
+        graduating in December 2025.
       </p>
       <div class="mt-8 flex justify-center space-x-6 text-gray-400">
         <a href="mailto:rudraksh.agarwal97@gmail.com" class="hover:text-white">Email</a>
@@ -105,8 +122,10 @@
           <h3 class="text-xl font-semibold text-white">Senior Software Engineer — Wipro Linecraft AI</h3>
           <p class="text-gray-500 text-sm mb-3">Oct 2020 – Jul 2024 | Pune, India</p>
           <ul class="list-disc list-inside text-gray-400 space-y-2">
-            <li>Led a team of 4 engineers to deliver scalable backend systems, owning architecture and release timelines.</li>
-            <li>Built a real-time loss detection system processing streams every 500ms, improving monitoring by 50%.</li>
+            <li>Led a team of 4 engineers to deliver scalable backend systems, owning architecture and release
+              timelines.</li>
+            <li>Built a real-time loss detection system processing streams every 500ms, improving monitoring by 50%.
+            </li>
             <li>Re-architected ETL pipelines using Luigi in Python — reducing pipeline duration by 6x.</li>
             <li>Developed 50+ RESTful APIs in FastAPI powering manufacturing analytics.</li>
             <li>Implemented Prometheus + Grafana monitoring stack, cutting MTTD from hours to 5 seconds.</li>
@@ -130,16 +149,24 @@
   <section id="projects" class="section bg-black fade-in">
     <div class="max-w-5xl mx-auto text-center">
       <h2 class="text-4xl font-semibold mb-10 text-white">Projects</h2>
-      <div class="grid md:grid-cols-2 gap-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-zinc-900 rounded-2xl shadow-sm p-6 hover:bg-zinc-800 transition">
+          <h3 class="text-xl font-semibold text-white mb-2">Dataset Curator</h3>
+          <p class="text-gray-400 mb-3">AI-powered tool for curating and managing machine learning datasets with
+            intelligent labeling and quality control.</p>
+          <a href="/datasetcurator" class="text-blue-400 hover:underline">View Project</a>
+        </div>
         <div class="bg-zinc-900 rounded-2xl shadow-sm p-6 hover:bg-zinc-800 transition">
           <h3 class="text-xl font-semibold text-white mb-2">Chat Application</h3>
           <p class="text-gray-400 mb-3">Terminal-based TCP chat system in C++ built using Socket Programming.</p>
-          <a href="https://github.com/rudraksh97/terminal-chat-application" target="_blank" class="text-blue-400 hover:underline">View Project</a>
+          <a href="https://github.com/rudraksh97/terminal-chat-application" target="_blank"
+            class="text-blue-400 hover:underline">View Project</a>
         </div>
         <div class="bg-zinc-900 rounded-2xl shadow-sm p-6 hover:bg-zinc-800 transition">
           <h3 class="text-xl font-semibold text-white mb-2">16-Bit Processor</h3>
           <p class="text-gray-400 mb-3">Custom processor in Verilog tested on FPGA (Artix-7) using Vivado.</p>
-          <a href="https://github.com/rudraksh97/16BitProcessor" target="_blank" class="text-blue-400 hover:underline">View Project</a>
+          <a href="https://github.com/rudraksh97/16BitProcessor" target="_blank"
+            class="text-blue-400 hover:underline">View Project</a>
         </div>
       </div>
     </div>
@@ -166,7 +193,8 @@
 
   <!-- Footer -->
   <footer class="text-center py-10 text-gray-500 border-t border-gray-800">
-    <p>© 2025 Rudraksh Agarwal • <a href="mailto:rudraksh.agarwal97@gmail.com" class="hover:underline text-gray-300">Contact</a></p>
+    <p>© 2025 Rudraksh Agarwal • <a href="mailto:rudraksh.agarwal97@gmail.com"
+        class="hover:underline text-gray-300">Contact</a></p>
   </footer>
 
   <script>
@@ -179,4 +207,5 @@
   </script>
 
 </body>
+
 </html>
