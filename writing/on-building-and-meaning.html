@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta name="description" content="On building, and why it feels like meaning — by Rudraksh Agarwal.">
+  <meta name="author" content="Rudraksh Agarwal">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="On building, and why it feels like meaning — Rudraksh Agarwal">
+  <meta property="og:description" content="Why making things quiets the noise, and what that says about how I want to spend my attention.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://techproductdev.com/writing/on-building-and-meaning.html">
+
+  <title>On building, and why it feels like meaning — Rudraksh Agarwal</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+  <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#dbdad5",
+                        "outline-variant": "#cfc4c5",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "inverse-surface": "#30312e",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#848484",
+                        "tertiary-container": "#1b1b1b",
+                        "secondary-container": "#e4e3da",
+                        "inverse-primary": "#c6c6c6",
+                        "on-surface": "#1b1c19",
+                        "primary": "#000000",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#1b1b1b",
+                        "on-primary-fixed": "#1b1b1b",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#1b1c17",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "surface": "#fbf9f4",
+                        "surface-container": "#f0eee9",
+                        "surface-container-low": "#f5f3ee",
+                        "ink-black": "#000000",
+                        "on-tertiary-container": "#848484",
+                        "on-secondary-container": "#64655e",
+                        "on-surface-variant": "#4c4546",
+                        "muted-border": "#D4D3CB",
+                        "surface-variant": "#e4e2dd",
+                        "surface-bright": "#fbf9f4",
+                        "tertiary": "#000000",
+                        "on-secondary-fixed-variant": "#474741",
+                        "error-container": "#ffdad6",
+                        "background": "#fbf9f4",
+                        "on-background": "#1b1c19",
+                        "secondary-fixed": "#e4e3da",
+                        "secondary": "#5e5f58",
+                        "outline": "#7e7576",
+                        "on-tertiary": "#ffffff",
+                        "paper-white": "#FBFBF8",
+                        "surface-container-high": "#eae8e3",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#5e5e5e",
+                        "surface-container-highest": "#e4e2dd",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#474747",
+                        "secondary-fixed-dim": "#c8c7bf",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "primary-fixed": "#e2e2e2",
+                        "inverse-on-surface": "#f2f1ec",
+                        "tertiary-fixed": "#e2e2e2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "stack-sm": "8px",
+                        "stack-lg": "48px",
+                        "container-max": "800px",
+                        "base": "4px",
+                        "gutter": "24px",
+                        "stack-md": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Newsreader", "serif"],
+                        "headline-lg": ["Newsreader", "serif"],
+                        "mono-date": ["JetBrains Mono", "monospace"],
+                        "body-lg": ["JetBrains Mono", "monospace"],
+                        "label-caps": ["JetBrains Mono", "monospace"],
+                        "headline-xl": ["Newsreader", "serif"],
+                        "body-md": ["JetBrains Mono", "monospace"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "mono-date": ["13px", {"lineHeight": "1", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "fontWeight": "700"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                        "body-md": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+  <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fbf9f4;
+            color: #1b1c19;
+            -webkit-font-smoothing: antialiased;
+        }
+        .pi-border { border: 2px solid #000000; }
+        .pi-border-bottom { border-bottom: 2px solid #000000; }
+        .square-bullet {
+            width: 4px;
+            height: 4px;
+            background-color: #000000;
+            display: inline-block;
+            margin-right: 12px;
+            margin-bottom: 3px;
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #fbf9f4; }
+        ::-webkit-scrollbar-thumb { background: #000000; }
+        /* Article prose */
+        .prose h2 { font-family: "Newsreader", serif; font-size: 32px; line-height: 1.2; font-weight: 500; margin-top: 48px; margin-bottom: 16px; }
+        .prose h3 { font-family: "Newsreader", serif; font-size: 20px; line-height: 1.4; font-weight: 600; margin-top: 32px; margin-bottom: 12px; }
+        .prose p { font-family: "JetBrains Mono", monospace; font-size: 16px; line-height: 1.7; margin-bottom: 20px; color: #4c4546; }
+        .prose ul { list-style: none; margin: 0 0 20px 0; padding: 0; }
+        .prose li { font-family: "JetBrains Mono", monospace; font-size: 16px; line-height: 1.7; color: #4c4546; padding-left: 20px; position: relative; margin-bottom: 12px; }
+        .prose li::before { content: ""; position: absolute; left: 0; top: 11px; width: 4px; height: 4px; background: #000; }
+        .prose strong { color: #1b1c19; font-weight: 700; }
+        .prose blockquote { border-left: 2px solid #000; padding-left: 16px; font-style: italic; color: #5e5f58; margin: 0 0 20px 0; }
+        .prose a { color: #000; text-decoration: underline; text-underline-offset: 2px; }
+    </style>
+
+  <!-- PostHog -->
+  <script>
+    !function (t, e) { var o, n, p, r; e.__SV || (window.posthog && window.posthog.__loaded) || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.crossOrigin = "anonymous", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "init ts ns yi rs os Qr es capture Hi calculateEventProperties hs register register_once register_for_session unregister unregister_for_session fs getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty vs us createPersonProfile cs Yr ps opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing ls debug O ds getPageViewId captureTraceFeedback captureTraceMetric Vr".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+    posthog.init('phc_zUiA35bEpPxnxGU4P3gdWnKsu6NUcNBTZlXElCZRoIH', {
+      api_host: 'https://us.i.posthog.com',
+      defaults: '2025-11-30',
+      person_profiles: 'identified_only',
+    })
+  </script>
+</head>
+<body class="font-body-md text-body-md selection:bg-primary selection:text-surface">
+  <!-- TopNavBar -->
+  <header class="bg-surface dark:bg-background border-b-2 border-primary dark:border-on-background sticky top-0 z-50">
+    <nav class="flex justify-between items-center w-full px-margin-mobile md:px-gutter max-w-container-max mx-auto h-16">
+      <a href="/" class="font-headline-sm text-headline-sm font-semibold text-ink-black dark:text-on-background">
+        Rudraksh Agarwal (RA)
+      </a>
+      <div class="hidden md:flex items-center gap-6">
+        <a class="text-secondary dark:text-secondary-fixed font-body-md text-body-md hover:bg-primary hover:text-surface transition-colors duration-200" href="/#home">Home</a>
+        <a class="text-secondary dark:text-secondary-fixed font-body-md text-body-md hover:bg-primary hover:text-surface transition-colors duration-200" href="/#research">Experience</a>
+        <a class="text-secondary dark:text-secondary-fixed font-body-md text-body-md hover:bg-primary hover:text-surface transition-colors duration-200" href="/#projects">Projects</a>
+        <a class="text-primary dark:text-on-background font-bold underline underline-offset-4 hover:bg-primary hover:text-surface transition-colors duration-200" href="/writing/">Writing</a>
+        <a class="text-secondary dark:text-secondary-fixed font-body-md text-body-md hover:bg-primary hover:text-surface transition-colors duration-200" href="/Rudraksh_Agarwal_CV.pdf" target="_blank">Resume</a>
+      </div>
+      <div class="md:hidden">
+        <button id="mobile-menu-button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="material-symbols-outlined cursor-pointer bg-transparent border-0 p-0 text-ink-black dark:text-on-background">menu</button>
+      </div>
+    </nav>
+    <!-- Mobile menu panel -->
+    <div id="mobile-menu" class="hidden md:hidden border-t-2 border-primary dark:border-on-background bg-surface dark:bg-background">
+      <div class="flex flex-col px-margin-mobile py-stack-sm max-w-container-max mx-auto">
+        <a class="py-3 border-b border-muted-border text-secondary dark:text-secondary-fixed" href="/#home">Home</a>
+        <a class="py-3 border-b border-muted-border text-secondary dark:text-secondary-fixed" href="/#research">Experience</a>
+        <a class="py-3 border-b border-muted-border text-secondary dark:text-secondary-fixed" href="/#projects">Projects</a>
+        <a class="py-3 border-b border-muted-border text-primary dark:text-on-background font-bold" href="/writing/">Writing</a>
+        <a class="py-3 text-secondary dark:text-secondary-fixed" href="/Rudraksh_Agarwal_CV.pdf" target="_blank">Resume</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-container-max mx-auto px-margin-mobile md:px-0 py-stack-lg">
+    <article>
+      <!-- Back link -->
+      <a href="/writing/" class="font-label-caps text-label-caps uppercase text-secondary hover:text-primary inline-flex items-center gap-1 mb-stack-md">
+        <span class="material-symbols-outlined" style="font-size:16px;">arrow_back</span> All Writing
+      </a>
+
+      <!-- Title block -->
+      <header class="border-b-2 border-primary pb-stack-md mb-stack-md">
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="font-label-caps text-label-caps border border-muted-border px-2 py-1">PHILOSOPHY</span>
+          <span class="font-label-caps text-label-caps border border-muted-border px-2 py-1">LIFE</span>
+        </div>
+        <h1 class="font-headline-xl text-headline-xl text-ink-black mb-4">On building, and why it feels like meaning</h1>
+        <span class="font-mono-date text-mono-date text-secondary">2026-06-28</span>
+      </header>
+
+      <!-- Body -->
+      <div class="prose">
+        <p>
+          When I'm deep in building something — a service, a feature, a small tool that does one thing well — the
+          background hum of anxiety goes quiet. I've come to think that isn't a coincidence. Making things might be the
+          most honest way I know to spend attention.
+        </p>
+
+        <h2>Building is thinking made concrete</h2>
+        <p>
+          An idea in your head can stay vague forever. The moment you try to build it, reality pushes back: the edge
+          cases surface, the hand-waving collapses, the assumptions get tested. Building is just thinking that refuses
+          to let you lie to yourself.
+        </p>
+
+        <h2>Meaning is a byproduct, not a target</h2>
+        <p>
+          I don't think you find meaning by searching for it directly. It shows up sideways — in the focus of solving a
+          hard problem, in handing someone a thing that makes their day easier. Aim at the work; meaning arrives as a
+          side effect.
+        </p>
+
+        <blockquote>
+          Replace this with your own voice — these are placeholders to show the format. Edit freely.
+        </blockquote>
+      </div>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t-2 border-primary dark:border-on-background mt-stack-lg bg-surface dark:bg-background">
+    <div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-mobile py-stack-md max-w-container-max mx-auto gap-stack-sm">
+      <div class="font-label-caps text-label-caps text-primary dark:text-on-background">
+        RUDRAKSH AGARWAL
+      </div>
+      <div class="font-label-caps text-label-caps text-secondary dark:text-secondary-fixed text-center">
+        © 2026 Rudraksh Agarwal. Built with semantic HTML & CSS.
+      </div>
+      <div class="flex gap-4">
+        <a class="font-label-caps text-label-caps text-secondary hover:text-primary transition-opacity duration-200" href="https://github.com/rudraksh97" target="_blank" rel="noreferrer noopener">GitHub</a>
+        <a class="font-label-caps text-label-caps text-secondary hover:text-primary transition-opacity duration-200" href="https://linkedin.com/in/rudraksh97" target="_blank" rel="noreferrer noopener">LinkedIn</a>
+        <a class="font-label-caps text-label-caps text-secondary hover:text-primary transition-opacity duration-200" href="mailto:rudraksh.agarwal97@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+    data-cf-beacon='{"token": "0f16722f325b4b3c9cde10b83de30048"}'></script><!-- End Cloudflare Web Analytics -->
+  <script>
+    // Mobile menu toggle
+    (function () {
+      const button = document.getElementById('mobile-menu-button');
+      const menu = document.getElementById('mobile-menu');
+      if (!button || !menu) return;
+      const close = () => {
+        menu.classList.add('hidden');
+        button.textContent = 'menu';
+        button.setAttribute('aria-expanded', 'false');
+        button.setAttribute('aria-label', 'Open menu');
+      };
+      button.addEventListener('click', () => {
+        if (!menu.classList.contains('hidden')) {
+          close();
+        } else {
+          menu.classList.remove('hidden');
+          button.textContent = 'close';
+          button.setAttribute('aria-expanded', 'true');
+          button.setAttribute('aria-label', 'Close menu');
+        }
+      });
+      menu.querySelectorAll('a').forEach(link => link.addEventListener('click', close));
+    })();
+  </script>
+</body>
+</html>
