@@ -88,7 +88,7 @@
                         "margin-mobile": "16px",
                         "stack-sm": "8px",
                         "stack-lg": "48px",
-                        "container-max": "800px",
+                        "container-max": "1200px",
                         "base": "4px",
                         "gutter": "24px",
                         "stack-md": "24px"
@@ -120,8 +120,8 @@
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
         body {
-            background-color: #fbf9f4; /* Theme surface */
-            color: #1b1c19; /* Theme on-surface */
+            background-color: #fbf9f4; /* the one background colour */
+            color: #000000; /* the one text colour */
             -webkit-font-smoothing: antialiased;
         }
         .pi-border {
@@ -130,10 +130,18 @@
         .pi-border-bottom {
             border-bottom: 2px solid #000000;
         }
-        .hover-inverse:hover {
-            background-color: #000000;
-            color: #fbf9f4;
-            transition: all 0.2s ease-in-out;
+        /* Two colours: black on the page background. Grey appears on hover only. */
+        a:hover,
+        a:hover *,
+        button:hover,
+        button:hover * {
+            color: #5e5f58;
+            border-color: #5e5f58;
+            transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+        }
+        a:hover .square-bullet,
+        a:hover .bg-primary {
+            background-color: #5e5f58;
         }
         .square-bullet {
             width: 4px;
@@ -161,41 +169,41 @@
 </head>
 <body class="font-body-md text-body-md selection:bg-primary selection:text-surface">
   <!-- TopNavBar -->
-  <header class="bg-surface dark:bg-background border-b-2 border-primary dark:border-on-background sticky top-0 z-50">
+  <header class="bg-surface border-b-2 border-primary sticky top-0 z-50">
     <nav class="flex justify-between items-center w-full px-margin-mobile md:px-gutter max-w-container-max mx-auto h-16">
-      <a href="/" class="font-headline-sm text-headline-sm font-semibold text-ink-black dark:text-on-background">
+      <a href="/" class="font-headline-sm text-headline-sm font-semibold text-primary">
         Rudraksh Agarwal (RA)
       </a>
       <div class="hidden md:flex items-center gap-6">
-        <a class="text-secondary dark:text-secondary-fixed font-body-md text-body-md hover:bg-primary hover:text-surface dark:hover:bg-on-background dark:hover:text-background transition-colors duration-200" href="/#home">Home</a>
-        <a class="text-secondary dark:text-secondary-fixed font-body-md text-body-md hover:bg-primary hover:text-surface dark:hover:bg-on-background dark:hover:text-background transition-colors duration-200" href="/#research">Experience</a>
-        <a class="text-secondary dark:text-secondary-fixed font-body-md text-body-md hover:bg-primary hover:text-surface dark:hover:bg-on-background dark:hover:text-background transition-colors duration-200" href="/#projects">Projects</a>
-        <a class="text-primary dark:text-on-background font-bold underline underline-offset-4 hover:bg-primary hover:text-surface dark:hover:bg-on-background dark:hover:text-background transition-colors duration-200" href="/writing/">Writing</a>
-        <a class="text-secondary dark:text-secondary-fixed font-body-md text-body-md hover:bg-primary hover:text-surface dark:hover:bg-on-background dark:hover:text-background transition-colors duration-200" href="/Rudraksh_Agarwal_CV.pdf" target="_blank">Resume</a>
+        <a class="text-primary font-body-md text-body-md transition-colors duration-200" href="/#home">Home</a>
+        <a class="text-primary font-body-md text-body-md transition-colors duration-200" href="/#research">Experience</a>
+        <a class="text-primary font-body-md text-body-md transition-colors duration-200" href="/#projects">Projects</a>
+        <a class="text-primary font-bold underline underline-offset-4 transition-colors duration-200" href="/writing/">Writing</a>
+        <a class="text-primary font-body-md text-body-md transition-colors duration-200" href="/Rudraksh_Agarwal_CV.pdf" target="_blank">Resume</a>
       </div>
       <div class="md:hidden">
-        <button id="mobile-menu-button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="material-symbols-outlined cursor-pointer bg-transparent border-0 p-0 text-ink-black dark:text-on-background">menu</button>
+        <button id="mobile-menu-button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="material-symbols-outlined cursor-pointer bg-transparent border-0 p-0 text-primary">menu</button>
       </div>
     </nav>
     <!-- Mobile menu panel -->
-    <div id="mobile-menu" class="hidden md:hidden border-t-2 border-primary dark:border-on-background bg-surface dark:bg-background">
+    <div id="mobile-menu" class="hidden md:hidden border-t-2 border-primary bg-surface">
       <div class="flex flex-col px-margin-mobile py-stack-sm max-w-container-max mx-auto">
-        <a class="py-3 border-b border-muted-border text-secondary dark:text-secondary-fixed" href="/#home">Home</a>
-        <a class="py-3 border-b border-muted-border text-secondary dark:text-secondary-fixed" href="/#research">Experience</a>
-        <a class="py-3 border-b border-muted-border text-secondary dark:text-secondary-fixed" href="/#projects">Projects</a>
-        <a class="py-3 border-b border-muted-border text-primary dark:text-on-background font-bold" href="/writing/">Writing</a>
-        <a class="py-3 text-secondary dark:text-secondary-fixed" href="/Rudraksh_Agarwal_CV.pdf" target="_blank">Resume</a>
+        <a class="py-3 border-b border-primary text-primary" href="/#home">Home</a>
+        <a class="py-3 border-b border-primary text-primary" href="/#research">Experience</a>
+        <a class="py-3 border-b border-primary text-primary" href="/#projects">Projects</a>
+        <a class="py-3 border-b border-primary text-primary font-bold" href="/writing/">Writing</a>
+        <a class="py-3 text-primary" href="/Rudraksh_Agarwal_CV.pdf" target="_blank">Resume</a>
       </div>
     </div>
   </header>
 
-  <main class="max-w-container-max mx-auto px-margin-mobile md:px-0 py-stack-lg space-y-stack-lg">
+  <main class="max-w-container-max mx-auto px-margin-mobile md:px-gutter py-stack-lg space-y-stack-lg">
     <!-- Header -->
     <section class="space-y-stack-md">
-      <h1 class="font-headline-xl text-headline-xl text-ink-black max-w-2xl">
+      <h1 class="font-headline-xl text-headline-xl text-primary max-w-2xl">
         Writing
       </h1>
-      <p class="font-headline-sm text-headline-sm italic text-secondary leading-relaxed max-w-2xl">
+      <p class="font-headline-sm text-headline-sm italic text-primary leading-relaxed max-w-2xl">
         Notes on philosophy, life, and the craft of building a career in software. Written slowly, revised often.
       </p>
     </section>
@@ -204,46 +212,46 @@
     <section class="space-y-stack-md" id="posts">
       <div class="flex justify-between items-end border-b-2 border-primary pb-2">
         <h2 class="font-headline-lg text-headline-lg">All Posts</h2>
-        <span class="font-label-caps text-label-caps text-secondary-fixed">ESSAYS</span>
+        <span class="font-label-caps text-label-caps text-primary">ESSAYS</span>
       </div>
       <div class="space-y-4">
 
         <!-- POST: career-tips-i-wish-id-known -->
         <a href="/writing/career-tips-i-wish-id-known.html" class="block">
-          <div class="pi-border p-6 hover:bg-surface-container transition-all group">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-              <div class="flex items-center">
-                <span class="square-bullet"></span>
+          <div class="pi-border p-6 transition-all group grid grid-cols-1 md:grid-cols-12 gap-x-gutter gap-y-4 items-start">
+            <div class="md:col-span-5 space-y-3">
+              <div class="flex items-start">
+                <span class="square-bullet mt-2 shrink-0"></span>
                 <h3 class="font-headline-sm text-headline-sm group-hover:underline">Career tips I wish I'd known earlier</h3>
               </div>
-              <span class="font-mono-date text-mono-date text-secondary mt-2 md:mt-0">2026-06-28</span>
+              <div class="font-mono-date text-mono-date text-primary">2026-06-28</div>
+              <div class="flex flex-wrap gap-2">
+                  <span class="font-label-caps text-label-caps border border-primary px-2 py-1">CAREER</span>
+              </div>
             </div>
-            <p class="text-body-md text-secondary leading-relaxed mb-4">
+            <p class="md:col-span-7 text-body-md text-primary leading-relaxed">
               A handful of unglamorous things that compounded more than any single clever decision: optimizing for slope over intercept, writing things down, and choosing problems over titles.
             </p>
-            <div class="flex flex-wrap gap-2">
-              <span class="font-label-caps text-label-caps border border-muted-border px-2 py-1">CAREER</span>
-            </div>
           </div>
         </a>
 
         <!-- POST: on-building-and-meaning -->
         <a href="/writing/on-building-and-meaning.html" class="block">
-          <div class="pi-border p-6 hover:bg-surface-container transition-all group">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-              <div class="flex items-center">
-                <span class="square-bullet"></span>
+          <div class="pi-border p-6 transition-all group grid grid-cols-1 md:grid-cols-12 gap-x-gutter gap-y-4 items-start">
+            <div class="md:col-span-5 space-y-3">
+              <div class="flex items-start">
+                <span class="square-bullet mt-2 shrink-0"></span>
                 <h3 class="font-headline-sm text-headline-sm group-hover:underline">On building, and why it feels like meaning</h3>
               </div>
-              <span class="font-mono-date text-mono-date text-secondary mt-2 md:mt-0">2026-06-28</span>
+              <div class="font-mono-date text-mono-date text-primary">2026-06-28</div>
+              <div class="flex flex-wrap gap-2">
+                  <span class="font-label-caps text-label-caps border border-primary px-2 py-1">PHILOSOPHY</span>
+                  <span class="font-label-caps text-label-caps border border-primary px-2 py-1">LIFE</span>
+              </div>
             </div>
-            <p class="text-body-md text-secondary leading-relaxed mb-4">
+            <p class="md:col-span-7 text-body-md text-primary leading-relaxed">
               Some thoughts on why making things — code, products, anything — quiets the noise, and what that says about how I want to spend my attention.
             </p>
-            <div class="flex flex-wrap gap-2">
-              <span class="font-label-caps text-label-caps border border-muted-border px-2 py-1">PHILOSOPHY</span>
-              <span class="font-label-caps text-label-caps border border-muted-border px-2 py-1">LIFE</span>
-            </div>
           </div>
         </a>
 
@@ -252,18 +260,18 @@
   </main>
 
   <!-- Footer -->
-  <footer class="border-t-2 border-primary dark:border-on-background mt-stack-lg bg-surface dark:bg-background">
+  <footer class="border-t-2 border-primary mt-stack-lg bg-surface">
     <div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-mobile py-stack-md max-w-container-max mx-auto gap-stack-sm">
-      <div class="font-label-caps text-label-caps text-primary dark:text-on-background">
+      <div class="font-label-caps text-label-caps text-primary">
         RUDRAKSH AGARWAL
       </div>
-      <div class="font-label-caps text-label-caps text-secondary dark:text-secondary-fixed text-center">
+      <div class="font-label-caps text-label-caps text-primary text-center">
         © 2026 Rudraksh Agarwal. Built with semantic HTML & CSS.
       </div>
       <div class="flex gap-4">
-        <a class="font-label-caps text-label-caps text-secondary dark:text-secondary-fixed hover:text-primary dark:hover:text-on-background transition-opacity duration-200" href="https://github.com/rudraksh97" target="_blank" rel="noreferrer">GitHub</a>
-        <a class="font-label-caps text-label-caps text-secondary dark:text-secondary-fixed hover:text-primary dark:hover:text-on-background transition-opacity duration-200" href="https://linkedin.com/in/rudraksh97" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a class="font-label-caps text-label-caps text-secondary dark:text-secondary-fixed hover:text-primary dark:hover:text-on-background transition-opacity duration-200" href="mailto:rudraksh.agarwal97@gmail.com">Email</a>
+        <a class="font-label-caps text-label-caps text-primary transition-opacity duration-200" href="https://github.com/rudraksh97" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="font-label-caps text-label-caps text-primary transition-opacity duration-200" href="https://linkedin.com/in/rudraksh97" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="font-label-caps text-label-caps text-primary transition-opacity duration-200" href="mailto:rudraksh.agarwal97@gmail.com">Email</a>
       </div>
     </div>
   </footer>

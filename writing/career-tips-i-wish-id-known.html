@@ -88,7 +88,7 @@
                         "margin-mobile": "16px",
                         "stack-sm": "8px",
                         "stack-lg": "48px",
-                        "container-max": "800px",
+                        "container-max": "1200px",
                         "base": "4px",
                         "gutter": "24px",
                         "stack-md": "24px"
@@ -121,11 +121,24 @@
         }
         body {
             background-color: #fbf9f4;
-            color: #1b1c19;
+            color: #000000;
             -webkit-font-smoothing: antialiased;
         }
         .pi-border { border: 2px solid #000000; }
         .pi-border-bottom { border-bottom: 2px solid #000000; }
+        /* Two colours: black on the page background. Grey appears on hover only. */
+        a:hover,
+        a:hover *,
+        button:hover,
+        button:hover * {
+            color: #5e5f58;
+            border-color: #5e5f58;
+            transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+        }
+        a:hover .square-bullet,
+        a:hover .bg-primary {
+            background-color: #5e5f58;
+        }
         .square-bullet {
             width: 4px;
             height: 4px;
@@ -140,12 +153,12 @@
         /* Article prose */
         .prose h2 { font-family: "Newsreader", serif; font-size: 32px; line-height: 1.2; font-weight: 500; margin-top: 48px; margin-bottom: 16px; }
         .prose h3 { font-family: "Newsreader", serif; font-size: 20px; line-height: 1.4; font-weight: 600; margin-top: 32px; margin-bottom: 12px; }
-        .prose p { font-family: "JetBrains Mono", monospace; font-size: 16px; line-height: 1.7; margin-bottom: 20px; color: #4c4546; }
+        .prose p { font-family: "JetBrains Mono", monospace; font-size: 16px; line-height: 1.7; margin-bottom: 20px; color: #000000; }
         .prose ul { list-style: none; margin: 0 0 20px 0; padding: 0; }
-        .prose li { font-family: "JetBrains Mono", monospace; font-size: 16px; line-height: 1.7; color: #4c4546; padding-left: 20px; position: relative; margin-bottom: 12px; }
+        .prose li { font-family: "JetBrains Mono", monospace; font-size: 16px; line-height: 1.7; color: #000000; padding-left: 20px; position: relative; margin-bottom: 12px; }
         .prose li::before { content: ""; position: absolute; left: 0; top: 11px; width: 4px; height: 4px; background: #000; }
-        .prose strong { color: #1b1c19; font-weight: 700; }
-        .prose blockquote { border-left: 2px solid #000; padding-left: 16px; font-style: italic; color: #5e5f58; margin: 0 0 20px 0; }
+        .prose strong { color: #000000; font-weight: 700; }
+        .prose blockquote { border-left: 2px solid #000; padding-left: 16px; font-style: italic; color: #000000; margin: 0 0 20px 0; }
         .prose a { color: #000; text-decoration: underline; text-underline-offset: 2px; }
     </style>
 
@@ -161,48 +174,48 @@
 </head>
 <body class="font-body-md text-body-md selection:bg-primary selection:text-surface">
   <!-- TopNavBar -->
-  <header class="bg-surface dark:bg-background border-b-2 border-primary dark:border-on-background sticky top-0 z-50">
+  <header class="bg-surface border-b-2 border-primary sticky top-0 z-50">
     <nav class="flex justify-between items-center w-full px-margin-mobile md:px-gutter max-w-container-max mx-auto h-16">
-      <a href="/" class="font-headline-sm text-headline-sm font-semibold text-ink-black dark:text-on-background">
+      <a href="/" class="font-headline-sm text-headline-sm font-semibold text-primary">
         Rudraksh Agarwal (RA)
       </a>
       <div class="hidden md:flex items-center gap-6">
-        <a class="text-secondary dark:text-secondary-fixed font-body-md text-body-md hover:bg-primary hover:text-surface transition-colors duration-200" href="/#home">Home</a>
-        <a class="text-secondary dark:text-secondary-fixed font-body-md text-body-md hover:bg-primary hover:text-surface transition-colors duration-200" href="/#research">Experience</a>
-        <a class="text-secondary dark:text-secondary-fixed font-body-md text-body-md hover:bg-primary hover:text-surface transition-colors duration-200" href="/#projects">Projects</a>
-        <a class="text-primary dark:text-on-background font-bold underline underline-offset-4 hover:bg-primary hover:text-surface transition-colors duration-200" href="/writing/">Writing</a>
-        <a class="text-secondary dark:text-secondary-fixed font-body-md text-body-md hover:bg-primary hover:text-surface transition-colors duration-200" href="/Rudraksh_Agarwal_CV.pdf" target="_blank">Resume</a>
+        <a class="text-primary font-body-md text-body-md transition-colors duration-200" href="/#home">Home</a>
+        <a class="text-primary font-body-md text-body-md transition-colors duration-200" href="/#research">Experience</a>
+        <a class="text-primary font-body-md text-body-md transition-colors duration-200" href="/#projects">Projects</a>
+        <a class="text-primary font-bold underline underline-offset-4 transition-colors duration-200" href="/writing/">Writing</a>
+        <a class="text-primary font-body-md text-body-md transition-colors duration-200" href="/Rudraksh_Agarwal_CV.pdf" target="_blank">Resume</a>
       </div>
       <div class="md:hidden">
-        <button id="mobile-menu-button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="material-symbols-outlined cursor-pointer bg-transparent border-0 p-0 text-ink-black dark:text-on-background">menu</button>
+        <button id="mobile-menu-button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="material-symbols-outlined cursor-pointer bg-transparent border-0 p-0 text-primary">menu</button>
       </div>
     </nav>
     <!-- Mobile menu panel -->
-    <div id="mobile-menu" class="hidden md:hidden border-t-2 border-primary dark:border-on-background bg-surface dark:bg-background">
+    <div id="mobile-menu" class="hidden md:hidden border-t-2 border-primary bg-surface">
       <div class="flex flex-col px-margin-mobile py-stack-sm max-w-container-max mx-auto">
-        <a class="py-3 border-b border-muted-border text-secondary dark:text-secondary-fixed" href="/#home">Home</a>
-        <a class="py-3 border-b border-muted-border text-secondary dark:text-secondary-fixed" href="/#research">Experience</a>
-        <a class="py-3 border-b border-muted-border text-secondary dark:text-secondary-fixed" href="/#projects">Projects</a>
-        <a class="py-3 border-b border-muted-border text-primary dark:text-on-background font-bold" href="/writing/">Writing</a>
-        <a class="py-3 text-secondary dark:text-secondary-fixed" href="/Rudraksh_Agarwal_CV.pdf" target="_blank">Resume</a>
+        <a class="py-3 border-b border-primary text-primary" href="/#home">Home</a>
+        <a class="py-3 border-b border-primary text-primary" href="/#research">Experience</a>
+        <a class="py-3 border-b border-primary text-primary" href="/#projects">Projects</a>
+        <a class="py-3 border-b border-primary text-primary font-bold" href="/writing/">Writing</a>
+        <a class="py-3 text-primary" href="/Rudraksh_Agarwal_CV.pdf" target="_blank">Resume</a>
       </div>
     </div>
   </header>
 
-  <main class="max-w-container-max mx-auto px-margin-mobile md:px-0 py-stack-lg">
-    <article>
+  <main class="max-w-container-max mx-auto px-margin-mobile md:px-gutter py-stack-lg">
+    <article class="max-w-[75ch] mx-auto">
       <!-- Back link -->
-      <a href="/writing/" class="font-label-caps text-label-caps uppercase text-secondary hover:text-primary inline-flex items-center gap-1 mb-stack-md">
+      <a href="/writing/" class="font-label-caps text-label-caps uppercase text-primary inline-flex items-center gap-1 mb-stack-md">
         <span class="material-symbols-outlined" style="font-size:16px;">arrow_back</span> All Writing
       </a>
 
       <!-- Title block -->
       <header class="border-b-2 border-primary pb-stack-md mb-stack-md">
         <div class="flex flex-wrap gap-2 mb-4">
-          <span class="font-label-caps text-label-caps border border-muted-border px-2 py-1">CAREER</span>
+          <span class="font-label-caps text-label-caps border border-primary px-2 py-1">CAREER</span>
         </div>
-        <h1 class="font-headline-xl text-headline-xl text-ink-black mb-4">Career tips I wish I'd known earlier</h1>
-        <span class="font-mono-date text-mono-date text-secondary">2026-06-28</span>
+        <h1 class="font-headline-xl text-headline-xl text-primary mb-4">Career tips I wish I'd known earlier</h1>
+        <span class="font-mono-date text-mono-date text-primary">2026-06-28</span>
       </header>
 
       <!-- Body -->
@@ -240,18 +253,18 @@
   </main>
 
   <!-- Footer -->
-  <footer class="border-t-2 border-primary dark:border-on-background mt-stack-lg bg-surface dark:bg-background">
+  <footer class="border-t-2 border-primary mt-stack-lg bg-surface">
     <div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-mobile py-stack-md max-w-container-max mx-auto gap-stack-sm">
-      <div class="font-label-caps text-label-caps text-primary dark:text-on-background">
+      <div class="font-label-caps text-label-caps text-primary">
         RUDRAKSH AGARWAL
       </div>
-      <div class="font-label-caps text-label-caps text-secondary dark:text-secondary-fixed text-center">
+      <div class="font-label-caps text-label-caps text-primary text-center">
         © 2026 Rudraksh Agarwal. Built with semantic HTML & CSS.
       </div>
       <div class="flex gap-4">
-        <a class="font-label-caps text-label-caps text-secondary hover:text-primary transition-opacity duration-200" href="https://github.com/rudraksh97" target="_blank" rel="noreferrer noopener">GitHub</a>
-        <a class="font-label-caps text-label-caps text-secondary hover:text-primary transition-opacity duration-200" href="https://linkedin.com/in/rudraksh97" target="_blank" rel="noreferrer noopener">LinkedIn</a>
-        <a class="font-label-caps text-label-caps text-secondary hover:text-primary transition-opacity duration-200" href="mailto:rudraksh.agarwal97@gmail.com">Email</a>
+        <a class="font-label-caps text-label-caps text-primary transition-opacity duration-200" href="https://github.com/rudraksh97" target="_blank" rel="noreferrer noopener">GitHub</a>
+        <a class="font-label-caps text-label-caps text-primary transition-opacity duration-200" href="https://linkedin.com/in/rudraksh97" target="_blank" rel="noreferrer noopener">LinkedIn</a>
+        <a class="font-label-caps text-label-caps text-primary transition-opacity duration-200" href="mailto:rudraksh.agarwal97@gmail.com">Email</a>
       </div>
     </div>
   </footer>
