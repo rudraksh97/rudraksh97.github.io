@@ -6,8 +6,8 @@
    ([data-dock="hero"] and [data-dock="benefits"]) and toggles which of the
    three is visible, so at rest the real, in-flow elements are what you see.
 
-   Desktop only (>= 1024px, motion allowed). Everywhere else the dock simply
-   shows its own compass.
+   On phones and tablets it shrinks and rides the right edge for the middle
+   of the trip. With reduced motion the dock simply shows its own compass.
    ========================================================================== */
 
 .traveler {

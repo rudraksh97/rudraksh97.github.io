@@ -128,12 +128,13 @@ Markup opts in through data attributes only:
   3.5s however slow the page), doors-only on repeat visits in the session.
   Only renders when JS is running (inline `<head>` flag), hides itself after
   6s regardless, and is skipped under reduced motion.
-- **Travelling compass** — on desktop the compass seal lifts off the hero
+- **Travelling compass** — the compass seal lifts off the hero
   photo as you scroll, arcs down the right margin flipping through 3D, and
   docks in the centre of Benefits, where the six benefits sit around it as
   speech bubbles. Both ends are real elements; the flying copy only exists
-  mid-flight. Below 1024px or with reduced motion the dock just shows its
-  compass.
+  mid-flight. Below 1024px there is no margin, so it shrinks and rides the
+  right edge like a scroll marker before swinging in to land. With reduced
+  motion the dock just shows its compass.
 
 ### Consultation showcase (`partials/04-services.html`, `assets/css/consult.css`)
 

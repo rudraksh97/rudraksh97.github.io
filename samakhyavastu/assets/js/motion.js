@@ -242,7 +242,10 @@
      read live every frame, so the path follows the page as it scrolls: the
      compass arcs out toward the right margin, shrinks mid-flight, flips
      twice through 3D and lands exactly on the dock. Outside the flight the
-     real elements are shown and the traveler is hidden. */
+     real elements are shown and the traveler is hidden.
+     On narrow screens there is no margin to fly down, so the compass shrinks
+     and rides the right edge like a scroll marker for most of the trip, then
+     swings back in to land. */
   var journey = null;
 
   function initJourney() {
@@ -257,7 +260,8 @@
     if (!journey) return;
     var root = document.documentElement;
     var j = journey;
-    var enabled = !reduced && window.innerWidth >= 1024;
+    var enabled = !reduced;
+    var narrow = window.innerWidth < 1024;
 
     var rb = j.b.getBoundingClientRect();
     var endY = rb.top + y + rb.height / 2 - vh / 2;   /* scroll where the dock is centred */
@@ -282,9 +286,17 @@
     var arc = Math.sin(Math.PI * e);
     var ax = ra.left + ra.width / 2, ay = ra.top + ra.height / 2;
     var bx = rb.left + rb.width / 2, by = rb.top + rb.height / 2;
-    var x = lerp(ax, bx, e) + arc * window.innerWidth * 0.16;
     var yy = lerp(ay, by, e);
-    var size = lerp(ra.width, rb.width, e) * (1 - 0.3 * arc);
+    var x, size;
+    if (narrow) {
+      /* flat-topped weight: ~1 for the middle of the trip, 0 at both ends */
+      var w = Math.pow(arc, 0.35);
+      size = lerp(ra.width, rb.width, e) * (1 - 0.55 * w);
+      x = lerp(lerp(ax, bx, e), window.innerWidth - size / 2 - 8, w);
+    } else {
+      size = lerp(ra.width, rb.width, e) * (1 - 0.3 * arc);
+      x = lerp(ax, bx, e) + arc * window.innerWidth * 0.16;
+    }
 
     j.tr.style.width = j.tr.style.height = size.toFixed(1) + "px";
     j.tr.style.transform =
