@@ -13,7 +13,8 @@ body {
   line-height: var(--lh-body);
   color: var(--c-ink);
   background: var(--c-ivory);
-  overflow-x: hidden;
+  /* clip, not hidden: hidden makes body a scroll container and breaks position: sticky */
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 img { max-width: 100%; display: block; }
@@ -97,34 +98,6 @@ ul { margin: 0; padding: 0; list-style: none; }
   box-shadow: 6px 6px 0 rgba(201, 162, 39, 0.16);
 }
 
-/* ---------- Arc band: the reference's elliptical full-bleed photo section ---------- */
-.arc-band { position: relative; overflow: hidden; }
-.arc-band__inner {
-  width: 128%; margin-left: -14%;
-  border-radius: 50% 50% 50% 50% / 14% 14% 14% 14%;
-  overflow: hidden; position: relative;
-  min-height: clamp(460px, 52vw, 620px);
-}
-.arc-band__inner img {
-  width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover;
-}
-.arc-band__overlay {
-  position: absolute; inset: 0; display: grid; place-items: center;
-  text-align: center;
-  padding-block: var(--s-6);
-  padding-inline: calc(11% + var(--gutter));
-  background: linear-gradient(180deg, rgba(46,15,10,.30), rgba(46,15,10,.55));
-}
-.arc-band__overlay h2 {
-  color: var(--c-ivory); font-size: var(--fs-h1); line-height: var(--lh-snug);
-  margin-bottom: var(--s-3); text-shadow: 0 2px 24px rgba(46,15,10,.45);
-}
-.arc-band__overlay p {
-  color: rgba(253,248,240,.92); font-size: var(--fs-lede);
-  max-width: 58ch; margin-inline: auto; text-shadow: 0 1px 14px rgba(46,15,10,.5);
-}
-.arc-band__overlay .hero__kicker { margin-bottom: var(--s-2); }
-
 /* ---------- Navigation: floating pill ---------- */
 .nav-wrap {
   position: fixed; top: var(--s-2); left: 0; right: 0; z-index: var(--z-nav);
@@ -168,15 +141,81 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* ---------- Reveal system (replaces AOS) ---------- */
 [data-reveal] {
   opacity: 0;
-  transform: translate3d(var(--rv-x, 0), var(--rv-y, 28px), 0) scale(var(--rv-s, 1));
-  transition: opacity var(--d-slow) var(--e-out), transform var(--d-slow) var(--e-out);
+  transform: translate3d(var(--rv-x, 0), var(--rv-y, 36px), 0) scale(var(--rv-s, 1));
+  filter: blur(var(--rv-blur, 0px));
+  transition: opacity var(--d-reveal) var(--e-apple), transform var(--d-reveal) var(--e-apple),
+              filter var(--d-reveal) var(--e-apple);
   transition-delay: var(--rv-delay, 0ms);
   will-change: opacity, transform;
 }
 [data-reveal="fade-left"]  { --rv-x: -40px; --rv-y: 0; }
 [data-reveal="fade-right"] { --rv-x: 40px;  --rv-y: 0; }
-[data-reveal="zoom"]       { --rv-y: 0; --rv-s: 0.92; }
-[data-reveal].is-in { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+[data-reveal="zoom"]       { --rv-y: 0; --rv-s: 0.9; }
+/* Apple-style heading entrance: a longer rise that comes into focus */
+[data-reveal="rise"]       { --rv-y: 56px; --rv-blur: 12px; }
+[data-reveal].is-in { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: none; }
+
+/* ---------- Scroll-scrubbed (tied to scroll position, not a one-shot) ----------
+   motion.js writes --sp (0 -> 1) as the element travels up the viewport. */
+[data-scrub="zoom"] {
+  opacity: calc(0.15 + var(--sp, 1) * 0.85);
+  transform: scale(calc(0.84 + var(--sp, 1) * 0.16));
+  transform-origin: 50% 100%;
+}
+
+/* ---------- Pinned window ----------
+   The stage sticks for ~2 viewports of scroll. Over that distance motion.js
+   drives three phases through custom properties:
+     --e   1 -> 0   window opens from an inset card to full-bleed
+     --tp  0 -> 1   kicker + title come into focus
+     --wp  0 -> 1   paragraph lights up word by word
+   Every property defaults to its END state, so no-JS and reduced-motion
+   readers get the finished composition. */
+.pin { position: relative; height: 320svh; background: var(--c-ivory); }
+.pin__stage {
+  position: sticky; top: 0; height: 100svh; overflow: hidden;
+  display: grid; place-items: center;
+}
+.pin__window {
+  position: absolute; inset: 0; overflow: hidden;
+  clip-path: inset(calc(var(--e, 0) * 18%) calc(var(--e, 0) * 14%) round calc(var(--e, 0) * var(--r-xl)));
+  will-change: clip-path;
+}
+.pin__window img {
+  width: 100%; height: 100%; object-fit: cover;
+  transform: scale(calc(1 + var(--e, 0) * 0.22));
+}
+.pin__window::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(46,15,10,.35), rgba(46,15,10,.6));
+  opacity: calc(0.2 + var(--tp, 1) * 0.8);
+}
+.pin__copy {
+  position: relative; z-index: 1; text-align: center;
+  max-width: 62rem; padding-inline: var(--gutter);
+}
+.pin__kicker, .pin__title {
+  opacity: var(--tp, 1);
+  transform: translate3d(0, calc((1 - var(--tp, 1)) * 48px), 0);
+  filter: blur(calc((1 - var(--tp, 1)) * 12px));
+}
+.pin__kicker { color: var(--c-gold-bright); }
+.pin__title {
+  color: var(--c-ivory); font-size: var(--fs-display); line-height: var(--lh-tight);
+  letter-spacing: -0.02em; margin-bottom: var(--s-4); text-wrap: balance;
+  text-shadow: 0 2px 30px rgba(46,15,10,.4);
+}
+.pin__words {
+  color: var(--c-ivory); font-size: clamp(1.15rem, 2.1vw, 1.7rem); line-height: 1.5;
+  font-weight: 600; max-width: 44ch; margin-inline: auto;
+  opacity: var(--tp, 1);
+  text-shadow: 0 1px 18px rgba(46,15,10,.5);
+}
+/* Each word is a span with --i; the paragraph carries --n. A soft six-word
+   leading edge sweeps through as --wp runs 0 -> 1. */
+.pin__words .w {
+  opacity: clamp(0.18, calc((var(--wp, 1) * (var(--n, 1) + 6) - var(--i, 0)) / 6), 1);
+}
 
 /* ---------- Gentle infinite float (reference's drifting product shots) ---------- */
 .float { animation: float 7s var(--e-soft) infinite; }
@@ -293,5 +332,12 @@ ul { margin: 0; padding: 0; list-style: none; }
     animation-duration: 0.001ms !important; animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
-  [data-reveal] { opacity: 1 !important; transform: none !important; }
+  [data-reveal] { opacity: 1 !important; transform: none !important; filter: none !important; }
+  [data-scrub] { opacity: 1 !important; transform: none !important; }
+  .pin { height: auto; }
+  .pin__stage { position: relative; height: auto; min-height: 80svh; padding-block: var(--section-y); }
+}
+@media (max-width: 720px) {
+  .pin { height: 260svh; }
+  .pin__window { clip-path: inset(calc(var(--e, 0) * 14%) calc(var(--e, 0) * 7%) round calc(var(--e, 0) * var(--r-lg))); }
 }

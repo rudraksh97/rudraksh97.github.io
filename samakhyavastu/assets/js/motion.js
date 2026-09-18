@@ -26,6 +26,9 @@
      data-parallax="0.18"                               scroll translate factor
      data-parallax-scale="1.15"                         scroll scale target
      data-count="500" data-count-suffix="+"             count-up on reveal
+     data-scrub="zoom"                                  writes --sp (0-1) as it rises
+     data-pin  (on a tall section with a sticky stage)  writes --e, --tp, --wp
+     data-words                                         split into .w spans for --wp
    ========================================================================== */
 (function () {
   "use strict";
@@ -35,6 +38,24 @@
   function clamp(v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; }
   function lerp(a, b, t) { return a + (b - a) * t; }
   function toArray(nodes) { return Array.prototype.slice.call(nodes); }
+  /* progress of p through the window [a, b], smoothed at both ends */
+  function seg(p, a, b) { var t = clamp((p - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); }
+
+  /* Wrap each word in a span carrying its index, so CSS can light words up
+     in order from a single progress value on the parent. */
+  function splitWords(el) {
+    var words = el.textContent.trim().split(/\s+/);
+    el.textContent = "";
+    words.forEach(function (w, i) {
+      var span = document.createElement("span");
+      span.className = "w";
+      span.style.setProperty("--i", i);
+      span.textContent = w;
+      el.appendChild(span);
+      if (i < words.length - 1) el.appendChild(document.createTextNode(" "));
+    });
+    el.style.setProperty("--n", words.length);
+  }
 
   /* The line, as a fraction of viewport height, an element's top must cross
      before it is considered "arrived". Just under 1.0 means an element begins
@@ -76,6 +97,10 @@
     var parallax      = toArray(document.querySelectorAll("[data-parallax], [data-parallax-scale]"));
     var nav           = document.querySelector(".nav");
     var hero          = document.querySelector("[data-hero]");
+    var pins          = toArray(document.querySelectorAll("[data-pin]"));
+    var scrubs        = toArray(document.querySelectorAll("[data-scrub]"));
+
+    toArray(document.querySelectorAll("[data-words]")).forEach(splitWords);
 
     /* Reduced motion: show final state, skip the loop entirely. */
     if (reduced) {
@@ -84,6 +109,9 @@
       revealPending = [];
       countPending = [];
       parallax = [];
+      pins = [];
+      scrubs = [];
+      hero = null;
     }
 
     var ticking = false;
@@ -105,6 +133,29 @@
           "rgb(" + Math.round(lerp(253, 246, t)) + "," +
                    Math.round(lerp(248, 231, t)) + "," +
                    Math.round(lerp(240, 201, t)) + ")";
+        /* hero scroll-out progress, read by hero.css */
+        hero.style.setProperty("--hp", clamp(y / (vh * 0.8), 0, 1).toFixed(4));
+      }
+
+      /* ---- pinned stages ----
+         Progress is how far through the section's extra height we have
+         scrolled while its stage is stuck. Phases overlap slightly so one
+         motion hands off to the next without a dead beat. */
+      for (var s = 0; s < pins.length; s++) {
+        var pin = pins[s];
+        var pr = pin.getBoundingClientRect();
+        var run = pr.height - vh;
+        var pp = run > 0 ? clamp(-pr.top / run, 0, 1) : 1;
+        pin.style.setProperty("--e",  (1 - seg(pp, 0, 0.36)).toFixed(4));
+        pin.style.setProperty("--tp", seg(pp, 0.28, 0.48).toFixed(4));
+        pin.style.setProperty("--wp", seg(pp, 0.44, 0.9).toFixed(4));
+      }
+
+      /* ---- scrubbed elements: 0 as the top enters, 1 by 55% up ---- */
+      for (var k = 0; k < scrubs.length; k++) {
+        var sr = scrubs[k].getBoundingClientRect();
+        var sp = clamp((vh - sr.top) / (vh * 0.45), 0, 1);
+        scrubs[k].style.setProperty("--sp", (1 - Math.pow(1 - sp, 3)).toFixed(4));
       }
 
       /* ---- reveals: geometry-driven, drain the pending list ---- */

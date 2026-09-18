@@ -11,9 +11,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900&family=Nunito+Sans:opsz,wght@6..12,300..900&display=swap" rel="stylesheet" />
 
-<link rel="stylesheet" href="assets/css/tokens.css?v=afa21c7192" />
-<link rel="stylesheet" href="assets/css/styles.css?v=816edfe1da" />
-<link rel="stylesheet" href="assets/css/hero.css?v=43fc1b89cf" />
+<link rel="stylesheet" href="assets/css/tokens.css?v=0b16b52bdb" />
+<link rel="stylesheet" href="assets/css/styles.css?v=63419eccdd" />
+<link rel="stylesheet" href="assets/css/hero.css?v=154f2071a6" />
 </head>
 <body>
 
@@ -94,7 +94,7 @@
 
 <section id="symptoms" class="section">
   <div class="container">
-    <div class="section-head section-head--center">
+    <div class="section-head section-head--center" data-reveal="rise">
       <span class="eyebrow">If any of these feel familiar&hellip;</span>
       <h2 class="section-title">5 prominent yet silent symptoms of blocked energy spaces</h2>
     </div>
@@ -140,7 +140,7 @@
 
 <section id="benefits" class="section section--tint">
   <div class="container">
-    <div class="section-head section-head--center">
+    <div class="section-head section-head--center" data-reveal="rise">
       <span class="eyebrow">Benefits</span>
       <h2 class="section-title">What changes when your space aligns.</h2>
       <p class="section-lede">Vastu isn't superstition &mdash; it's the science of directional energies. When your home and workspace flow with nature, life flows with you.</p>
@@ -175,22 +175,21 @@
 </section>
 
 
-<!-- ===================== Arc band (the reference's elliptical photo break) ===================== -->
-<section class="arc-band" aria-labelledby="difference-title">
-  <div class="arc-band__inner">
-    <img src="assets/img/hero-villa.jpg" alt="" aria-hidden="true"
-         style="object-position: 50% 62%;" data-parallax="0.16" loading="lazy" />
-    <div class="arc-band__overlay">
-      <div class="container">
-        <span class="hero__kicker" data-reveal style="color: var(--c-gold-bright);">The MahaVastu Difference</span>
-        <h2 id="difference-title" data-reveal data-reveal-delay="80">We don&rsquo;t guess. We measure.</h2>
-        <p data-reveal data-reveal-delay="160">
-          From Astro-SWOT land analysis to micro-level utility mapping &mdash; a precise
-          six-level audit of how your space actually behaves. If your environment is draining
-          your liquidity, blocking opportunities or causing anxiety, it isn&rsquo;t a personal
-          failure. It is a spatial misalignment.
-        </p>
-      </div>
+<!-- ===================== Pinned window: image expands to full-bleed, copy scrubs in ===================== -->
+<section class="pin" aria-labelledby="difference-title" data-pin>
+  <div class="pin__stage">
+    <div class="pin__window" aria-hidden="true">
+      <img src="assets/img/hero-villa.jpg" alt="" style="object-position: 50% 62%;" loading="lazy" />
+    </div>
+    <div class="pin__copy">
+      <span class="hero__kicker pin__kicker">The MahaVastu Difference</span>
+      <h2 id="difference-title" class="pin__title">We don&rsquo;t guess. We measure.</h2>
+      <p class="pin__words" data-words>
+        From Astro-SWOT land analysis to micro-level utility mapping &mdash; a precise
+        six-level audit of how your space actually behaves. If your environment is draining
+        your liquidity, blocking opportunities or causing anxiety, it isn&rsquo;t a personal
+        failure. It is a spatial misalignment.
+      </p>
     </div>
   </div>
 </section>
@@ -252,7 +251,7 @@
 <section id="process" class="section section--tint">
   <div class="container">
 
-    <div class="section-head section-head--center">
+    <div class="section-head section-head--center" data-reveal="rise">
       <div class="eyebrow">Process</div>
       <h2 class="section-title">A calm, structured journey, from booking to transformation.</h2>
     </div>
@@ -286,7 +285,7 @@
 
 <section id="services" class="section">
   <div class="container">
-    <div class="section-head section-head--center" data-reveal="fade-up">
+    <div class="section-head section-head--center" data-reveal="rise">
       <span class="eyebrow">Services</span>
       <h2 class="section-title">Consultations for every space you inhabit.</h2>
     </div>
@@ -351,7 +350,7 @@
 
 <section id="testimonials" class="section section--tint">
   <div class="container">
-    <div class="section-head section-head--center" data-reveal="fade-up">
+    <div class="section-head section-head--center" data-reveal="rise">
       <span class="eyebrow">Testimonials</span>
       <h2 class="section-title">Mahavastu in the words of our clients.</h2>
     </div>
@@ -405,40 +404,40 @@
 
 <section id="gallery" class="section">
   <div class="container">
-    <div class="section-head section-head--center" data-reveal="fade-up">
+    <div class="section-head section-head--center" data-reveal="rise">
       <span class="eyebrow">Gallery</span>
       <h2 class="section-title">Moments &amp; Blueprints</h2>
     </div>
 
     <div class="gallery">
-      <div class="gallery__item gallery__item--wide" data-reveal="fade-up" data-reveal-delay="0">
+      <div class="gallery__item gallery__item--wide" data-reveal="zoom" data-reveal-delay="0">
         <img src="assets/img/gallery-1.jpeg" alt="Group of MahaVastu practitioners gathered at a training seminar" loading="lazy">
       </div>
-      <div class="gallery__item" data-reveal="fade-up" data-reveal-delay="60">
+      <div class="gallery__item" data-reveal="zoom" data-reveal-delay="60">
         <img src="assets/img/gallery-2.jpeg" alt="Vastu consultant reviewing a floor plan during a client session" loading="lazy">
       </div>
-      <div class="gallery__item gallery__item--tall" data-reveal="fade-up" data-reveal-delay="120">
+      <div class="gallery__item gallery__item--tall" data-reveal="zoom" data-reveal-delay="120">
         <img src="assets/img/gallery-3.jpeg" alt="Consultant standing with a client inside a home during a Vastu walkthrough" loading="lazy">
       </div>
-      <div class="gallery__item" data-reveal="fade-up" data-reveal-delay="180">
+      <div class="gallery__item" data-reveal="zoom" data-reveal-delay="180">
         <img src="assets/img/gallery-4.jpeg" alt="Close-up of a Vastu compass being used to align a room" loading="lazy">
       </div>
-      <div class="gallery__item" data-reveal="fade-up" data-reveal-delay="0">
+      <div class="gallery__item" data-reveal="zoom" data-reveal-delay="0">
         <img src="assets/img/gallery-5.jpeg" alt="MahaVastu practitioners at a training session" loading="lazy">
       </div>
-      <div class="gallery__item gallery__item--tall" data-reveal="fade-up" data-reveal-delay="60">
+      <div class="gallery__item gallery__item--tall" data-reveal="zoom" data-reveal-delay="60">
         <img src="assets/img/gallery-6.jpg" alt="Consultant presenting a Vastu remedy to a seated client" loading="lazy">
       </div>
-      <div class="gallery__item" data-reveal="fade-up" data-reveal-delay="120">
+      <div class="gallery__item" data-reveal="zoom" data-reveal-delay="120">
         <img src="assets/img/gallery-7.jpg" alt="Team members discussing a project during a MahaVastu workshop" loading="lazy">
       </div>
-      <div class="gallery__item" data-reveal="fade-up" data-reveal-delay="180">
+      <div class="gallery__item" data-reveal="zoom" data-reveal-delay="180">
         <img src="assets/img/gallery-8.jpeg" alt="Vastu practitioner explaining directional placement on-site" loading="lazy">
       </div>
-      <div class="gallery__item gallery__item--wide" data-reveal="fade-up" data-reveal-delay="0">
+      <div class="gallery__item gallery__item--wide" data-reveal="zoom" data-reveal-delay="0">
         <img src="assets/img/gallery-9.jpeg" alt="Team gathering of MahaVastu consultants and staff" loading="lazy">
       </div>
-      <div class="gallery__item" data-reveal="fade-up" data-reveal-delay="60">
+      <div class="gallery__item" data-reveal="zoom" data-reveal-delay="60">
         <img src="assets/img/gallery-10.jpeg" alt="Consultant reviewing notes ahead of a Vastu site visit" loading="lazy">
       </div>
     </div>
@@ -447,7 +446,7 @@
 
 <section id="faq" class="section section--tint">
   <div class="container">
-    <div class="section-head section-head--center" data-reveal="fade-up">
+    <div class="section-head section-head--center" data-reveal="rise">
       <span class="eyebrow">FAQs</span>
       <h2 class="section-title">Questions, answered.</h2>
     </div>
@@ -522,7 +521,7 @@
   <div class="container" style="max-width: 780px; margin-inline: auto; text-align: center;">
     <img class="float" src="assets/img/compass.png" alt="" aria-hidden="true" loading="lazy" data-reveal="zoom" style="width: 88px; margin-inline: auto; margin-bottom: var(--s-4);">
 
-    <div class="section-head section-head--center" data-reveal="fade-up">
+    <div class="section-head section-head--center" data-scrub="zoom">
       <span class="eyebrow">Begin</span>
       <h2 class="section-title" style="font-size: var(--fs-h1);">Align your space. Elevate your life.</h2>
       <p class="section-lede">Booking takes under two minutes. We'll match you with the right consultation and confirm your slot within 24 hours.</p>
@@ -590,6 +589,6 @@
 
 </main>
 
-<script src="assets/js/motion.js?v=0cd56e9b44" defer></script>
+<script src="assets/js/motion.js?v=91b13923a9" defer></script>
 </body>
 </html>

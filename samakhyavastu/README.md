@@ -57,7 +57,6 @@ are reproduced here:
 | Playfair Display + Nunito Sans | same pairing |
 | Cream ground that warms to amber as you scroll | ivory → sand, scroll-driven |
 | Floating pill nav with a gold hairline | same, plus scroll-spy and a mobile sheet |
-| Full-bleed photo bands clipped to an ellipse | `.arc-band`, `border-radius: 50% / 14%` |
 | Gold-bordered "speech bubble" panels | `.bubble` |
 | Staggered fade-up reveals on scroll | `data-reveal` + `data-reveal-delay` |
 | Scroll-linked parallax and scale | `data-parallax`, `data-parallax-scale` |
@@ -88,7 +87,24 @@ Markup opts in through data attributes only:
 <img data-parallax="0.16">
 <figure data-parallax-scale="1.10">…</figure>
 <span data-count="500" data-count-suffix="+">0</span>
+<div data-scrub="zoom">…</div>                 <!-- scale/fade tied to scroll -->
+<section class="pin" data-pin>…</section>      <!-- pinned, scroll-scrubbed stage -->
+<p data-words>…</p>                            <!-- lit word by word inside a pin -->
 ```
+
+### Apple-style scroll choreography
+
+- **Pinned window** (`.pin`) — the stage sticks for ~2 viewports while the photo
+  opens from an inset rounded card to full-bleed, the title comes into focus,
+  then the paragraph lights up word by word. JS writes only progress values
+  (`--e`, `--tp`, `--wp`); CSS maps them to visuals and defaults to the finished
+  state, so no-JS and reduced-motion readers see the complete composition.
+- **Hero scroll-out** — `--hp` lifts and dissolves the hero copy (desktop only)
+  while the ghost glyph swells.
+- **Headings** use `data-reveal="rise"`: a longer rise that sharpens from blur,
+  on `--e-apple`.
+- `body` uses `overflow-x: clip`, not `hidden` — `hidden` turns body into a
+  scroll container and silently breaks `position: sticky`.
 
 ### Why reveals are not driven by IntersectionObserver
 
