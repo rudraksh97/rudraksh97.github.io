@@ -241,15 +241,21 @@ ul { margin: 0; padding: 0; list-style: none; }
 .acc__panel { overflow: hidden; height: 0; transition: height var(--d-base) var(--e-out); }
 .acc__panel-inner { padding-bottom: var(--s-3); color: var(--c-ink-soft); max-width: 78ch; }
 
-/* ---------- Gallery ---------- */
-.gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-2); }
-.gallery__item {
-  position: relative; overflow: hidden; border-radius: var(--r-md);
-  aspect-ratio: 1/1; background: var(--c-sand-deep);
+/* ---------- Gallery ----------
+   Fixed row height + explicit placement. Each tile's shape follows its
+   photo's orientation (portrait -> tall, wide landscape -> wide), so the
+   crop stays gentle and the 4x4 grid closes with no holes. */
+.gallery {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: clamp(170px, 18vw, 250px);
+  gap: var(--s-2);
 }
-.gallery__item--tall { grid-row: span 2; aspect-ratio: 1/2.06; }
-.gallery__item--wide { grid-column: span 2; aspect-ratio: 2.06/1; }
-.gallery__item img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--d-xslow) var(--e-out); }
+.gallery__item {
+  grid-area: var(--ga, auto);
+  position: relative; overflow: hidden; border-radius: var(--r-md);
+  background: var(--c-sand-deep);
+}
+.gallery__item img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; transition: transform var(--d-xslow) var(--e-out); }
 .gallery__item::after {
   content: ""; position: absolute; inset: 0;
   background: linear-gradient(180deg, transparent 45%, rgba(46,15,10,.45));
@@ -304,7 +310,11 @@ ul { margin: 0; padding: 0; list-style: none; }
 @media (max-width: 1024px) {
   .grid--5 { grid-template-columns: repeat(3, 1fr); }
   .grid--4 { grid-template-columns: repeat(2, 1fr); }
-  .gallery { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 900px) {
+  .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: clamp(150px, 40vw, 280px); grid-auto-flow: dense; }
+  .gallery__item { grid-area: auto; }
+  .gallery__item--wide, .gallery__item--wide-sm { grid-column: span 2; }
 }
 @media (max-width: 860px) {
   .split { grid-template-columns: 1fr; }
@@ -322,8 +332,6 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 @media (max-width: 620px) {
   .grid--2, .grid--3, .grid--4, .grid--5 { grid-template-columns: 1fr; }
-  .gallery { grid-template-columns: repeat(2, 1fr); }
-  .gallery__item--wide { grid-column: span 2; }
   .nav__cta { display: none; }
 }
 
