@@ -141,7 +141,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* ---------- Reveal system (replaces AOS) ---------- */
 [data-reveal] {
   opacity: 0;
-  transform: translate3d(var(--rv-x, 0), var(--rv-y, 36px), 0) scale(var(--rv-s, 1));
+  transform: perspective(1100px) translate3d(var(--rv-x, 0), var(--rv-y, 36px), 0) rotateX(var(--rv-rx, 0deg)) scale(var(--rv-s, 1));
   filter: blur(var(--rv-blur, 0px));
   transition: opacity var(--d-reveal) var(--e-apple), transform var(--d-reveal) var(--e-apple),
               filter var(--d-reveal) var(--e-apple);
@@ -153,7 +153,9 @@ ul { margin: 0; padding: 0; list-style: none; }
 [data-reveal="zoom"]       { --rv-y: 0; --rv-s: 0.9; }
 /* Apple-style heading entrance: a longer rise that comes into focus */
 [data-reveal="rise"]       { --rv-y: 56px; --rv-blur: 12px; }
-[data-reveal].is-in { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: none; }
+/* 3D hinge: swings up from below like a card being turned face-up */
+[data-reveal="flip"]       { --rv-y: 24px; --rv-rx: -62deg; transform-origin: 50% 0; }
+[data-reveal].is-in { opacity: 1; transform: perspective(1100px) translate3d(0, 0, 0) rotateX(0deg) scale(1); filter: none; }
 
 /* ---------- Scroll-scrubbed (tied to scroll position, not a one-shot) ----------
    motion.js writes --sp (0 -> 1) as the element travels up the viewport. */
@@ -171,7 +173,7 @@ ul { margin: 0; padding: 0; list-style: none; }
      --wp  0 -> 1   paragraph lights up word by word
    Every property defaults to its END state, so no-JS and reduced-motion
    readers get the finished composition. */
-.pin { position: relative; height: 320svh; background: var(--c-ivory); }
+.pin { position: relative; height: 400svh; background: var(--c-ivory); }
 .pin__stage {
   position: sticky; top: 0; height: 100svh; overflow: hidden;
   display: grid; place-items: center;
@@ -185,8 +187,8 @@ ul { margin: 0; padding: 0; list-style: none; }
   width: 100%; height: 100%; object-fit: cover;
   transform: scale(calc(1 + var(--e, 0) * 0.22));
 }
-.pin__window::after {
-  content: ""; position: absolute; inset: 0;
+.pin__shade {
+  position: absolute; inset: 0;
   background: linear-gradient(180deg, rgba(46,15,10,.35), rgba(46,15,10,.6));
   opacity: calc(0.2 + var(--tp, 1) * 0.8);
 }
@@ -338,6 +340,6 @@ ul { margin: 0; padding: 0; list-style: none; }
   .pin__stage { position: relative; height: auto; min-height: 80svh; padding-block: var(--section-y); }
 }
 @media (max-width: 720px) {
-  .pin { height: 260svh; }
+  .pin { height: 320svh; }
   .pin__window { clip-path: inset(calc(var(--e, 0) * 14%) calc(var(--e, 0) * 7%) round calc(var(--e, 0) * var(--r-lg))); }
 }

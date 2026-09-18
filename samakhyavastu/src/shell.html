@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="assets/css/tokens.css" />
 <link rel="stylesheet" href="assets/css/styles.css" />
 <link rel="stylesheet" href="assets/css/hero.css" />
+<link rel="stylesheet" href="assets/css/celestial.css" />
 </head>
 <body>
 
@@ -94,11 +95,19 @@
 
 <!--PARTIAL:02-symptoms-benefits.html-->
 
-<!-- ===================== Pinned window: image expands to full-bleed, copy scrubs in ===================== -->
-<section class="pin" aria-labelledby="difference-title" data-pin>
+<!-- ===================== Pinned window: opens to full-bleed, then a day passes — sunrise to starlight ===================== -->
+<section class="pin" aria-labelledby="difference-title" data-pin="window">
   <div class="pin__stage">
     <div class="pin__window" aria-hidden="true">
       <img src="assets/img/hero-villa.jpg" alt="" style="object-position: 50% 62%;" loading="lazy" />
+      <div class="sky sky--dawn"></div>
+      <div class="sky sky--dusk"></div>
+      <div class="sky sky--night"></div>
+      <div class="sky sky--lamps"></div>
+      <div class="pin__shade"></div>
+      <div class="sky__stars" data-stars="90"></div>
+      <div class="sky__sun"></div>
+      <div class="sky__moon"></div>
     </div>
     <div class="pin__copy">
       <span class="hero__kicker pin__kicker">The MahaVastu Difference</span>
@@ -114,6 +123,8 @@
 </section>
 
 <!--PARTIAL:03-consultants-process.html-->
+
+<!--PARTIAL:03b-online-compass.html-->
 
 <!--PARTIAL:04-services-testimonials.html-->
 

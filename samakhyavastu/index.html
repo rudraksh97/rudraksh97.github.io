@@ -11,9 +11,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900&family=Nunito+Sans:opsz,wght@6..12,300..900&display=swap" rel="stylesheet" />
 
-<link rel="stylesheet" href="assets/css/tokens.css?v=0b16b52bdb" />
-<link rel="stylesheet" href="assets/css/styles.css?v=63419eccdd" />
+<link rel="stylesheet" href="assets/css/tokens.css?v=32b647bfad" />
+<link rel="stylesheet" href="assets/css/styles.css?v=5c692a7a50" />
 <link rel="stylesheet" href="assets/css/hero.css?v=154f2071a6" />
+<link rel="stylesheet" href="assets/css/celestial.css?v=19b4caf38f" />
 </head>
 <body>
 
@@ -99,35 +100,35 @@
       <h2 class="section-title">5 prominent yet silent symptoms of blocked energy spaces</h2>
     </div>
     <div class="grid grid--5">
-      <div class="card" data-reveal="fade-up" data-reveal-delay="0">
+      <div class="card" data-reveal="flip" data-reveal-delay="0">
         <div class="card__media" style="background: var(--c-gold-pale);">
           <img src="assets/img/sym-financial.png" alt="Financial issues icon" loading="lazy" style="object-fit: contain; padding: var(--s-2);">
         </div>
         <h3 class="card__title">Financial Issues</h3>
         <p class="card__body">Your money is stuck and a cash crunch is routine. Financial freedom seems to be a next-life task.</p>
       </div>
-      <div class="card" data-reveal="fade-up" data-reveal-delay="60">
+      <div class="card" data-reveal="flip" data-reveal-delay="60">
         <div class="card__media" style="background: var(--c-sand-deep);">
           <img src="assets/img/sym-career.png" alt="Career stagnation icon" loading="lazy" style="object-fit: contain; padding: var(--s-2);">
         </div>
         <h3 class="card__title">Career Stagnation</h3>
         <p class="card__body">You are facing a mid-career crisis where career stability itself is an issue, forget about growth.</p>
       </div>
-      <div class="card" data-reveal="fade-up" data-reveal-delay="120">
+      <div class="card" data-reveal="flip" data-reveal-delay="120">
         <div class="card__media" style="background: var(--c-gold-pale);">
           <img src="assets/img/sym-health.png" alt="Health issues icon" loading="lazy" style="object-fit: contain; padding: var(--s-2);">
         </div>
         <h3 class="card__title">Health Issues</h3>
         <p class="card__body">You seem to have developed a better relationship with medicines than with health. Poor sleep and fatigue are your new friends.</p>
       </div>
-      <div class="card" data-reveal="fade-up" data-reveal-delay="180">
+      <div class="card" data-reveal="flip" data-reveal-delay="180">
         <div class="card__media" style="background: var(--c-sand-deep);">
           <img src="assets/img/sym-relationship.png" alt="Relationship stress icon" loading="lazy" style="object-fit: contain; padding: var(--s-2);">
         </div>
         <h3 class="card__title">Relationship Stress</h3>
         <p class="card__body">Whatever best you do feels less to generate respect and love in your relationships. Strained is the common attribute there.</p>
       </div>
-      <div class="card" data-reveal="fade-up" data-reveal-delay="240">
+      <div class="card" data-reveal="flip" data-reveal-delay="240">
         <div class="card__media" style="background: var(--c-gold-pale);">
           <img src="assets/img/sym-energy.png" alt="Negative energy icon" loading="lazy" style="object-fit: contain; padding: var(--s-2);">
         </div>
@@ -175,11 +176,19 @@
 </section>
 
 
-<!-- ===================== Pinned window: image expands to full-bleed, copy scrubs in ===================== -->
-<section class="pin" aria-labelledby="difference-title" data-pin>
+<!-- ===================== Pinned window: opens to full-bleed, then a day passes — sunrise to starlight ===================== -->
+<section class="pin" aria-labelledby="difference-title" data-pin="window">
   <div class="pin__stage">
     <div class="pin__window" aria-hidden="true">
       <img src="assets/img/hero-villa.jpg" alt="" style="object-position: 50% 62%;" loading="lazy" />
+      <div class="sky sky--dawn"></div>
+      <div class="sky sky--dusk"></div>
+      <div class="sky sky--night"></div>
+      <div class="sky sky--lamps"></div>
+      <div class="pin__shade"></div>
+      <div class="sky__stars" data-stars="90"></div>
+      <div class="sky__sun"></div>
+      <div class="sky__moon"></div>
     </div>
     <div class="pin__copy">
       <span class="hero__kicker pin__kicker">The MahaVastu Difference</span>
@@ -257,28 +266,168 @@
     </div>
 
     <div class="grid grid--4">
-      <div class="step" data-reveal="fade-up" data-reveal-delay="0">
+      <div class="step" data-reveal="flip" data-reveal-delay="0">
         <div class="step__num">01</div>
         <h3 class="step__title">Book &amp; Share</h3>
         <p class="step__body">Pick a service and share your floor plan or location details through our secure form.</p>
       </div>
-      <div class="step" data-reveal="fade-up" data-reveal-delay="120">
+      <div class="step" data-reveal="flip" data-reveal-delay="120">
         <div class="step__num">02</div>
         <h3 class="step__title">Energy Audit</h3>
         <p class="step__body">On-site or virtual analysis of directions, zones, and elemental balance using classical methods.</p>
       </div>
-      <div class="step" data-reveal="fade-up" data-reveal-delay="240">
+      <div class="step" data-reveal="flip" data-reveal-delay="240">
         <div class="step__num">03</div>
         <h3 class="step__title">Personalised Report</h3>
         <p class="step__body">Receive a detailed report: issues, remedies, placements, and a step-by-step plan.</p>
       </div>
-      <div class="step" data-reveal="fade-up" data-reveal-delay="360">
+      <div class="step" data-reveal="flip" data-reveal-delay="360">
         <div class="step__num">04</div>
         <h3 class="step__title">Implementation Support</h3>
         <p class="step__body">30 days of guidance as you apply the remedies, with follow-up calls included.</p>
       </div>
     </div>
 
+  </div>
+</section>
+
+
+<!-- ===================== Online consultation: pinned phone flip + compass ===================== -->
+<section class="orbit" id="online" aria-labelledby="orbit-title" data-pin="orbit">
+  <div class="orbit__stage">
+    <div class="container orbit__grid">
+
+      <div class="orbit__copy">
+        <span class="eyebrow">Online Consultation</span>
+        <h2 id="orbit-title" class="section-title">Your floor plan, read like a compass.</h2>
+        <p class="section-lede orbit__lede">A detailed video session with map analysis &mdash; ideal for NRIs and remote clients. Every space is read against the five elements.</p>
+
+        <ol class="elements" aria-label="The five elements and their zones">
+          <li class="elements__item" data-el="0" style="--el: var(--c-water);">
+            <span class="elements__dot" aria-hidden="true"></span>
+            <strong>Water</strong><span>North-East &middot; Ishanya</span>
+          </li>
+          <li class="elements__item" data-el="1" style="--el: var(--c-fire);">
+            <span class="elements__dot" aria-hidden="true"></span>
+            <strong>Fire</strong><span>South-East &middot; Agneya</span>
+          </li>
+          <li class="elements__item" data-el="2" style="--el: var(--c-earth);">
+            <span class="elements__dot" aria-hidden="true"></span>
+            <strong>Earth</strong><span>South-West &middot; Nairutya</span>
+          </li>
+          <li class="elements__item" data-el="3" style="--el: var(--c-air);">
+            <span class="elements__dot" aria-hidden="true"></span>
+            <strong>Air</strong><span>North-West &middot; Vayavya</span>
+          </li>
+          <li class="elements__item" data-el="4" style="--el: var(--c-space);">
+            <span class="elements__dot" aria-hidden="true"></span>
+            <strong>Space</strong><span>Centre &middot; Brahmasthan</span>
+          </li>
+        </ol>
+
+        <a class="btn btn--primary orbit__cta" href="#contact">Book an online session</a>
+      </div>
+
+      <div class="orbit__scene" aria-hidden="true">
+        <!-- the twelve rashis, orbiting with scroll; 27 ticks for the nakshatras -->
+        <svg class="rashi-ring" viewBox="0 0 520 520">
+          <defs>
+            <path id="rashi-path" d="M 260,260 m -222,0 a 222,222 0 1,1 444,0 a 222,222 0 1,1 -444,0" />
+          </defs>
+          <circle cx="260" cy="260" r="250" class="rashi-ring__rim" />
+          <circle cx="260" cy="260" r="196" class="rashi-ring__rim" />
+          <circle cx="260" cy="260" r="250" class="rashi-ring__ticks" pathLength="27" />
+          <text class="rashi-ring__text">
+            <textPath href="#rashi-path" startOffset="4.167%">मेष</textPath>
+          </text>
+          <text class="rashi-ring__text"><textPath href="#rashi-path" startOffset="12.500%">वृषभ</textPath></text>
+          <text class="rashi-ring__text"><textPath href="#rashi-path" startOffset="20.834%">मिथुन</textPath></text>
+          <text class="rashi-ring__text"><textPath href="#rashi-path" startOffset="29.167%">कर्क</textPath></text>
+          <text class="rashi-ring__text"><textPath href="#rashi-path" startOffset="37.500%">सिंह</textPath></text>
+          <text class="rashi-ring__text"><textPath href="#rashi-path" startOffset="45.834%">कन्या</textPath></text>
+          <text class="rashi-ring__text"><textPath href="#rashi-path" startOffset="54.167%">तुला</textPath></text>
+          <text class="rashi-ring__text"><textPath href="#rashi-path" startOffset="62.500%">वृश्चिक</textPath></text>
+          <text class="rashi-ring__text"><textPath href="#rashi-path" startOffset="70.834%">धनु</textPath></text>
+          <text class="rashi-ring__text"><textPath href="#rashi-path" startOffset="79.167%">मकर</textPath></text>
+          <text class="rashi-ring__text"><textPath href="#rashi-path" startOffset="87.500%">कुंभ</textPath></text>
+          <text class="rashi-ring__text"><textPath href="#rashi-path" startOffset="95.834%">मीन</textPath></text>
+        </svg>
+
+        <div class="phone">
+          <!-- back: shown first, flips away -->
+          <div class="phone__face phone__back">
+            <div class="phone__lenses"><i></i><i></i><i></i></div>
+            <div class="phone__medallion"><img src="assets/img/logo.jpeg" alt="" loading="lazy" /></div>
+            <span class="phone__mark">MahaVastu Magic</span>
+          </div>
+
+          <!-- front: the map-analysis screen -->
+          <div class="phone__face phone__front">
+            <div class="phone__screen">
+              <div class="phone__island"></div>
+              <div class="screen__bar">
+                <span class="screen__live">Live</span>
+                <span>Map analysis</span>
+              </div>
+
+              <svg class="plan" viewBox="0 0 200 200">
+                <!-- element zones (north is up) -->
+                <rect class="zone" data-el="0" x="100" y="12" width="88" height="88" style="--el: var(--c-water);" />
+                <rect class="zone" data-el="1" x="100" y="100" width="88" height="88" style="--el: var(--c-fire);" />
+                <rect class="zone" data-el="2" x="12" y="100" width="88" height="88" style="--el: var(--c-earth);" />
+                <rect class="zone" data-el="3" x="12" y="12" width="88" height="88" style="--el: var(--c-air);" />
+                <circle class="zone" data-el="4" cx="100" cy="100" r="24" style="--el: var(--c-space);" />
+
+                <!-- floor plan -->
+                <g class="plan__walls">
+                  <rect x="12" y="12" width="176" height="176" rx="2" />
+                  <path d="M12 82 H74 M74 12 V58 M74 82 V120 M12 120 H56 M84 120 H124 M124 120 V188 M124 58 H188 M150 58 V96 M150 120 H188" />
+                </g>
+                <g class="plan__doors">
+                  <path d="M56 120 A 18 18 0 0 1 74 138" />
+                  <path d="M150 96 A 18 18 0 0 0 132 78" />
+                  <path d="M124 150 A 14 14 0 0 1 138 164" />
+                </g>
+
+                <!-- compass mandala: draws in, then swings to true north -->
+                <g class="mandala">
+                  <circle cx="100" cy="100" r="80" pathLength="1" class="mandala__ring" />
+                  <circle cx="100" cy="100" r="52" pathLength="1" class="mandala__ring mandala__ring--inner" />
+                  <path class="mandala__spokes" pathLength="1"
+                        d="M100 20 V180 M20 100 H180 M43.4 43.4 L156.6 156.6 M156.6 43.4 L43.4 156.6" />
+                  <path class="mandala__north" d="M100 6 L106 20 H94 Z" />
+                  <text x="100" y="34" class="mandala__n">N</text>
+                </g>
+              </svg>
+
+              <div class="screen__caps">
+                <span class="cap cap--idle">Aligning to true north&hellip;</span>
+                <span class="cap" data-el="0" style="--el: var(--c-water);">North-East &middot; Water</span>
+                <span class="cap" data-el="1" style="--el: var(--c-fire);">South-East &middot; Fire</span>
+                <span class="cap" data-el="2" style="--el: var(--c-earth);">South-West &middot; Earth</span>
+                <span class="cap" data-el="3" style="--el: var(--c-air);">North-West &middot; Air</span>
+                <span class="cap" data-el="4" style="--el: var(--c-space);">Centre &middot; Space</span>
+              </div>
+
+              <div class="screen__dots">
+                <i data-el="0" style="--el: var(--c-water);"></i>
+                <i data-el="1" style="--el: var(--c-fire);"></i>
+                <i data-el="2" style="--el: var(--c-earth);"></i>
+                <i data-el="3" style="--el: var(--c-air);"></i>
+                <i data-el="4" style="--el: var(--c-space);"></i>
+              </div>
+
+              <div class="screen__call">
+                <span class="call-btn"><svg viewBox="0 0 24 24"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3zM5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span>
+                <span class="call-btn"><svg viewBox="0 0 24 24"><path d="M3 7h12v10H3zM15 10l6-3v10l-6-3"/></svg></span>
+                <span class="call-btn call-btn--end"><svg viewBox="0 0 24 24"><path d="M3 14c5-5 13-5 18 0l-2.5 2.5-3-1.5v-2.5a10 10 0 0 0-7 0V15l-3 1.5z"/></svg></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -589,6 +738,6 @@
 
 </main>
 
-<script src="assets/js/motion.js?v=91b13923a9" defer></script>
+<script src="assets/js/motion.js?v=213cd36a49" defer></script>
 </body>
 </html>

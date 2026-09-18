@@ -27,7 +27,9 @@
      data-parallax-scale="1.15"                         scroll scale target
      data-count="500" data-count-suffix="+"             count-up on reveal
      data-scrub="zoom"                                  writes --sp (0-1) as it rises
-     data-pin  (on a tall section with a sticky stage)  writes --e, --tp, --wp
+     data-pin="window"  sticky stage: opens, then a day passes (see celestial.css)
+     data-pin="orbit"   sticky stage: phone flip, compass, five elements
+     data-stars="90"                                    generate a twinkling starfield
      data-words                                         split into .w spans for --wp
    ========================================================================== */
 (function () {
@@ -40,6 +42,72 @@
   function toArray(nodes) { return Array.prototype.slice.call(nodes); }
   /* progress of p through the window [a, b], smoothed at both ends */
   function seg(p, a, b) { var t = clamp((p - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); }
+
+  function lin(p, a, b) { return clamp((p - a) / (b - a), 0, 1); }
+  function set(el, name, v) { el.style.setProperty(name, v.toFixed(4)); }
+
+  /* Deterministic starfield: same sky on every visit, no layout cost. */
+  function makeStars(el) {
+    var n = parseInt(el.getAttribute("data-stars"), 10) || 60;
+    var seed = 7;
+    function rnd() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+    var frag = document.createDocumentFragment();
+    for (var i = 0; i < n; i++) {
+      var s = document.createElement("i");
+      var size = 1 + rnd() * rnd() * 2.6;
+      s.style.cssText =
+        "left:" + (rnd() * 100).toFixed(2) + "%;top:" + (Math.pow(rnd(), 1.4) * 100).toFixed(2) + "%;" +
+        "width:" + size.toFixed(2) + "px;height:" + size.toFixed(2) + "px;" +
+        "--tw:" + (2.5 + rnd() * 4).toFixed(2) + "s;--td:" + (-rnd() * 6).toFixed(2) + "s";
+      frag.appendChild(s);
+    }
+    el.appendChild(frag);
+  }
+
+  /* ---- per-pin timelines. p is 0 -> 1 through the pinned run. ---- */
+  var timelines = {
+    /* Opens to full-bleed, then a whole day passes: the sun rises in the
+       east (left), arcs over the house and sets in the west, dusk falls,
+       the lamps come on, stars and the moon come out. The copy arrives in
+       daylight and finishes being read under the night sky. */
+    window: function (el, p) {
+      set(el, "--e",  1 - seg(p, 0, 0.2));
+      set(el, "--tp", seg(p, 0.2, 0.34));
+      set(el, "--wp", seg(p, 0.34, 0.76));
+
+      var t = lin(p, 0.04, 0.96);            /* time of day */
+      var u = lin(t, 0, 0.7);                /* sun's journey */
+      set(el, "--sx", 6 + u * 88);
+      set(el, "--sy", 70 - Math.sin(Math.PI * u) * 58);
+      set(el, "--sun",   seg(t, 0, 0.08) * (1 - seg(t, 0.6, 0.72)));
+      set(el, "--dawn",  1 - seg(t, 0.06, 0.34));
+      set(el, "--dusk",  seg(t, 0.4, 0.58) * (1 - seg(t, 0.72, 0.9)));
+      set(el, "--night", seg(t, 0.6, 0.88));
+      set(el, "--lamps", seg(t, 0.68, 0.88));
+      set(el, "--stars", seg(t, 0.74, 0.96));
+      set(el, "--moon",  seg(t, 0.8, 1));
+    },
+
+    /* Phone turns over, the compass draws itself and swings to north, then
+       the five elements light zone by zone in step with the list. */
+    orbit: function (el, p) {
+      set(el, "--f",  seg(p, 0, 0.26));
+      set(el, "--a",  seg(p, 0.24, 0.42));
+      set(el, "--rr", p * 100 - 30);
+
+      var z = lin(p, 0.44, 0.94) * 5;
+      var current = p < 0.44 ? -1 : Math.min(4, Math.floor(z));
+      if (el._current !== current) {
+        el._current = current;
+        el.classList.toggle("has-current", current >= 0);
+        (el._els || (el._els = toArray(el.querySelectorAll("[data-el]")))).forEach(function (n) {
+          var i = +n.getAttribute("data-el");
+          n.classList.toggle("is-lit", i <= current);
+          n.classList.toggle("is-current", i === current);
+        });
+      }
+    }
+  };
 
   /* Wrap each word in a span carrying its index, so CSS can light words up
      in order from a single progress value on the parent. */
@@ -101,6 +169,7 @@
     var scrubs        = toArray(document.querySelectorAll("[data-scrub]"));
 
     toArray(document.querySelectorAll("[data-words]")).forEach(splitWords);
+    toArray(document.querySelectorAll("[data-stars]")).forEach(makeStars);
 
     /* Reduced motion: show final state, skip the loop entirely. */
     if (reduced) {
@@ -111,6 +180,8 @@
       parallax = [];
       pins = [];
       scrubs = [];
+      /* finished state for the compass: every element lit */
+      toArray(document.querySelectorAll(".orbit [data-el]")).forEach(function (n) { n.classList.add("is-lit"); });
       hero = null;
     }
 
@@ -146,9 +217,9 @@
         var pr = pin.getBoundingClientRect();
         var run = pr.height - vh;
         var pp = run > 0 ? clamp(-pr.top / run, 0, 1) : 1;
-        pin.style.setProperty("--e",  (1 - seg(pp, 0, 0.36)).toFixed(4));
-        pin.style.setProperty("--tp", seg(pp, 0.28, 0.48).toFixed(4));
-        pin.style.setProperty("--wp", seg(pp, 0.44, 0.9).toFixed(4));
+        if (pr.bottom < -vh || pr.top > vh * 2) continue;   /* far off-screen */
+        var line_ = timelines[pin.getAttribute("data-pin")];
+        if (line_) line_(pin, pp);
       }
 
       /* ---- scrubbed elements: 0 as the top enters, 1 by 55% up ---- */
@@ -222,10 +293,41 @@
 
     frame();
 
+    initTilt();
     initAccordion();
     initNav();
     initScrollSpy();
     initHashLanding();
+  }
+
+  /* ---------------------------------------------------------------- tilt ---
+     Cards lean toward the pointer and a gold highlight follows it, as if
+     the card were catching lamplight. Pointer devices only. */
+  function initTilt() {
+    if (reduced || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    toArray(document.querySelectorAll(".card, .bubble")).forEach(function (el) {
+      el.classList.add("tiltable");
+      var raf = 0, ev = null;
+      function apply() {
+        raf = 0;
+        var r = el.getBoundingClientRect();
+        var x = (ev.clientX - r.left) / r.width;
+        var y = (ev.clientY - r.top) / r.height;
+        el.style.setProperty("--mx", (x * 100).toFixed(1) + "%");
+        el.style.setProperty("--my", (y * 100).toFixed(1) + "%");
+        el.style.setProperty("--ry", ((x - 0.5) * 10).toFixed(2) + "deg");
+        el.style.setProperty("--rx", ((0.5 - y) * 8).toFixed(2) + "deg");
+      }
+      el.addEventListener("pointerenter", function () {
+        el.style.removeProperty("--rv-delay");   /* stagger is for the entrance only */
+        el.classList.add("is-tilt");
+      });
+      el.addEventListener("pointermove", function (e) {
+        ev = e;
+        if (!raf) raf = requestAnimationFrame(apply);
+      });
+      el.addEventListener("pointerleave", function () { el.classList.remove("is-tilt"); });
+    });
   }
 
   /* ------------------------------------------------------ hash landing ---

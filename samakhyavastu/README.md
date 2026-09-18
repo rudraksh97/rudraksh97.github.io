@@ -103,6 +103,27 @@ Markup opts in through data attributes only:
   while the ghost glyph swells.
 - **Headings** use `data-reveal="rise"`: a longer rise that sharpens from blur,
   on `--e-apple`.
+### Celestial set pieces (`assets/css/celestial.css`)
+
+- **Sunrise to starlight** — once the window opens, a whole day passes across
+  the pinned stage: the sun rises in the east (left), arcs over the house and
+  sets in the west; dusk falls, the lamps come on, stars and a crescent moon
+  come out. Lighting is stacked blend-mode overlays whose *opacity* changes, so
+  it never repaints the photo.
+- **Phone flip + compass** (`partials/03b-online-compass.html`) — for the
+  Online Consultation service. A phone turns over in 3D with a light sweep, a
+  compass draws itself over a floor plan and swings to true north, then the
+  five elements (Panchatattva) light zone by zone in step with the list. The
+  twelve rashis orbit behind it, with 27 ticks for the nakshatras.
+- **Light-catching cards** — on pointer devices cards tilt toward the cursor
+  and a gold highlight follows it. Symptom cards and process steps flip in on
+  a 3D hinge (`data-reveal="flip"`).
+
+**Content to confirm:** the element-to-direction mapping in the compass
+section follows classical Vastu (Water NE, Fire SE, Earth SW, Air NW, Space
+centre). MahaVastu works with 16 zones; adjust the copy if the practice
+presents it differently.
+
 - `body` uses `overflow-x: clip`, not `hidden` — `hidden` turns body into a
   scroll container and silently breaks `position: sticky`.
 

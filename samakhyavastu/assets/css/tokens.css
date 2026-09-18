@@ -30,6 +30,17 @@
   --c-lotus:        #C8102E;   /* lotus centre — used sparingly, CTA only  */
   --c-sage:         #6B7F4E;   /* grounding green, eyebrow dots            */
 
+  /* --- Panchatattva: the five elements (compass section only) --- */
+  --c-water:        #3F7FA0;
+  --c-fire:         #D2572A;
+  --c-earth:        #B8892E;
+  --c-air:          #7FA6A0;
+  --c-space:        #6E5A9E;
+
+  /* --- Night sky --- */
+  --c-night:        #0E1233;
+  --c-night-2:      #231B45;
+
   /* --- Surfaces --- */
   --c-surface:      #FFFCF6;
   --c-surface-tint: rgba(201, 162, 39, 0.06);
