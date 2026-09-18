@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="assets/css/styles.css?v=ca4919444f" />
 <link rel="stylesheet" href="assets/css/hero.css?v=154f2071a6" />
 <link rel="stylesheet" href="assets/css/celestial.css?v=19b4caf38f" />
+<link rel="stylesheet" href="assets/css/consult.css?v=0f773e5587" />
 </head>
 <body>
 
@@ -292,6 +293,286 @@
 </section>
 
 
+<!-- ===================== Services: pinned showcase, one scene per consultation =====================
+     Scene geometry for Home and Office is isometric and was generated once; edit it here directly.
+     Each .pc piece animates in over its own window of the chapter's progress:
+     --a = start (0-1), --d = duration. See assets/css/consult.css. -->
+<section id="services" class="section consult-intro">
+  <div class="container">
+    <div class="section-head section-head--center" data-reveal="rise">
+      <span class="eyebrow">Services</span>
+      <h2 class="section-title">Consultations for every space you inhabit.</h2>
+    </div>
+  </div>
+</section>
+
+<section class="consult" aria-label="Consultations" data-pin="consult">
+  <div class="consult__stage">
+    <div class="container consult__inner">
+
+      <nav class="consult__tabs" aria-label="Choose a consultation">
+        <button type="button" class="consult__tab" data-go="0"><span>01</span>Home</button>
+        <button type="button" class="consult__tab" data-go="1"><span>02</span>Office</button>
+        <button type="button" class="consult__tab" data-go="2"><span>03</span>Shop</button>
+        <button type="button" class="consult__tab" data-go="3"><span>04</span>Remedies</button>
+        <a class="consult__tab consult__tab--next" href="#online"><span>05</span>Online &darr;</a>
+      </nav>
+
+      <div class="consult__chapters">
+
+        <!-- ============ 01 Home ============ -->
+        <article class="chapter" data-ch="0">
+          <div class="chapter__copy">
+            <span class="chapter__kicker">01 &mdash; Home Vastu</span>
+            <h3 class="chapter__title">A home that holds its energy.</h3>
+            <p class="chapter__body">Full on-site audit of your residence with layout corrections and zone activation.</p>
+            <a class="btn btn--primary" href="#contact">Book Home Vastu</a>
+          </div>
+          <div class="chapter__scene" aria-hidden="true">
+            <svg class="scene scene--iso" viewBox="44 62 316 250">
+              <defs>
+                <linearGradient id="beam-g" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#FFE7A6" stop-opacity="0"/>
+                  <stop offset="1" stop-color="#FFD66B" stop-opacity=".85"/>
+                </linearGradient>
+              </defs>
+              <g class="pc pc--fade" style="--a:0;--d:0.1"><polygon class="plate f-l" points="54.5,211.8 200.0,295.8 200.0,286.0 54.5,202.0"/><polygon class="plate f-r" points="345.5,211.8 200.0,295.8 200.0,286.0 345.5,202.0"/><polygon class="plate f-t" points="200.0,118.0 345.5,202.0 200.0,286.0 54.5,202.0"/></g>
+<g class="grid" style="--a:.04;--d:.2"><line x1="248.5" y1="146.0" x2="103.0" y2="230.0" pathLength="1"/><line x1="151.5" y1="146.0" x2="297.0" y2="230.0" pathLength="1"/><line x1="297.0" y1="174.0" x2="151.5" y2="258.0" pathLength="1"/><line x1="103.0" y1="174.0" x2="248.5" y2="258.0" pathLength="1"/></g>
+<g class="pc pc--fade" style="--a:0.16;--d:0.1"><polygon class="brahma" points="200.0,174.0 248.5,202.0 200.0,230.0 151.5,202.0"/></g>
+<g class="pc pc--pop" style="--a:0.22;--d:0.1"><polygon class="pond" points="297.0,185.2 326.1,202.0 297.0,218.8 267.9,202.0"/><polygon class="pond-hi" points="297.0,193.6 311.5,202.0 304.3,206.2 289.7,197.8"/></g>
+<g class="north"><line x1="286.1" y1="152.3" x2="305.5" y2="141.1"/><circle cx="305.5" cy="141.1" r="2.5"/><text x="314.5" y="138.1">N</text></g>
+<g class="pc pc--fade" style="--a:0.72;--d:0.12"><polygon class="spill" points="243.6,216.0 224.2,227.2 253.3,255.2 292.1,232.8"/></g>
+<g class="pc pc--drop" style="--a:0.28;--d:0.14"><polygon class="wall f-l" points="132.1,202.0 200.0,241.2 200.0,182.4 132.1,143.2"/><polygon class="wall f-r" points="267.9,202.0 200.0,241.2 200.0,182.4 267.9,143.2"/><polygon class="win" points="141.8,185.2 156.4,193.6 156.4,174.0 141.8,165.6"/><polygon class="win" points="175.8,204.8 190.3,213.2 190.3,193.6 175.8,185.2"/><polygon class="win" points="260.6,183.8 250.9,189.4 250.9,169.8 260.6,164.2"/><polygon class="win" points="217.0,209.0 207.3,214.6 207.3,195.0 217.0,189.4"/><polygon class="door-frame" points="243.6,216.0 224.2,227.2 224.2,189.4 243.6,178.2"/><g class="door-wrap"><polygon class="door" points="243.6,216.0 224.2,227.2 224.2,189.4 243.6,178.2"/></g></g>
+<g class="pc pc--drop" style="--a:0.42;--d:0.14"><polygon class="roof r-b" points="200.0,109.6 200.0,96.2 118.5,143.2"/><polygon class="roof r-b2" points="200.0,109.6 200.0,96.2 281.5,143.2"/><polygon class="roof r-r" points="200.0,109.6 281.5,143.2 200.0,190.2"/><polygon class="roof r-l" points="200.0,109.6 200.0,190.2 118.5,143.2"/></g>
+<g class="pc pc--fade" style="--a:0.84;--d:0.14"><rect class="beam" x="186.0" y="-20" width="28" height="129.6"/><circle class="beam-halo" cx="200.0" cy="109.6" r="16"/></g>
+<g class="pc pc--pop" style="--a:0.18;--d:0.08"><g class="tag"><line x1="200.0" y1="202.0" x2="130.0" y2="260.0"/><circle cx="200.0" cy="202.0" r="3"/><rect x="81.4" y="238.0" width="97.2" height="22" rx="11"/><text x="130.0" y="253.0">Brahmasthan</text></g></g>
+<g class="pc pc--pop" style="--a:0.26;--d:0.08"><g class="tag"><line x1="297.0" y1="202.0" x2="331.0" y2="172.0"/><circle cx="297.0" cy="202.0" r="3"/><rect x="257.2" y="150.0" width="147.6" height="22" rx="11"/><text x="331.0" y="165.0">Water · North-East</text></g></g>
+<g class="pc pc--pop" style="--a:0.76;--d:0.08"><g class="tag"><line x1="233.9" y1="202.0" x2="297.9" y2="266.0"/><circle cx="233.9" cy="202.0" r="3"/><rect x="242.1" y="244.0" width="111.6" height="22" rx="11"/><text x="297.9" y="259.0">East entrance</text></g></g>
+            </svg>
+            <div class="fcard" style="--a:.6">
+              <strong>Home audit</strong>
+              <ul>
+                <li style="--a:.62">On-site audit</li>
+                <li style="--a:.72">Layout corrections</li>
+                <li style="--a:.82">Zone activation</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- ============ 02 Office ============ -->
+        <article class="chapter" data-ch="1">
+          <div class="chapter__copy">
+            <span class="chapter__kicker">02 &mdash; Office Vastu</span>
+            <h3 class="chapter__title">A workplace that works with you.</h3>
+            <p class="chapter__body">Boost productivity, leadership clarity and team harmony at your workplace.</p>
+            <a class="btn btn--primary" href="#contact">Book Office Vastu</a>
+          </div>
+          <div class="chapter__scene" aria-hidden="true">
+            <svg class="scene scene--iso" viewBox="44 62 316 250">
+              <g class="pc pc--fade" style="--a:0;--d:0.1"><polygon class="plate plate--cool f-l" points="54.5,211.8 200.0,295.8 200.0,286.0 54.5,202.0"/><polygon class="plate plate--cool f-r" points="345.5,211.8 200.0,295.8 200.0,286.0 345.5,202.0"/><polygon class="plate plate--cool f-t" points="200.0,118.0 345.5,202.0 200.0,286.0 54.5,202.0"/></g>
+<g class="north"><line x1="286.1" y1="152.3" x2="305.5" y2="141.1"/><circle cx="305.5" cy="141.1" r="2.5"/><text x="314.5" y="138.1">N</text></g>
+<g class="grid" style="--a:.04;--d:.16"><line x1="117.6" y1="165.6" x2="185.5" y2="204.8" pathLength="1"/><line x1="185.5" y1="204.8" x2="122.4" y2="241.2" pathLength="1"/></g>
+<g class="pc pc--fade" style="--a:0.56;--d:0.12"><ellipse class="ring" cx="128.5" cy="199.9" rx="58" ry="29"/><ellipse class="ring ring--2" cx="128.5" cy="199.9" rx="72" ry="36"/></g>
+<g class="pc pc--pop" style="--a:0.12;--d:0.1"><polygon class="desk f-l" points="240.0,181.7 266.7,197.1 266.7,185.3 240.0,169.9"/><polygon class="desk f-r" points="282.4,188.0 266.7,197.1 266.7,185.3 282.4,176.2"/><polygon class="desk f-t" points="255.8,160.8 282.4,176.2 266.7,185.3 240.0,169.9"/><polygon class="screen f-l" points="259.9,168.3 270.1,174.1 270.1,164.1 259.9,158.2"/><polygon class="screen f-r" points="271.5,173.3 270.1,174.1 270.1,164.1 271.5,163.2"/><polygon class="screen f-t" points="261.3,157.3 271.5,163.2 270.1,164.1 259.9,158.2"/><polygon class="chair f-l" points="229.1,196.4 241.2,203.4 241.2,195.0 229.1,188.0"/><polygon class="chair f-r" points="252.1,197.1 241.2,203.4 241.2,195.0 252.1,188.7"/><polygon class="chair f-t" points="240.0,181.7 252.1,188.7 241.2,195.0 229.1,188.0"/></g>
+<g class="pc pc--pop" style="--a:0.19;--d:0.1"><polygon class="desk f-l" points="276.4,202.7 303.1,218.1 303.1,206.3 276.4,190.9"/><polygon class="desk f-r" points="318.8,209.0 303.1,218.1 303.1,206.3 318.8,197.2"/><polygon class="desk f-t" points="292.1,181.8 318.8,197.2 303.1,206.3 276.4,190.9"/><polygon class="screen f-l" points="296.3,189.3 306.5,195.1 306.5,185.1 296.3,179.2"/><polygon class="screen f-r" points="307.9,194.3 306.5,195.1 306.5,185.1 307.9,184.2"/><polygon class="screen f-t" points="297.7,178.3 307.9,184.2 306.5,185.1 296.3,179.2"/><polygon class="chair f-l" points="265.5,217.4 277.6,224.4 277.6,216.0 265.5,209.0"/><polygon class="chair f-r" points="288.5,218.1 277.6,224.4 277.6,216.0 288.5,209.7"/><polygon class="chair f-t" points="276.4,202.7 288.5,209.7 277.6,216.0 265.5,209.0"/></g>
+<g class="pc pc--pop" style="--a:0.26;--d:0.1"><polygon class="desk f-l" points="203.6,202.7 230.3,218.1 230.3,206.3 203.6,190.9"/><polygon class="desk f-r" points="246.1,209.0 230.3,218.1 230.3,206.3 246.1,197.2"/><polygon class="desk f-t" points="219.4,181.8 246.1,197.2 230.3,206.3 203.6,190.9"/><polygon class="screen f-l" points="223.5,189.3 233.7,195.1 233.7,185.1 223.5,179.2"/><polygon class="screen f-r" points="235.2,194.3 233.7,195.1 233.7,185.1 235.2,184.2"/><polygon class="screen f-t" points="225.0,178.3 235.2,184.2 233.7,185.1 223.5,179.2"/><polygon class="chair f-l" points="192.7,217.4 204.8,224.4 204.8,216.0 192.7,209.0"/><polygon class="chair f-r" points="215.8,218.1 204.8,224.4 204.8,216.0 215.8,209.7"/><polygon class="chair f-t" points="203.6,202.7 215.8,209.7 204.8,216.0 192.7,209.0"/></g>
+<g class="pc pc--pop" style="--a:0.33;--d:0.1"><polygon class="desk f-l" points="240.0,223.7 266.7,239.1 266.7,227.3 240.0,211.9"/><polygon class="desk f-r" points="282.4,230.0 266.7,239.1 266.7,227.3 282.4,218.2"/><polygon class="desk f-t" points="255.8,202.8 282.4,218.2 266.7,227.3 240.0,211.9"/><polygon class="screen f-l" points="259.9,210.3 270.1,216.1 270.1,206.1 259.9,200.2"/><polygon class="screen f-r" points="271.5,215.3 270.1,216.1 270.1,206.1 271.5,205.2"/><polygon class="screen f-t" points="261.3,199.3 271.5,205.2 270.1,206.1 259.9,200.2"/><polygon class="chair f-l" points="229.1,238.4 241.2,245.4 241.2,237.0 229.1,230.0"/><polygon class="chair f-r" points="252.1,239.1 241.2,245.4 241.2,237.0 252.1,230.7"/><polygon class="chair f-t" points="240.0,223.7 252.1,230.7 241.2,237.0 229.1,230.0"/></g>
+<g class="pc pc--pop" style="--a:0.44;--d:0.12"><polygon class="desk desk--lead f-l" points="105.4,189.4 146.7,213.2 146.7,200.3 105.4,176.5"/><polygon class="desk desk--lead f-r" points="168.5,200.6 146.7,213.2 146.7,200.3 168.5,187.7"/><polygon class="desk desk--lead f-t" points="127.3,163.9 168.5,187.7 146.7,200.3 105.4,176.5"/><polygon class="screen f-l" points="134.3,173.9 148.8,182.3 148.8,171.1 134.3,162.7"/><polygon class="screen f-r" points="150.3,181.4 148.8,182.3 148.8,171.1 150.3,170.2"/><polygon class="screen f-t" points="135.7,161.8 150.3,170.2 148.8,171.1 134.3,162.7"/><polygon class="chair chair--lead f-l" points="100.6,207.6 115.1,216.0 115.1,195.8 100.6,187.4"/><polygon class="chair chair--lead f-r" points="128.5,208.3 115.1,216.0 115.1,195.8 128.5,188.1"/><polygon class="chair chair--lead f-t" points="113.9,179.7 128.5,188.1 115.1,195.8 100.6,187.4"/></g>
+<g class="pc pc--pop" style="--a:0.4;--d:0.1"><polygon class="pot f-l" points="310.3,201.3 321.2,207.6 321.2,195.0 310.3,188.7"/><polygon class="pot f-r" points="332.2,201.3 321.2,207.6 321.2,195.0 332.2,188.7"/><polygon class="pot f-t" points="321.2,182.4 332.2,188.7 321.2,195.0 310.3,188.7"/><circle class="leaf" cx="322.5" cy="177.9" r="13"/><circle class="leaf leaf--2" cx="330.5" cy="169.9" r="9"/></g>
+<g class="pc pc--pop" style="--a:0.62;--d:0.08"><g class="tag"><line x1="122.4" y1="176.8" x2="112.4" y2="106.8"/><circle cx="122.4" cy="176.8" r="3"/><rect x="20.6" y="84.8" width="183.6" height="22" rx="11"/><text x="112.4" y="99.8">Leadership · South-West</text></g></g>
+            </svg>
+            <div class="fcard" style="--a:.66">
+              <strong>What it strengthens</strong>
+              <ul class="fcard__bars">
+                <li style="--a:.68;--w:.86">Productivity<i></i></li>
+                <li style="--a:.76;--w:.78">Leadership clarity<i></i></li>
+                <li style="--a:.84;--w:.92">Team harmony<i></i></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- ============ 03 Shop ============ -->
+        <article class="chapter" data-ch="2">
+          <div class="chapter__copy">
+            <span class="chapter__kicker">03 &mdash; Shop / Retail Vastu</span>
+            <h3 class="chapter__title">Open the shutters to Shubh Labh.</h3>
+            <p class="chapter__body">Increase footfall, conversions and cash flow in your commercial space.</p>
+            <a class="btn btn--primary" href="#contact">Book Retail Vastu</a>
+          </div>
+          <div class="chapter__scene" aria-hidden="true">
+            <svg class="scene scene--shop" viewBox="40 72 320 262">
+              <defs>
+                <clipPath id="shop-opening"><rect x="92" y="176" width="216" height="116"/></clipPath>
+                <radialGradient id="shop-glow" cx=".5" cy=".3" r=".8">
+                  <stop offset="0" stop-color="#FFE3A3"/>
+                  <stop offset="1" stop-color="#F2C46B"/>
+                </radialGradient>
+              </defs>
+
+              <!-- ground and facade -->
+              <rect class="shop-ground" x="0" y="292" width="400" height="38"/>
+              <g class="pc pc--fade" style="--a:0;--d:.1">
+                <rect class="shop-wall" x="62" y="86" width="276" height="206" rx="4"/>
+                <rect class="shop-cornice" x="54" y="80" width="292" height="12" rx="3"/>
+                <rect class="shop-board" x="92" y="100" width="216" height="40" rx="6"/>
+                <text class="shop-board__text" x="200" y="127">॥ शुभ लाभ ॥</text>
+              </g>
+
+              <!-- interior: warm light, shelves, counter -->
+              <g clip-path="url(#shop-opening)">
+                <rect x="92" y="176" width="216" height="116" fill="url(#shop-glow)"/>
+                <g class="shelf">
+                  <rect x="100" y="198" width="70" height="4"/><rect x="100" y="232" width="70" height="4"/>
+                  <rect x="104" y="184" width="12" height="14" class="goods g1"/><rect x="120" y="188" width="10" height="10" class="goods g2"/>
+                  <rect x="134" y="182" width="14" height="16" class="goods g3"/><rect x="152" y="186" width="12" height="12" class="goods g1"/>
+                  <rect x="104" y="218" width="16" height="14" class="goods g2"/><rect x="124" y="220" width="12" height="12" class="goods g3"/>
+                  <rect x="140" y="216" width="12" height="16" class="goods g1"/><rect x="156" y="222" width="10" height="10" class="goods g2"/>
+                </g>
+                <rect class="doorway" x="178" y="190" width="46" height="102" rx="2"/>
+                <rect class="counter" x="238" y="244" width="62" height="48" rx="3"/>
+                <g class="coins">
+                  <ellipse class="pc pc--pop" style="--a:.8;--d:.06" cx="270" cy="240" rx="11" ry="4"/>
+                  <ellipse class="pc pc--pop" style="--a:.85;--d:.06" cx="270" cy="235" rx="11" ry="4"/>
+                  <ellipse class="pc pc--pop" style="--a:.9;--d:.06" cx="270" cy="230" rx="11" ry="4"/>
+                </g>
+              </g>
+
+              <!-- shutter rolls up, clipped to the opening -->
+              <g clip-path="url(#shop-opening)">
+                <g class="shutter" style="--a:.08;--d:.26">
+                  <rect x="92" y="176" width="216" height="118"/>
+                  <path d="M92 188H308M92 200H308M92 212H308M92 224H308M92 236H308M92 248H308M92 260H308M92 272H308M92 284H308"/>
+                </g>
+              </g>
+              <rect class="shop-frame" x="92" y="176" width="216" height="116"/>
+
+              <!-- awning unrolls from the top -->
+              <g class="awning" style="--a:.3;--d:.14">
+                <path d="M84 146H316L324 172H76Z"/>
+                <path class="awning__stripe" d="M104 146H128L124 172H96ZM152 146H176L176 172H148ZM200 146H224L228 172H200ZM248 146H272L280 172H252ZM296 146H316L324 172H304Z"/>
+                <path class="awning__edge" d="M76 172q8 10 16 0t16 0 16 0 16 0 16 0 16 0 16 0 16 0 16 0 16 0 16 0 16 0 16 0 16 0 16 0 16 0"/>
+              </g>
+
+              <!-- toran of mango leaves and marigolds over the door -->
+              <g class="pc pc--drop" style="--a:.42;--d:.1">
+                <path class="toran__string" d="M176 180Q201 188 226 180"/>
+                <path class="toran__leaf" d="M180 181l3 11 3-10zM188 184l3 11 3-10zM196 186l3 11 3-10zM204 186l3 11 3-10zM212 184l3 11 3-10zM220 181l3 11 3-10z"/>
+                <circle class="toran__flower" cx="184" cy="183" r="2.6"/><circle class="toran__flower" cx="200" cy="187" r="2.6"/><circle class="toran__flower" cx="216" cy="183" r="2.6"/>
+              </g>
+
+              <!-- customers walk in -->
+              <g class="walker" style="--a:.5;--d:.3;--c:var(--c-maroon)"><circle cx="0" cy="248" r="7"/><rect x="-7" y="257" width="14" height="30" rx="7"/></g>
+              <g class="walker" style="--a:.58;--d:.3;--c:var(--c-sage)"><circle cx="0" cy="250" r="6.5"/><rect x="-6.5" y="258" width="13" height="29" rx="6.5"/></g>
+              <g class="walker" style="--a:.66;--d:.3;--c:var(--c-gold)"><circle cx="0" cy="252" r="6"/><rect x="-6" y="260" width="12" height="27" rx="6"/></g>
+            </svg>
+            <div class="fcard" style="--a:.62">
+              <strong>Where it shows</strong>
+              <ul class="fcard__trend">
+                <li style="--a:.64">Footfall</li>
+                <li style="--a:.74">Conversions</li>
+                <li style="--a:.84">Cash flow</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- ============ 04 Remedies ============ -->
+        <article class="chapter chapter--night" data-ch="3">
+          <div class="chapter__copy">
+            <span class="chapter__kicker">04 &mdash; Vastu Remedies</span>
+            <h3 class="chapter__title">Remedies, not renovation.</h3>
+            <p class="chapter__body">Receive a personalised remedy kit: yantras, crystals, colour and placement guide.</p>
+            <a class="btn btn--gold" href="#contact">Get your remedy kit</a>
+          </div>
+          <div class="chapter__scene" aria-hidden="true">
+            <svg class="scene scene--kit" viewBox="50 34 320 284">
+              <defs>
+                <radialGradient id="kit-glow" cx=".5" cy=".5" r=".5">
+                  <stop offset="0" stop-color="#FFD978" stop-opacity=".55"/>
+                  <stop offset="1" stop-color="#FFD978" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+
+              <ellipse class="pc pc--fade" style="--a:.3;--d:.2" cx="205" cy="170" rx="170" ry="130" fill="url(#kit-glow)"/>
+
+              <!-- box: inside back, then items, then the front on top so items rise out of it -->
+              <polygon class="kit-inside" points="110,222 290,222 310,197 130,197"/>
+
+              <!-- lid flips about its back edge: the closed lid folds flat, then the
+                   open lid rises upright behind the items -->
+              <g class="lid" style="--a:.04;--d:.18">
+                <polygon class="lid__closed" points="106,224 294,224 314,195 126,195"/>
+                <polygon class="lid__open" points="126,195 314,195 322,112 134,112"/>
+                <path class="lid__trim" d="M140 186H306L312 122H146Z"/>
+              </g>
+
+              <!-- yantra: bhupura square, circle, shatkona, bindu -->
+              <g class="rise" style="--a:.22;--d:.2;--y:150px">
+                <rect class="yantra-card" x="160" y="52" width="92" height="92" rx="6"/>
+                <g class="yantra" style="--a:.34;--d:.22">
+                  <path pathLength="1" d="M170 62H242V134H170ZM196 62V56H216V62M196 134V140H216V134M170 88H164V108H170M242 88H248V108H242"/>
+                  <circle pathLength="1" cx="206" cy="98" r="28"/>
+                  <path pathLength="1" d="M206 74L227 110H185ZM206 122L185 86H227Z"/>
+                </g>
+                <circle class="bindu pc pc--pop" style="--a:.54;--d:.06" cx="206" cy="98" r="3"/>
+              </g>
+
+              <!-- crystal -->
+              <g class="rise" style="--a:.3;--d:.2;--y:130px">
+                <g class="bob">
+                  <polygon class="crystal" points="128,112 142,92 156,112 150,150 134,150"/>
+                  <polygon class="crystal crystal--face" points="142,92 150,112 150,150 142,150"/>
+                </g>
+              </g>
+
+              <!-- colour swatches fan out -->
+              <g class="rise" style="--a:.38;--d:.18;--y:110px">
+                <g class="fan" style="--a:.5;--d:.16">
+                  <rect style="--r:-36deg;fill:#3F7FA0" x="266" y="96" width="22" height="84" rx="4"/>
+                  <rect style="--r:-18deg;fill:#6B7F4E" x="266" y="96" width="22" height="84" rx="4"/>
+                  <rect style="--r:0deg;fill:#E0B84A" x="266" y="96" width="22" height="84" rx="4"/>
+                  <rect style="--r:18deg;fill:#C8102E" x="266" y="96" width="22" height="84" rx="4"/>
+                </g>
+              </g>
+
+              <!-- front of the box -->
+              <polygon class="kit-side" points="290,222 310,197 310,272 290,298"/>
+              <rect class="kit-front" x="110" y="222" width="180" height="76" rx="3"/>
+              <path class="kit-trim" d="M118 230H282V290H118Z"/>
+              <circle class="kit-knot" cx="200" cy="260" r="7"/>
+
+              <!-- diya lit in front of the box -->
+              <g class="pc pc--pop" style="--a:.7;--d:.1">
+                <path class="diya" d="M58 306q22 14 44 0q-4 -12 -22 -12t-22 12z"/>
+                <path class="flame" d="M80 280q-7 9 0 14q7 -5 0 -14z"/>
+                <circle class="flame-glow" cx="80" cy="289" r="16"/>
+              </g>
+
+              <!-- sparkles -->
+              <path class="spark pc pc--pop" style="--a:.6;--d:.06" d="M96 70l3 9 9 3-9 3-3 9-3-9-9-3 9-3z"/>
+              <path class="spark pc pc--pop" style="--a:.66;--d:.06" d="M318 58l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/>
+              <path class="spark pc pc--pop" style="--a:.74;--d:.06" d="M332 196l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/>
+            </svg>
+            <div class="fcard" style="--a:.6">
+              <strong>Your remedy kit</strong>
+              <ul>
+                <li style="--a:.62">Yantras</li>
+                <li style="--a:.7">Crystals</li>
+                <li style="--a:.78">Colour</li>
+                <li style="--a:.86">Placement guide</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- ===================== Online consultation: pinned phone flip + compass ===================== -->
 <section class="orbit" id="online" aria-labelledby="orbit-title" data-pin="orbit">
   <div class="orbit__stage">
@@ -432,61 +713,9 @@
 </section>
 
 
-<section id="services" class="section">
+<section class="section consult-fit">
   <div class="container">
-    <div class="section-head section-head--center" data-reveal="rise">
-      <span class="eyebrow">Services</span>
-      <h2 class="section-title">Consultations for every space you inhabit.</h2>
-    </div>
-
-    <div class="grid grid--3">
-      <div class="card" data-reveal="fade-up" data-reveal-delay="0">
-        <div class="card__media">
-          <img src="assets/img/service-home.jpg" alt="Living room of a residence prepared for a Vastu audit" loading="lazy">
-        </div>
-        <h3 class="card__title">Home Vastu</h3>
-        <p class="card__body">Full on-site audit of your residence with layout corrections and zone activation.</p>
-        <a class="btn btn--ghost" href="#contact" style="margin-top: var(--s-3);">Book Now</a>
-      </div>
-
-      <div class="card" data-reveal="fade-up" data-reveal-delay="80">
-        <div class="card__media">
-          <img src="assets/img/gallery-6.jpg" alt="Modern office workspace considered for a Vastu consultation" loading="lazy">
-        </div>
-        <h3 class="card__title">Office Vastu</h3>
-        <p class="card__body">Boost productivity, leadership clarity and team harmony at your workplace.</p>
-        <a class="btn btn--ghost" href="#contact" style="margin-top: var(--s-3);">Book Now</a>
-      </div>
-
-      <div class="card" data-reveal="fade-up" data-reveal-delay="160">
-        <div class="card__media">
-          <img src="assets/img/gallery-3.jpeg" alt="Retail shop interior evaluated for Vastu placement" loading="lazy">
-        </div>
-        <h3 class="card__title">Shop / Retail Vastu</h3>
-        <p class="card__body">Increase footfall, conversions and cash flow in your commercial space.</p>
-        <a class="btn btn--ghost" href="#contact" style="margin-top: var(--s-3);">Book Now</a>
-      </div>
-
-      <div class="card" data-reveal="fade-up" data-reveal-delay="0">
-        <div class="card__media">
-          <img src="assets/img/gallery-7.jpg" alt="Client attending a video call for an online Vastu consultation" loading="lazy">
-        </div>
-        <h3 class="card__title">Online Consultation</h3>
-        <p class="card__body">Detailed video session with map analysis. Ideal for NRIs and remote clients.</p>
-        <a class="btn btn--ghost" href="#contact" style="margin-top: var(--s-3);">Book Now</a>
-      </div>
-
-      <div class="card" data-reveal="fade-up" data-reveal-delay="80">
-        <div class="card__media">
-          <img src="assets/img/service-remedies.jpg" alt="Vastu remedy items including yantras and crystals" loading="lazy">
-        </div>
-        <h3 class="card__title">Vastu Remedies</h3>
-        <p class="card__body">Receive a personalised remedy kit: yantras, crystals, colour and placement guide.</p>
-        <a class="btn btn--ghost" href="#contact" style="margin-top: var(--s-3);">Book Now</a>
-      </div>
-    </div>
-
-    <div class="bubble" data-reveal="fade-up" style="margin-top: var(--s-6); display:flex; flex-wrap:wrap; gap:var(--s-3); align-items:center; justify-content:space-between; position: relative;">
+    <div class="bubble" data-reveal="fade-up" style=" display:flex; flex-wrap:wrap; gap:var(--s-3); align-items:center; justify-content:space-between; position: relative;">
       <div>
         <h3 class="card__title">Not sure which one fits?</h3>
         <p class="card__body">Get in touch with our team for a personalised recommendation.</p>
@@ -738,6 +967,6 @@
 
 </main>
 
-<script src="assets/js/motion.js?v=213cd36a49" defer></script>
+<script src="assets/js/motion.js?v=177761c52d" defer></script>
 </body>
 </html>

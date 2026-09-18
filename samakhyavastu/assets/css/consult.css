@@ -1,0 +1,298 @@
+/* ==========================================================================
+   MahaVastu Magic — Consultation showcase
+   One pinned stage, four chapters (Home, Office, Shop, Remedies). motion.js
+   writes --q (0 -> 1) on each chapter as the reader scrolls through it; every
+   animated part reads its own window of that progress:
+
+     --a  start (0-1)   --d  duration
+     --t  linear progress inside the window      (derived here)
+     --e  eased progress, smoothstep             (derived here)
+     --s  eased progress with a spring overshoot (derived here)
+
+   Defaults are the END state (--q: 1), and the section only pins when JS adds
+   .is-pinned — so with no JS or with reduced motion it renders as four plain,
+   finished chapters stacked down the page.
+   ========================================================================== */
+
+/* ---------- the shared timeline maths ---------- */
+.consult .pc, .consult .grid, .consult .shutter, .consult .awning, .consult .walker,
+.consult .lid, .consult .rise, .consult .yantra, .consult .fan, .consult .fcard,
+.consult .fcard li, .consult .win, .consult .door {
+  --t: clamp(0, calc((var(--q, 1) - var(--a, 0)) / var(--d, .1)), 1);
+  --e: calc(var(--t) * var(--t) * (3 - 2 * var(--t)));
+  --s: calc(var(--t) + sin(var(--t) * 180deg) * .22);
+}
+
+.pc { opacity: var(--t); }
+.pc--drop { transform: translate3d(0, calc((1 - var(--s)) * -54px), 0); }
+.pc--pop  {
+  transform-box: fill-box; transform-origin: 50% 100%;
+  transform: scale(calc(.5 + var(--s) * .5));
+}
+
+/* ---------- layout: unpinned fallback ---------- */
+.consult { position: relative; }
+.consult__stage { background: var(--c-ivory); }
+.consult__tabs { display: none; }
+.consult__chapters { display: grid; gap: var(--s-12); padding-bottom: var(--section-y); }
+.chapter {
+  display: grid; grid-template-columns: .85fr 1.15fr; align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+.chapter__kicker {
+  display: block; font-size: var(--fs-eyebrow); font-weight: 800;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--c-gold); margin-bottom: var(--s-2);
+}
+.chapter__title {
+  font-size: var(--fs-h1); line-height: var(--lh-tight); letter-spacing: -0.02em;
+  margin-bottom: var(--s-3); text-wrap: balance;
+}
+.chapter__body { font-size: var(--fs-lede); color: var(--c-ink-soft); max-width: 40ch; margin-bottom: var(--s-4); }
+
+.chapter__scene { position: relative; }
+.scene { width: 100%; height: auto; display: block; overflow: visible; }
+
+/* ---------- layout: pinned ---------- */
+.consult.is-pinned { height: 480svh; }
+.consult.is-pinned .consult__stage {
+  position: sticky; top: 0; height: 100svh; overflow: hidden;
+  transition: background-color 700ms var(--e-soft);
+}
+.consult.is-pinned .consult__inner {
+  height: 100%; display: grid; grid-template-rows: auto 1fr;
+  padding-top: calc(var(--s-10) + var(--s-2)); padding-bottom: var(--s-4);
+}
+.consult.is-pinned .consult__tabs { display: flex; }
+.consult.is-pinned .consult__chapters { position: relative; display: block; padding: 0; min-height: 0; }
+.consult.is-pinned .chapter {
+  position: absolute; inset: 0;
+  pointer-events: none; visibility: hidden;
+}
+.consult.is-pinned .chapter.is-current { pointer-events: auto; visibility: visible; }
+
+/* chapter change: time-based, springy — the scene inside is scroll-scrubbed */
+.consult.is-pinned .chapter__copy,
+.consult.is-pinned .chapter__scene {
+  opacity: 0;
+  transition: opacity 500ms var(--e-out), transform 700ms var(--e-apple), filter 500ms var(--e-out),
+              visibility 0s linear 700ms;
+}
+.consult.is-pinned .chapter__copy  { transform: translate3d(0, 48px, 0); filter: blur(8px); }
+.consult.is-pinned .chapter__scene { transform: translate3d(0, 60px, 0) scale(.9); filter: blur(10px); }
+.consult.is-pinned .chapter.is-past .chapter__copy  { transform: translate3d(0, -48px, 0); }
+.consult.is-pinned .chapter.is-past .chapter__scene { transform: translate3d(0, -60px, 0) scale(1.06); }
+.consult.is-pinned .chapter.is-current .chapter__copy,
+.consult.is-pinned .chapter.is-current .chapter__scene {
+  opacity: 1; transform: none; filter: none;
+  transition: opacity 600ms var(--e-out) 120ms, transform 900ms var(--e-apple) 120ms, filter 600ms var(--e-out) 120ms;
+}
+.consult.is-pinned .chapter.is-current .chapter__scene { transition-delay: 200ms; }
+.consult.is-pinned .chapter__scene { height: 100%; display: grid; align-items: center; }
+.consult.is-pinned .scene { max-height: calc(100svh - 230px); }
+
+/* ---------- tabs ---------- */
+.consult__tabs {
+  gap: var(--s-1); flex-wrap: wrap; margin-bottom: var(--s-3);
+  justify-content: center;
+}
+.consult__tab {
+  position: relative; display: inline-flex; align-items: center; gap: .5rem;
+  padding: .55rem 1rem .7rem; border: 0; background: none; border-radius: var(--r-pill);
+  font-weight: 700; font-size: var(--fs-small); color: var(--c-ink-faint);
+  transition: color var(--d-base) var(--e-out), background-color var(--d-base) var(--e-out);
+}
+.consult__tab span { font-family: var(--f-display); color: var(--c-gold); }
+.consult__tab::after {
+  content: ""; position: absolute; left: 1rem; right: 1rem; bottom: .3rem; height: 2px;
+  background: var(--c-line-soft); border-radius: 2px;
+}
+.consult__tab::before {
+  content: ""; position: absolute; left: 1rem; bottom: .3rem; height: 2px; z-index: 1;
+  width: calc((100% - 2rem) * var(--tq, 0)); background: var(--c-gold); border-radius: 2px;
+}
+.consult__tab.is-done { --tq: 1; color: var(--c-ink-soft); }
+.consult__tab.is-current { color: var(--c-maroon); background: rgba(201, 162, 39, .12); }
+.consult__tab:hover { color: var(--c-maroon); }
+.consult__tab--next::after, .consult__tab--next::before { display: none; }
+
+/* ---------- night theme (Remedies) ---------- */
+.consult.is-night .consult__stage { background: #1A0A07; }
+.consult.is-night .consult__tab { color: rgba(253, 248, 240, .5); }
+.consult.is-night .consult__tab.is-current { color: var(--c-gold-bright); background: rgba(224, 184, 74, .12); }
+.consult.is-night .consult__tab::after { background: rgba(253, 248, 240, .14); }
+.chapter--night .chapter__title { color: var(--c-ivory); }
+.chapter--night .chapter__body { color: rgba(253, 248, 240, .72); }
+.consult:not(.is-pinned) .chapter--night {
+  background: #1A0A07; border-radius: var(--r-xl); padding: clamp(1.5rem, 4vw, 3.5rem);
+}
+
+/* ---------- floating card ---------- */
+.fcard {
+  position: absolute; right: 0; bottom: 6%;
+  min-width: 210px; padding: 1rem 1.2rem;
+  background: rgba(255, 252, 246, .88);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  border: 1px solid var(--c-line); border-radius: var(--r-md); box-shadow: var(--sh-md);
+  opacity: var(--t);
+  transform: translate3d(0, calc((1 - var(--s)) * 30px), 0) scale(calc(.94 + var(--e) * .06));
+}
+.fcard strong { display: block; font-family: var(--f-display); font-size: 1.05rem; color: var(--c-ink-strong); margin-bottom: .5rem; }
+.fcard ul { display: grid; gap: .35rem; }
+.fcard li {
+  --d: .06;
+  display: flex; align-items: center; gap: .55rem; font-size: var(--fs-small);
+  color: var(--c-ink); opacity: calc(.3 + var(--t) * .7);
+}
+.fcard li::before {
+  content: "✓"; flex: none; width: 18px; height: 18px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 11px; font-weight: 900;
+  color: #fff; background: var(--c-sage);
+  transform: scale(var(--s)); opacity: var(--t);
+}
+.fcard__bars li { display: grid; grid-template-columns: 1fr; gap: .25rem; }
+.fcard__bars li::before { display: none; }
+.fcard__bars li i {
+  display: block; height: 6px; border-radius: 6px; background: var(--c-line-soft); position: relative; overflow: hidden;
+}
+.fcard__bars li i::after {
+  content: ""; position: absolute; inset: 0 auto 0 0; border-radius: inherit;
+  width: calc(var(--e) * var(--w) * 100%);
+  background: linear-gradient(90deg, var(--c-gold), var(--c-maroon));
+}
+.fcard__trend li::before { content: "↗"; background: var(--c-gold); color: var(--c-ink-strong); }
+.chapter--night .fcard { background: rgba(40, 16, 12, .8); border-color: rgba(224, 184, 74, .45); }
+.chapter--night .fcard strong, .chapter--night .fcard li { color: var(--c-ivory); }
+
+/* ---------- shared scene parts ---------- */
+.f-t { stroke: rgba(46, 15, 10, .12); stroke-width: .6; stroke-linejoin: round; }
+.f-l, .f-r { stroke: rgba(46, 15, 10, .12); stroke-width: .6; stroke-linejoin: round; }
+.plate.f-t { fill: #F3E3BF; } .plate.f-l { fill: #DDC28A; } .plate.f-r { fill: #CDAE6E; }
+.plate--cool.f-t { fill: #EEE6D6; } .plate--cool.f-l { fill: #D7CBB2; } .plate--cool.f-r { fill: #C6B89C; }
+
+.grid line {
+  stroke: var(--c-gold); stroke-width: 1.2; stroke-linecap: round;
+  stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--e));
+}
+.north line { stroke: var(--c-maroon); stroke-width: 1.5; }
+.north circle { fill: var(--c-lotus); }
+.north text { font: 800 12px var(--f-body); fill: var(--c-maroon); }
+
+.tag line { stroke: var(--c-gold); stroke-width: 1; }
+.tag circle { fill: var(--c-gold); }
+.tag rect { fill: var(--c-surface); stroke: var(--c-gold); stroke-width: 1; }
+.tag text { font: 700 11px var(--f-body); fill: var(--c-maroon); text-anchor: middle; letter-spacing: .02em; }
+
+/* ---------- Home ---------- */
+.brahma { fill: rgba(224, 184, 74, .38); animation: breathe 3.2s ease-in-out infinite; }
+@keyframes breathe { 50% { fill-opacity: .45; } }
+.pond { fill: #6FA8C4; stroke: #3F7FA0; stroke-width: 1; }
+.pond-hi { fill: rgba(255, 255, 255, .55); animation: shimmer 2.4s ease-in-out infinite; }
+@keyframes shimmer { 50% { opacity: .2; } }
+.spill { fill: rgba(255, 214, 120, .55); }
+.wall.f-l { fill: #E6D1A6; } .wall.f-r { fill: #FBF3E2; }
+.roof.r-l { fill: #6E1C14; } .roof.r-r { fill: #8E2A1E; }
+.roof.r-b { fill: #A13A2A; } .roof.r-b2 { fill: #B24A36; }
+.roof { stroke: rgba(46, 15, 10, .25); stroke-width: .6; stroke-linejoin: round; }
+.win { --a: .6; --d: .12; fill: color-mix(in srgb, #FFD978 calc(var(--e) * 100%), #6B5440); }
+.door-frame { fill: #FFD978; }
+.door { --a: .7; --d: .1; fill: #5A2A1A; opacity: calc(1 - var(--e)); }
+.beam { fill: url(#beam-g); }
+.beam-halo { fill: rgba(255, 220, 130, .6); animation: breathe 2.4s ease-in-out infinite; }
+
+/* ---------- Office ---------- */
+.desk.f-t { fill: #D9B98A; } .desk.f-l { fill: #B8915C; } .desk.f-r { fill: #A07A48; }
+.desk--lead.f-t { fill: #C79A5B; } .desk--lead.f-l { fill: #9E7038; } .desk--lead.f-r { fill: #8A5F2C; }
+.screen.f-t, .screen.f-r { fill: #3A2E3C; } .screen.f-l { fill: #2A2233; }
+.chair.f-t { fill: #9B3527; } .chair.f-l { fill: #7B2118; } .chair.f-r { fill: #641912; }
+.pot.f-t { fill: #C9A27A; } .pot.f-l { fill: #A67C52; } .pot.f-r { fill: #8C6440; }
+.leaf { fill: #6B7F4E; } .leaf--2 { fill: #87995F; }
+.ring { fill: rgba(224, 184, 74, .16); stroke: var(--c-gold); stroke-width: 1.4; }
+.ring--2 { fill: none; stroke-dasharray: 3 5; animation: spin 18s linear infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------- Shop ---------- */
+.shop-ground { fill: #E8D5AC; }
+.shop-wall { fill: #FBF4E4; stroke: var(--c-line); }
+.shop-cornice, .shop-board { fill: var(--c-maroon); }
+.shop-board__text { font: 700 20px var(--f-display), "Noto Serif Devanagari", serif; fill: var(--c-gold-bright); text-anchor: middle; letter-spacing: .06em; }
+.shelf rect { fill: #9E7038; }
+.goods.g1 { fill: var(--c-lotus); } .goods.g2 { fill: #3F7FA0; } .goods.g3 { fill: var(--c-sage); }
+.doorway { fill: #E3A94F; }
+.counter { fill: var(--c-maroon); }
+.coins ellipse { fill: var(--c-gold-bright); stroke: #A8841C; stroke-width: 1; }
+.shop-frame { fill: none; stroke: var(--c-maroon); stroke-width: 4; }
+.shutter { transform: translate3d(0, calc(var(--e) * -120px), 0); }
+.shutter rect { fill: #B7A487; }
+.shutter path { stroke: #968365; stroke-width: 2; }
+.awning { transform-box: fill-box; transform-origin: 50% 0; transform: scaleY(var(--s)); opacity: min(1, calc(var(--t) * 4)); }
+.awning > path:first-child { fill: var(--c-ivory); stroke: var(--c-maroon); stroke-width: 1.5; }
+.awning__stripe { fill: var(--c-maroon); }
+.awning__edge { fill: none; stroke: var(--c-maroon); stroke-width: 3; }
+.toran__string { fill: none; stroke: #7A5A2A; stroke-width: 1.2; }
+.toran__leaf { fill: #4F7A3A; }
+.toran__flower { fill: #F29A1F; }
+.walker {
+  fill: var(--c);
+  transform: translate3d(calc(-40px + var(--e) * 242px), calc(sin(var(--t) * 2880deg) * 2px), 0);
+  opacity: calc(min(1, var(--t) * 8) * (1 - clamp(0, (var(--t) - .82) * 6, 1)));
+}
+
+/* ---------- Remedies ---------- */
+.kit-inside { fill: #2A0E0A; }
+.kit-front { fill: #7B2118; }
+.kit-side { fill: #551610; }
+.kit-trim { fill: none; stroke: var(--c-gold); stroke-width: 1.4; }
+.kit-knot { fill: var(--c-gold); }
+/* two-stage flip about the back edge (y=195): first half folds the closed lid
+   flat onto its hinge, second half raises the open lid from it */
+.lid polygon { stroke: var(--c-gold); stroke-width: 1.4; transform-box: fill-box; }
+.lid__closed { fill: #8E2A1E; transform-origin: 50% 0; transform: scaleY(max(0, calc(1 - var(--e) * 2))); }
+.lid__open, .lid__trim { transform-box: fill-box; transform-origin: 50% 100%; transform: scaleY(max(0, calc(var(--e) * 2 - 1))); }
+.lid__open { fill: #5E1810; }
+.lid__trim { fill: none; stroke: rgba(224, 184, 74, .55); stroke-width: 1; }
+/* items stay hidden until the lid is open, then rise out of the box */
+.rise { transform: translate3d(0, calc((1 - var(--e)) * var(--y, 100px)), 0); opacity: min(1, calc(var(--t) * 5)); }
+.yantra-card { fill: #FFF6E0; stroke: var(--c-gold); stroke-width: 1.2; }
+.yantra path, .yantra circle {
+  fill: none; stroke: var(--c-maroon); stroke-width: 1.4; stroke-linejoin: round;
+  stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--e));
+}
+.bindu { fill: var(--c-lotus); }
+.crystal { fill: #B9A6E0; stroke: #7C66B8; stroke-width: 1; }
+.crystal--face { fill: #9C86CF; }
+.bob { animation: bob-soft 3.4s ease-in-out infinite; }
+@keyframes bob-soft { 50% { transform: translateY(-6px); } }
+.fan rect {
+  transform-box: fill-box; transform-origin: 50% 100%;
+  transform: rotate(calc(var(--r) * var(--s)));
+  stroke: rgba(0, 0, 0, .2); stroke-width: .6;
+}
+.diya { fill: #B8762E; stroke: #7A4A18; stroke-width: 1; }
+.flame { fill: #FFC94A; transform-box: fill-box; transform-origin: 50% 100%; animation: flicker 1.1s ease-in-out infinite alternate; }
+.flame-glow { fill: rgba(255, 201, 74, .28); animation: breathe 1.4s ease-in-out infinite; }
+@keyframes flicker { 0% { transform: scale(1, 1) rotate(-3deg); } 100% { transform: scale(.9, 1.12) rotate(3deg); } }
+.spark { fill: #FFE7A6; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .chapter { grid-template-columns: 1fr; gap: var(--s-3); }
+  .chapter__scene { order: -1; }
+  .chapter__title { font-size: clamp(1.6rem, 7vw, 2.2rem); margin-bottom: var(--s-1); }
+  .chapter__body { font-size: 1rem; margin-bottom: var(--s-2); }
+
+  .consult.is-pinned { height: 440svh; }
+  .consult.is-pinned .consult__inner { padding-top: calc(var(--s-10) + var(--s-1)); padding-bottom: var(--s-2); }
+  .consult.is-pinned .consult__tabs {
+    flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start;
+    margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); margin-bottom: var(--s-1);
+    scrollbar-width: none;
+  }
+  .consult.is-pinned .consult__tab { flex: none; padding: .45rem .8rem .6rem; }
+  .consult.is-pinned .chapter { display: flex; flex-direction: column; justify-content: flex-start; gap: var(--s-2); }
+  .consult.is-pinned .chapter__scene { height: auto; flex: none; }
+  .consult.is-pinned .scene { max-height: 46svh; }
+  .consult.is-pinned .chapter__copy { text-align: center; }
+  .consult.is-pinned .chapter__body { margin-inline: auto; }
+  .consult.is-pinned .chapter__kicker { margin-bottom: var(--s-1); }
+  .fcard { display: none; }
+}

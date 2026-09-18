@@ -119,6 +119,27 @@ Markup opts in through data attributes only:
   and a gold highlight follows it. Symptom cards and process steps flip in on
   a 3D hinge (`data-reveal="flip"`).
 
+### Consultation showcase (`partials/04-services.html`, `assets/css/consult.css`)
+
+The Services section is one pinned stage with a scene per consultation,
+each built from SVG pieces that assemble as you scroll, with a tab rail on
+top and the phone section (Online) following as chapter five:
+
+- **Home** — isometric house drops in over a 3x3 Vastu grid: water body in
+  the north-east, east-facing entrance, lamps on, a beam rising from the
+  Brahmasthan.
+- **Office** — desks pop onto the floor plan; the leader's desk sits in the
+  south-west inside a gold ring.
+- **Shop** — shutter rolls up under a "॥ शुभ लाभ ॥" board, awning unrolls,
+  toran goes up, customers walk in, coins stack at the counter.
+- **Remedies** — the stage turns to night; the kit's lid flips open and a
+  yantra, crystal and colour swatches rise out, a diya is lit.
+
+Every part declares its own window of the chapter's progress (`--a` start,
+`--d` duration); `consult.css` derives linear, eased and spring curves from
+those. The section only pins once JS adds `.is-pinned`, so without JS or with
+reduced motion it renders as four finished chapters stacked down the page.
+
 **Content to confirm:** the element-to-direction mapping in the compass
 section follows classical Vastu (Water NE, Fire SE, Earth SW, Air NW, Space
 centre). MahaVastu works with 16 zones; adjust the copy if the practice

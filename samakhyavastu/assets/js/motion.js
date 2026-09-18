@@ -29,6 +29,7 @@
      data-scrub="zoom"                                  writes --sp (0-1) as it rises
      data-pin="window"  sticky stage: opens, then a day passes (see celestial.css)
      data-pin="orbit"   sticky stage: phone flip, compass, five elements
+     data-pin="consult" sticky stage: one scene per consultation (consult.css)
      data-stars="90"                                    generate a twinkling starfield
      data-words                                         split into .w spans for --wp
    ========================================================================== */
@@ -45,6 +46,23 @@
 
   function lin(p, a, b) { return clamp((p - a) / (b - a), 0, 1); }
   function set(el, name, v) { el.style.setProperty(name, v.toFixed(4)); }
+  /* same, but skips the write when nothing changed — the consult stage has
+     many chapters and restyling the idle ones every frame is wasted work */
+  function setc(el, name, v) {
+    var s = v.toFixed(3);
+    var key = "_" + name;
+    if (el[key] === s) return;
+    el[key] = s;
+    el.style.setProperty(name, s);
+  }
+
+  /* Progress through a consult stage. It starts building while the section
+     is still rising into view (from half a viewport out), so the first scene
+     is already assembling when the stage locks. */
+  function consultProgress(pr, vh) {
+    var lead = vh * 0.5;
+    return clamp((lead - pr.top) / (pr.height - vh + lead), 0, 1);
+  }
 
   /* Deterministic starfield: same sky on every visit, no layout cost. */
   function makeStars(el) {
@@ -90,6 +108,35 @@
 
     /* Phone turns over, the compass draws itself and swings to north, then
        the five elements light zone by zone in step with the list. */
+    /* Four chapters. Each gets an equal share of the run; its scene builds
+       over the first ~78% of that share and holds for the rest, so every
+       finished scene is on screen for a beat before the next one arrives. */
+    consult: function (el, p, pr, vh) {
+      p = consultProgress(pr, vh);
+      var ch = el._ch || (el._ch = toArray(el.querySelectorAll(".chapter")));
+      var tabs = el._tabs || (el._tabs = toArray(el.querySelectorAll(".consult__tab[data-go]")));
+      var n = ch.length;
+      var pos = p * n;
+      var current = Math.min(n - 1, Math.floor(pos));
+
+      for (var i = 0; i < n; i++) setc(ch[i], "--q", clamp((pos - i) / 0.78, 0, 1));
+
+      if (el._current !== current) {
+        el._current = current;
+        ch.forEach(function (c, i) {
+          c.classList.toggle("is-current", i === current);
+          c.classList.toggle("is-past", i < current);
+        });
+        tabs.forEach(function (tb, i) {
+          tb.classList.toggle("is-current", i === current);
+          tb.classList.toggle("is-done", i < current);
+          if (i === current) tb.setAttribute("aria-current", "step"); else tb.removeAttribute("aria-current");
+        });
+        el.classList.toggle("is-night", ch[current].classList.contains("chapter--night"));
+      }
+      if (tabs[current]) setc(tabs[current], "--tq", clamp(pos - current, 0, 1));
+    },
+
     orbit: function (el, p) {
       set(el, "--f",  seg(p, 0, 0.26));
       set(el, "--a",  seg(p, 0.24, 0.42));
@@ -170,6 +217,7 @@
 
     toArray(document.querySelectorAll("[data-words]")).forEach(splitWords);
     toArray(document.querySelectorAll("[data-stars]")).forEach(makeStars);
+    if (!reduced) initConsult();
 
     /* Reduced motion: show final state, skip the loop entirely. */
     if (reduced) {
@@ -219,7 +267,7 @@
         var pp = run > 0 ? clamp(-pr.top / run, 0, 1) : 1;
         if (pr.bottom < -vh || pr.top > vh * 2) continue;   /* far off-screen */
         var line_ = timelines[pin.getAttribute("data-pin")];
-        if (line_) line_(pin, pp);
+        if (line_) line_(pin, pp, pr, vh);
       }
 
       /* ---- scrubbed elements: 0 as the top enters, 1 by 55% up ---- */
@@ -298,6 +346,28 @@
     initNav();
     initScrollSpy();
     initHashLanding();
+  }
+
+  /* ------------------------------------------------------------- consult ---
+     Pinning is opt-in: the markup renders as plain stacked chapters until
+     this runs, which is what no-JS and reduced-motion readers get. Tabs jump
+     to the point where that chapter's scene has finished building. */
+  function initConsult() {
+    toArray(document.querySelectorAll('[data-pin="consult"]')).forEach(function (el) {
+      el.classList.add("is-pinned");
+      var n = el.querySelectorAll(".chapter").length;
+      toArray(el.querySelectorAll(".consult__tab[data-go]")).forEach(function (tb) {
+        tb.addEventListener("click", function () {
+          var i = +tb.getAttribute("data-go");
+          var vh = window.innerHeight;
+          var lead = vh * 0.5;
+          var top = el.getBoundingClientRect().top + window.pageYOffset;
+          var p = (i + 0.8) / n;
+          var y = top + p * (el.offsetHeight - vh + lead) - lead;
+          window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+        });
+      });
+    });
   }
 
   /* ---------------------------------------------------------------- tilt ---
