@@ -144,6 +144,9 @@ reduced motion it renders as four finished chapters stacked down the page.
 section follows classical Vastu (Water NE, Fire SE, Earth SW, Air NW, Space
 centre). MahaVastu works with 16 zones; adjust the copy if the practice
 presents it differently.
+The same applies to the Vastu cues in the showcase scenes (north-east water,
+east entrance, south-west leadership seat) and to the four chapter
+headlines, which are new copy.
 
 - `body` uses `overflow-x: clip`, not `hidden` — `hidden` turns body into a
   scroll container and silently breaks `position: sticky`.
