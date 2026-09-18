@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MahaVastu Magic — Harmonious Spaces, Prosperous Living</title>
+<meta name="description" content="MahaVastu consultations that blend ancient Vastu Shastra with modern living. Non-structural remedies for homes, offices and retail spaces across Chandigarh, Mohali, Panchkula and worldwide." />
+<link rel="icon" href="assets/img/logo.jpeg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900&family=Nunito+Sans:opsz,wght@6..12,300..900&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="assets/css/tokens.css" />
+<link rel="stylesheet" href="assets/css/styles.css" />
+<link rel="stylesheet" href="assets/css/hero.css" />
+</head>
+<body>
+
+<!-- ===================== Navigation ===================== -->
+<div class="nav-wrap">
+  <nav class="nav" aria-label="Primary">
+    <a class="nav__brand" href="#top">
+      <img src="assets/img/logo.jpeg" alt="MahaVastu Magic" width="42" height="42" />
+      <span>MahaVastu&nbsp;Magic</span>
+    </a>
+
+    <ul class="nav__links">
+      <li><a href="#symptoms">Symptoms</a></li>
+      <li><a href="#benefits">Benefits</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#faq">FAQs</a></li>
+    </ul>
+
+    <a class="btn btn--primary nav__cta" href="#contact">Book Now</a>
+
+    <button class="nav__toggle" type="button" aria-label="Toggle menu" aria-controls="nav-links">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" />
+      </svg>
+    </button>
+  </nav>
+</div>
+
+<!-- ===================== Hero ===================== -->
+<header class="hero" id="top" data-hero>
+  <div class="hero__glyph" aria-hidden="true">वास्तु</div>
+
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <span class="hero__kicker" data-enter style="--enter-delay: 80ms;">Rooted in Samkhya Darshan</span>
+
+      <h1 class="hero__title" data-enter style="--enter-delay: 180ms;">
+        Harmonious Spaces,
+        <em>Prosperous Living</em>
+      </h1>
+
+      <p class="hero__lede" data-enter style="--enter-delay: 300ms;">
+        At Mahavastu, we believe your space shapes your destiny. Our consultations blend
+        ancient Vastu Shastra with modern living to unlock prosperity, peace and positive energy.
+      </p>
+
+      <div class="hero__actions" data-enter style="--enter-delay: 420ms;">
+        <a class="btn btn--primary" href="#contact">Book Your Session</a>
+        <a class="btn btn--ghost" href="#services">Explore Consultations</a>
+      </div>
+
+      <div class="hero__trust" data-enter style="--enter-delay: 540ms;">
+        <span><strong>500+</strong>&nbsp;spaces aligned</span>
+        <span aria-hidden="true">&middot;</span>
+        <span><strong>90%</strong>&nbsp;remedies need no renovation</span>
+      </div>
+    </div>
+
+    <figure class="hero__media" data-enter style="--enter-delay: 240ms;" data-parallax-scale="1.10">
+      <img src="assets/img/hero-villa.jpg"
+           alt="A sunlit home and garden designed in balance with the five elements"
+           width="2000" height="1314" fetchpriority="high" />
+      <img class="hero__seal float" src="assets/img/compass.png" alt="" aria-hidden="true" />
+    </figure>
+  </div>
+
+  <a class="scroll-cue" href="#symptoms" aria-label="Scroll to content">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+      <path d="M6 9l6 6 6-6" />
+    </svg>
+  </a>
+</header>
+
+<main>
+
+<!--PARTIAL:02-symptoms-benefits.html-->
+
+<!-- ===================== Arc band (the reference's elliptical photo break) ===================== -->
+<section class="arc-band" aria-labelledby="difference-title">
+  <div class="arc-band__inner">
+    <img src="assets/img/hero-villa.jpg" alt="" aria-hidden="true"
+         style="object-position: 50% 62%;" data-parallax="0.16" loading="lazy" />
+    <div class="arc-band__overlay">
+      <div class="container">
+        <span class="hero__kicker" data-reveal style="color: var(--c-gold-bright);">The MahaVastu Difference</span>
+        <h2 id="difference-title" data-reveal data-reveal-delay="80">We don&rsquo;t guess. We measure.</h2>
+        <p data-reveal data-reveal-delay="160">
+          From Astro-SWOT land analysis to micro-level utility mapping &mdash; a precise
+          six-level audit of how your space actually behaves. If your environment is draining
+          your liquidity, blocking opportunities or causing anxiety, it isn&rsquo;t a personal
+          failure. It is a spatial misalignment.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--PARTIAL:03-consultants-process.html-->
+
+<!--PARTIAL:04-services-testimonials.html-->
+
+<!--PARTIAL:05-gallery-faq-cta-footer.html-->
+
+</main>
+
+<script src="assets/js/motion.js" defer></script>
+</body>
+</html>

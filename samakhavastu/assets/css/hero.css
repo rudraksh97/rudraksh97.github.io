@@ -1,0 +1,135 @@
+/* ==========================================================================
+   MahaVastu Magic — Hero & masthead
+   Kept in its own file so the section builders could work against
+   styles.css concurrently without contending on one stylesheet.
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  align-items: center;
+  padding-block: clamp(7rem, 14vh, 11rem) clamp(5rem, 10vh, 8rem);
+  overflow: hidden;
+}
+
+/* Giant pale devanagari mark sitting behind everything — the reference uses an
+   oversized ghost wordmark the same way. Purely decorative. */
+.hero__glyph {
+  position: absolute;
+  top: 50%; left: 50%;
+  translate: -50% -50%;
+  font-family: var(--f-display);
+  font-size: clamp(18rem, 46vw, 44rem);
+  line-height: 0.8;
+  color: rgba(201, 162, 39, 0.07);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  z-index: 0;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+/* ---------- Media ---------- */
+.hero__media {
+  margin: 0;
+  position: relative;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--sh-lg);
+  aspect-ratio: 5/4;
+  will-change: transform;
+}
+.hero__media > img:not(.hero__seal) { width: 100%; height: 100%; object-fit: cover; }
+.hero__media::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(200deg, rgba(201,162,39,.10), rgba(123,33,24,.14));
+}
+
+/* Floating gold seal over the media corner */
+.hero__seal {
+  position: absolute;
+  right: 18px; bottom: 18px;
+  width: clamp(60px, 7.5vw, 92px);
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  border-radius: 50%;
+  background: rgba(255, 252, 246, 0.92);
+  border: 1.5px solid var(--c-line);
+  box-shadow: var(--sh-md);
+  padding: 9px;
+  z-index: 3;
+}
+
+/* ---------- Copy ---------- */
+.hero__copy { position: relative; }
+
+.hero__title {
+  font-size: clamp(2.5rem, 5.1vw, 4.6rem);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--s-3);
+  position: relative;
+}
+.hero__title em {
+  display: block;
+  font-style: normal;
+  color: var(--c-maroon);
+}
+/* the spaced-out sans overlay the reference layers across its serif display */
+.hero__kicker {
+  display: block;
+  font-family: var(--f-body);
+  font-size: clamp(0.75rem, 1.4vw, 1rem);
+  font-weight: 800;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--c-gold);
+  margin-bottom: var(--s-2);
+}
+.hero__lede {
+  font-size: var(--fs-lede);
+  color: var(--c-ink-soft);
+  max-width: 52ch;
+  margin-bottom: var(--s-4);
+}
+.hero__actions { display: flex; flex-wrap: wrap; gap: var(--s-2); align-items: center; }
+
+/* small trust line under the CTAs */
+.hero__trust {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2);
+  margin-top: var(--s-4);
+  font-size: var(--fs-small); color: var(--c-ink-faint);
+}
+.hero__trust strong { color: var(--c-maroon); font-family: var(--f-display); font-size: 1.15rem; }
+.hero__trust span { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+/* ---------- Load-in choreography ---------- */
+[data-enter] {
+  opacity: 0;
+  transform: translateY(26px);
+  animation: enter var(--d-xslow) var(--e-out) forwards;
+  animation-delay: var(--enter-delay, 0ms);
+}
+@keyframes enter { to { opacity: 1; transform: none; } }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .hero__inner { grid-template-columns: 1fr; }
+  .hero__media { order: -1; aspect-ratio: 16/10; }
+  .hero__glyph { font-size: clamp(14rem, 70vw, 26rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-enter] { opacity: 1; transform: none; animation: none; }
+}

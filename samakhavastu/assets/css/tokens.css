@@ -1,0 +1,80 @@
+/* ==========================================================================
+   MahaVastu Magic — Design Tokens
+   Single source of truth. No component may hard-code a raw value.
+
+   Palette derivation:
+   The reference site (aurickbanana.com) builds its warmth from a cream->amber
+   ground, a deep brown ink (#524025) and a gold accent (#F5B936).
+   We keep that exact tonal STRUCTURE but re-key the hues to the MahaVastu
+   brand mark (gold lotus + oxblood laurel + red lotus centre), so the site
+   feels like the reference while remaining unmistakably MahaVastu.
+   ========================================================================== */
+
+:root {
+  /* --- Ground (scroll-reactive background stops) --- */
+  --c-ivory:        #FDF8F0;   /* page base — reference "cream"            */
+  --c-sand:         #F6E7C9;   /* hero scroll-out — reference "amber"      */
+  --c-sand-deep:    #EFD9B0;   /* band separators                          */
+
+  /* --- Ink --- */
+  --c-ink:          #4A1A12;   /* body copy — oxblood-brown                */
+  --c-ink-strong:   #2E0F0A;   /* display headings                         */
+  --c-ink-soft:     rgba(74, 26, 18, 0.72);
+  --c-ink-faint:    rgba(74, 26, 18, 0.45);
+
+  /* --- Brand --- */
+  --c-maroon:       #7B2118;   /* laurel oxblood                           */
+  --c-gold:         #C9A227;   /* lotus brass                              */
+  --c-gold-bright:  #E0B84A;   /* hover / highlight                        */
+  --c-gold-pale:    #F0DFA8;   /* tint fills                               */
+  --c-lotus:        #C8102E;   /* lotus centre — used sparingly, CTA only  */
+  --c-sage:         #6B7F4E;   /* grounding green, eyebrow dots            */
+
+  /* --- Surfaces --- */
+  --c-surface:      #FFFCF6;
+  --c-surface-tint: rgba(201, 162, 39, 0.06);
+  --c-line:         rgba(201, 162, 39, 0.45);   /* the gold hairline       */
+  --c-line-soft:    rgba(201, 162, 39, 0.22);
+
+  /* --- Typography --- */
+  --f-display: "Playfair Display", "Iowan Old Style", Georgia, serif;
+  --f-body:    "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --fs-display: clamp(2.75rem, 7vw, 6rem);
+  --fs-h1:      clamp(2.25rem, 5.2vw, 4rem);
+  --fs-h2:      clamp(1.85rem, 3.6vw, 3rem);
+  --fs-h3:      clamp(1.25rem, 2vw, 1.75rem);
+  --fs-lede:    clamp(1.05rem, 1.35vw, 1.25rem);
+  --fs-body:    1rem;
+  --fs-small:   0.875rem;
+  --fs-eyebrow: 0.8125rem;
+
+  --lh-tight: 1.08;
+  --lh-snug:  1.25;
+  --lh-body:  1.65;
+
+  /* --- Spacing (8px system) --- */
+  --s-1: 0.5rem;   --s-2: 1rem;    --s-3: 1.5rem;  --s-4: 2rem;
+  --s-5: 2.5rem;   --s-6: 3rem;    --s-8: 4rem;    --s-10: 5rem;
+  --s-12: 6rem;    --s-16: 8rem;   --s-20: 10rem;
+
+  --section-y: clamp(4rem, 9vw, 8.5rem);
+  --container: 1240px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+
+  /* --- Radii --- */
+  --r-sm: 10px;  --r-md: 18px;  --r-lg: 28px;  --r-xl: 40px;  --r-pill: 999px;
+
+  /* --- Shadow (soft only — reference uses no heavy drops) --- */
+  --sh-sm: 0 2px 10px rgba(74, 26, 18, 0.06);
+  --sh-md: 0 10px 34px rgba(74, 26, 18, 0.09);
+  --sh-lg: 0 24px 70px rgba(74, 26, 18, 0.13);
+
+  /* --- Motion --- */
+  --d-fast: 200ms;  --d-base: 320ms;  --d-slow: 500ms;  --d-xslow: 900ms;
+  --e-out:  cubic-bezier(0.22, 0.61, 0.36, 1);
+  --e-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --e-in:   cubic-bezier(0.55, 0.06, 0.68, 0.19);
+
+  --z-nav: 100;  --z-overlay: 200;
+}
