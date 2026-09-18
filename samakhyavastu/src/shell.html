@@ -7,6 +7,18 @@
 <meta name="description" content="MahaVastu consultations that blend ancient Vastu Shastra with modern living. Non-structural remedies for homes, offices and retail spaces across Chandigarh, Mohali, Panchkula and worldwide." />
 <link rel="icon" href="assets/img/logo.jpeg" />
 
+<!-- Flag JS before first paint so the loader only ever shows when something can remove it.
+     Repeat visits in the same session get the short version. -->
+<script>
+  (function (d) {
+    var c = d.documentElement.classList;
+    c.add("js", "is-loading");
+    try { if (sessionStorage.getItem("mv-seen")) c.add("is-repeat"); } catch (e) {}
+    /* fail-safe: never leave the page locked if motion.js does not run */
+    setTimeout(function () { c.remove("is-loading"); }, 6000);
+  })(document);
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900&family=Nunito+Sans:opsz,wght@6..12,300..900&display=swap" rel="stylesheet" />
@@ -16,8 +28,30 @@
 <link rel="stylesheet" href="assets/css/hero.css" />
 <link rel="stylesheet" href="assets/css/celestial.css" />
 <link rel="stylesheet" href="assets/css/consult.css" />
+<link rel="stylesheet" href="assets/css/loader.css" />
+<link rel="stylesheet" href="assets/css/journey.css" />
 </head>
 <body>
+
+<!-- ===================== Loader: compass draws, needle finds north, temple doors open ===================== -->
+<div class="loader" aria-hidden="true">
+  <div class="loader__door loader__door--l"></div>
+  <div class="loader__door loader__door--r"></div>
+  <div class="loader__mark">
+    <svg class="loader__ring" viewBox="0 0 200 200">
+      <circle class="loader__circle" cx="100" cy="100" r="92" pathLength="1" />
+      <circle class="loader__ticks" cx="100" cy="100" r="82" pathLength="8" />
+      <path class="loader__needle" d="M100 30 L108 100 L100 170 L92 100 Z" />
+      <path class="loader__needle-n" d="M100 30 L108 100 L92 100 Z" />
+      <text class="loader__n" x="100" y="20">N</text>
+    </svg>
+    <div class="loader__medallion"><img src="assets/img/logo.jpeg" alt="" /></div>
+  </div>
+  <div class="loader__word">MahaVastu&nbsp;Magic</div>
+</div>
+
+<!-- the hero compass seal, lifted off and flown down to Benefits on scroll -->
+<div class="traveler" aria-hidden="true"><img src="assets/img/compass.png" alt="" /></div>
 
 <!-- ===================== Navigation ===================== -->
 <div class="nav-wrap">
@@ -81,7 +115,7 @@
       <img src="assets/img/hero-villa.jpg"
            alt="A sunlit home and garden designed in balance with the five elements"
            width="2000" height="1314" fetchpriority="high" />
-      <img class="hero__seal float" src="assets/img/compass.png" alt="" aria-hidden="true" />
+      <img class="hero__seal float" src="assets/img/compass.png" alt="" aria-hidden="true" data-dock="hero" />
     </figure>
   </div>
 

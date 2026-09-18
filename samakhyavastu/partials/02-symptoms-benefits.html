@@ -44,37 +44,53 @@
   </div>
 </section>
 
-<section id="benefits" class="section section--tint">
+<section id="benefits" class="section section--tint benefits">
   <div class="container">
     <div class="section-head section-head--center" data-reveal="rise">
       <span class="eyebrow">Benefits</span>
       <h2 class="section-title">What changes when your space aligns.</h2>
       <p class="section-lede">Vastu isn't superstition &mdash; it's the science of directional energies. When your home and workspace flow with nature, life flows with you.</p>
     </div>
-    <div class="grid grid--3">
-      <div class="bubble" data-reveal="fade-up" data-reveal-delay="0">
-        <h3 style="font-size: var(--fs-h3); margin-bottom: var(--s-1);">Career &amp; Growth</h3>
-        <p style="color: var(--c-ink-soft);">Unblock professional momentum and a clear path to promotion.</p>
+
+    <!-- the hero's compass seal travels here on scroll and docks in the centre -->
+    <div class="benefits__stage">
+      <div class="benefits__col">
+      <div class="bubble benefit benefit--l" data-reveal="zoom" data-reveal-delay="0">
+        <h3 class="benefit__title">Career &amp; Growth</h3>
+        <p class="benefit__body">Unblock professional momentum and a clear path to promotion.</p>
       </div>
-      <div class="bubble" data-reveal="fade-up" data-reveal-delay="60">
-        <h3 style="font-size: var(--fs-h3); margin-bottom: var(--s-1);">Wealth Flow</h3>
-        <p style="color: var(--c-ink-soft);">Elevate the space energy to attract and retain prosperity.</p>
+      <div class="bubble benefit benefit--l" data-reveal="zoom" data-reveal-delay="90">
+        <h3 class="benefit__title">Wealth Flow</h3>
+        <p class="benefit__body">Elevate the space energy to attract and retain prosperity.</p>
       </div>
-      <div class="bubble" data-reveal="fade-up" data-reveal-delay="120">
-        <h3 style="font-size: var(--fs-h3); margin-bottom: var(--s-1);">Family Harmony</h3>
-        <p style="color: var(--c-ink-soft);">Restore warmth and understanding within the household.</p>
+      <div class="bubble benefit benefit--l" data-reveal="zoom" data-reveal-delay="180">
+        <h3 class="benefit__title">Family Harmony</h3>
+        <p class="benefit__body">Restore warmth and understanding within the household.</p>
       </div>
-      <div class="bubble" data-reveal="fade-up" data-reveal-delay="0">
-        <h3 style="font-size: var(--fs-h3); margin-bottom: var(--s-1);">Mental Clarity</h3>
-        <p style="color: var(--c-ink-soft);">Calmer mornings, decisive days, restful sleep.</p>
       </div>
-      <div class="bubble" data-reveal="fade-up" data-reveal-delay="60">
-        <h3 style="font-size: var(--fs-h3); margin-bottom: var(--s-1);">Protection</h3>
-        <p style="color: var(--c-ink-soft);">Shield your home from negative energies and vastu doshas.</p>
+      <div class="benefits__center" aria-hidden="true">
+        <svg class="benefits__ring" viewBox="0 0 300 300">
+          <circle cx="150" cy="150" r="140" />
+          <circle cx="150" cy="150" r="118" class="benefits__ticks" pathLength="32" />
+          <text x="150" y="22">N</text><text x="284" y="155">E</text><text x="150" y="290">S</text><text x="16" y="155">W</text>
+        </svg>
+        <div class="benefits__dock" data-dock="benefits">
+          <img src="assets/img/compass.png" alt="" loading="lazy" />
+        </div>
       </div>
-      <div class="bubble" data-reveal="fade-up" data-reveal-delay="120">
-        <h3 style="font-size: var(--fs-h3); margin-bottom: var(--s-1);">Spiritual Balance</h3>
-        <p style="color: var(--c-ink-soft);">Align with the five elements for inner peace.</p>
+      <div class="benefits__col">
+      <div class="bubble benefit benefit--r" data-reveal="zoom" data-reveal-delay="0">
+        <h3 class="benefit__title">Mental Clarity</h3>
+        <p class="benefit__body">Calmer mornings, decisive days, restful sleep.</p>
+      </div>
+      <div class="bubble benefit benefit--r" data-reveal="zoom" data-reveal-delay="90">
+        <h3 class="benefit__title">Protection</h3>
+        <p class="benefit__body">Shield your home from negative energies and vastu doshas.</p>
+      </div>
+      <div class="bubble benefit benefit--r" data-reveal="zoom" data-reveal-delay="180">
+        <h3 class="benefit__title">Spiritual Balance</h3>
+        <p class="benefit__body">Align with the five elements for inner peace.</p>
+      </div>
       </div>
     </div>
   </div>

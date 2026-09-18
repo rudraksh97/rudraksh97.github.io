@@ -1,0 +1,122 @@
+/* ==========================================================================
+   MahaVastu Magic — Loader
+   A compass draws around the MahaVastu medallion, eight direction ticks
+   appear and the needle swings to settle on north. When the page is ready
+   motion.js adds .is-open and two temple doors swing apart onto the site.
+
+   Safety: the loader only renders under html.js (set by an inline script in
+   <head>), a CSS fail-safe hides it after 6s even if motion.js never runs,
+   and reduced-motion readers never see it.
+   ========================================================================== */
+
+.loader { display: none; }
+
+.js .loader {
+  display: grid; place-items: center;
+  position: fixed; inset: 0; z-index: calc(var(--z-overlay) + 100);
+  perspective: 1800px;
+  animation: loader-failsafe 0s linear 6s forwards;
+}
+@keyframes loader-failsafe { to { visibility: hidden; } }
+html.is-loading { overflow: hidden; }
+
+/* ---- doors ---- */
+.loader__door {
+  position: absolute; top: 0; bottom: 0; width: 50.5%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(224, 184, 74, .12) 0 2px, transparent 3px) 0 0 / 28px 28px,
+    linear-gradient(180deg, #8A2A1E, var(--c-maroon) 40%, #5E1810);
+  box-shadow: inset 0 0 0 14px #6E1C14, inset 0 0 0 16px var(--c-gold), inset 0 0 0 40px #6E1C14, inset 0 0 0 41px rgba(224, 184, 74, .5);
+  transition: transform 1100ms var(--e-apple), filter 1100ms var(--e-apple);
+  backface-visibility: hidden;
+}
+.loader__door--l { left: 0; transform-origin: 0 50%; }
+.loader__door--r { right: 0; transform-origin: 100% 50%; }
+/* the seam where the doors meet */
+.loader__door--l::after {
+  content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: 3px;
+  background: linear-gradient(180deg, transparent, var(--c-gold) 20%, var(--c-gold) 80%, transparent);
+}
+
+/* ---- the mark ---- */
+.loader__mark {
+  position: relative; z-index: 1;
+  width: clamp(190px, 32vmin, 290px); aspect-ratio: 1;
+  display: grid; place-items: center;
+  transition: opacity 350ms var(--e-out), transform 450ms var(--e-apple);
+}
+.loader__ring { position: absolute; inset: 0; overflow: visible; }
+.loader__circle {
+  fill: none; stroke: var(--c-gold-bright); stroke-width: 2;
+  stroke-dasharray: 1; stroke-dashoffset: 1;
+  transform: rotate(-90deg); transform-origin: 100px 100px;
+  animation: ring-draw 900ms var(--e-apple) 100ms forwards;
+}
+@keyframes ring-draw { to { stroke-dashoffset: 0; } }
+.loader__ticks {
+  fill: none; stroke: var(--c-gold); stroke-width: 8;
+  stroke-dasharray: .03 .97; opacity: 0;
+  transform: rotate(-90.7deg); transform-origin: 100px 100px;
+  animation: fade-in 400ms var(--e-out) 650ms forwards;
+}
+.loader__n {
+  font: 800 13px var(--f-body); fill: var(--c-gold-bright); text-anchor: middle; opacity: 0;
+  animation: fade-in 400ms var(--e-out) 900ms forwards;
+}
+@keyframes fade-in { to { opacity: 1; } }
+.loader__needle, .loader__needle-n {
+  transform-origin: 100px 100px;
+  animation: needle 1300ms cubic-bezier(.3, .7, .4, 1) 450ms both;
+}
+.loader__needle { fill: rgba(253, 248, 240, .85); }
+.loader__needle-n { fill: var(--c-lotus); }
+/* swings past north and settles, like a real needle finding its bearing */
+@keyframes needle {
+  0%   { transform: rotate(150deg); opacity: 0; }
+  15%  { opacity: 1; }
+  45%  { transform: rotate(-24deg); }
+  68%  { transform: rotate(10deg); }
+  85%  { transform: rotate(-4deg); }
+  100% { transform: rotate(0deg); opacity: 1; }
+}
+.loader__medallion {
+  position: relative; width: 34%; aspect-ratio: 1; border-radius: 50%;
+  background: #fff; padding: 7%;
+  box-shadow: 0 0 0 3px var(--c-gold), 0 0 50px rgba(224, 184, 74, .5);
+  opacity: 0; transform: scale(.7);
+  animation: medallion 700ms var(--e-apple) 250ms forwards;
+}
+.loader__medallion img { width: 100%; height: 100%; object-fit: contain; }
+@keyframes medallion { to { opacity: 1; transform: none; } }
+/* the medallion sits on top of the needle */
+.loader__medallion { z-index: 1; }
+
+.loader__word {
+  position: absolute; left: 0; right: 0; top: calc(50% + clamp(116px, 19vmin, 170px));
+  text-align: center; z-index: 1;
+  font-family: var(--f-display); font-size: clamp(1rem, 2vw, 1.3rem);
+  letter-spacing: .5em; text-transform: uppercase; color: var(--c-gold-bright);
+  opacity: 0; animation: word 900ms var(--e-apple) 600ms forwards;
+  transition: opacity 180ms var(--e-out);
+}
+@keyframes word { from { opacity: 0; letter-spacing: .9em; } to { opacity: 1; letter-spacing: .5em; } }
+
+/* ---- open ---- */
+.loader.is-open .loader__mark { opacity: 0; transform: scale(.85); }
+/* the entrance animation's fill would pin opacity at 1, so exit with an animation too */
+.loader.is-open .loader__word { animation: word-out 200ms var(--e-out) forwards; }
+@keyframes word-out { from { opacity: 1; } to { opacity: 0; } }
+.loader.is-open .loader__door--l { transform: rotateY(-105deg); transition-delay: 180ms; filter: brightness(.6); }
+.loader.is-open .loader__door--r { transform: rotateY(105deg);  transition-delay: 180ms; filter: brightness(.6); }
+.loader.is-gone { display: none; }
+
+/* repeat visit in the same session: doors only, no ceremony */
+.is-repeat .loader__mark, .is-repeat .loader__word { display: none; }
+
+/* hero load-in waits for the doors */
+.js.is-loading [data-enter] { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .loader { display: none; }
+  html.is-loading { overflow: auto; }
+}

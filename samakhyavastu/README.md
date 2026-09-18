@@ -119,6 +119,22 @@ Markup opts in through data attributes only:
   and a gold highlight follows it. Symptom cards and process steps flip in on
   a 3D hinge (`data-reveal="flip"`).
 
+### Loader and the travelling compass (`loader.css`, `journey.css`)
+
+- **Loader** — a compass ring draws around the MahaVastu medallion, eight
+  direction ticks appear and the needle swings past north and settles; then
+  two maroon temple doors swing open onto the page. The hero's load-in is
+  paused until the doors move. Holds for ~1.5s on a first visit (capped at
+  3.5s however slow the page), doors-only on repeat visits in the session.
+  Only renders when JS is running (inline `<head>` flag), hides itself after
+  6s regardless, and is skipped under reduced motion.
+- **Travelling compass** — on desktop the compass seal lifts off the hero
+  photo as you scroll, arcs down the right margin flipping through 3D, and
+  docks in the centre of Benefits, where the six benefits sit around it as
+  speech bubbles. Both ends are real elements; the flying copy only exists
+  mid-flight. Below 1024px or with reduced motion the dock just shows its
+  compass.
+
 ### Consultation showcase (`partials/04-services.html`, `assets/css/consult.css`)
 
 The Services section is one pinned stage with a scene per consultation,

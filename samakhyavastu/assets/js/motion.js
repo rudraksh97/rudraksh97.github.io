@@ -31,6 +31,7 @@
      data-pin="orbit"   sticky stage: phone flip, compass, five elements
      data-pin="consult" sticky stage: one scene per consultation (consult.css)
      data-stars="90"                                    generate a twinkling starfield
+     data-dock="hero|benefits"                          ends of the travelling compass
      data-words                                         split into .w spans for --wp
    ========================================================================== */
 (function () {
@@ -204,8 +205,97 @@
     requestAnimationFrame(tick);
   }
 
+  /* ------------------------------------------------------------- loader ---
+     Holds until the page has loaded and the compass has had time to find
+     north (first visit ~1.5s; repeat visits in the session just open the
+     doors), capped so a slow asset never keeps anyone waiting. The hero's
+     load-in is paused under .is-loading and starts as the doors swing. */
+  function initLoader() {
+    var root = document.documentElement;
+    var loader = document.querySelector(".loader");
+    if (!loader || reduced) { root.classList.remove("is-loading"); return; }
+
+    var repeat = root.classList.contains("is-repeat");
+    var minWait = repeat ? 250 : 1550;
+    var maxWait = 3500;
+    var t0 = performance.now();
+    var done = false;
+
+    function open() {
+      if (done) return;
+      done = true;
+      loader.classList.add("is-open");
+      setTimeout(function () { root.classList.remove("is-loading"); }, 260);
+      setTimeout(function () { loader.classList.add("is-gone"); }, 1400);
+      try { sessionStorage.setItem("mv-seen", "1"); } catch (e) {}
+    }
+    function whenLoaded() {
+      setTimeout(open, Math.max(0, minWait - (performance.now() - t0)));
+    }
+    if (document.readyState === "complete") whenLoaded();
+    else window.addEventListener("load", whenLoaded, { once: true });
+    setTimeout(open, maxWait);
+  }
+
+  /* --------------------------------------------------- travelling compass ---
+     Flies .traveler from the hero seal to the Benefits dock. Both ends are
+     read live every frame, so the path follows the page as it scrolls: the
+     compass arcs out toward the right margin, shrinks mid-flight, flips
+     twice through 3D and lands exactly on the dock. Outside the flight the
+     real elements are shown and the traveler is hidden. */
+  var journey = null;
+
+  function initJourney() {
+    var a = document.querySelector('[data-dock="hero"]');
+    var b = document.querySelector('[data-dock="benefits"]');
+    var tr = document.querySelector(".traveler");
+    if (!a || !b || !tr) return;
+    journey = { a: a, b: b, tr: tr, center: b.closest(".benefits__center"), state: "" };
+  }
+
+  function journeyFrame(y, vh) {
+    if (!journey) return;
+    var root = document.documentElement;
+    var j = journey;
+    var enabled = !reduced && window.innerWidth >= 1024;
+
+    var rb = j.b.getBoundingClientRect();
+    var endY = rb.top + y + rb.height / 2 - vh / 2;   /* scroll where the dock is centred */
+    var startY = vh * 0.06;
+    var t = enabled ? clamp((y - startY) / (endY - startY), 0, 1) : 1;
+
+    /* after landing, the docked compass keeps turning with the scroll */
+    var spin = enabled ? Math.max(0, y - endY) * 0.06 : 0;
+    if (j.center) j.center.style.setProperty("--spin", spin.toFixed(2));
+
+    var state = !enabled ? "off" : t <= 0 ? "home" : t >= 1 ? "docked" : "flying";
+    if (state !== j.state) {
+      j.state = state;
+      root.classList.toggle("journey-away", state === "flying" || state === "docked");
+      root.classList.toggle("journey-before", state === "home" || state === "flying");
+      j.tr.classList.toggle("is-flying", state === "flying");
+    }
+    if (state !== "flying") return;
+
+    var ra = j.a.getBoundingClientRect();
+    var e = t * t * (3 - 2 * t);
+    var arc = Math.sin(Math.PI * e);
+    var ax = ra.left + ra.width / 2, ay = ra.top + ra.height / 2;
+    var bx = rb.left + rb.width / 2, by = rb.top + rb.height / 2;
+    var x = lerp(ax, bx, e) + arc * window.innerWidth * 0.16;
+    var yy = lerp(ay, by, e);
+    var size = lerp(ra.width, rb.width, e) * (1 - 0.3 * arc);
+
+    j.tr.style.width = j.tr.style.height = size.toFixed(1) + "px";
+    j.tr.style.transform =
+      "translate3d(" + (x - size / 2).toFixed(1) + "px," + (yy - size / 2).toFixed(1) + "px,0)" +
+      " perspective(700px) rotateY(" + (e * 720).toFixed(1) + "deg) rotate(" + (e * -360).toFixed(1) + "deg)";
+  }
+
   /* --------------------------------------------------------------- boot */
   function boot() {
+    initLoader();
+    initJourney();
     /* ---- collect everything the scroll loop drives ---- */
     var revealPending = toArray(document.querySelectorAll("[data-reveal], .step"));
     var countPending  = toArray(document.querySelectorAll("[data-count]"));
@@ -240,6 +330,8 @@
       var y = window.pageYOffset;
       var vh = window.innerHeight;
       var line = vh * REVEAL_LINE;
+
+      journeyFrame(y, vh);
 
       /* ---- nav condenses past the fold edge ---- */
       if (nav) nav.classList.toggle("is-stuck", y > 40);
